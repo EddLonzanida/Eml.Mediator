@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Eml.Mediator.Contracts;
+using Eml.Mediator.Tests.Helpers;
 using Eml.Mediator.Tests.Requests;
 using NUnit.Framework;
 
-namespace Eml.Mediator.Tests.Conventions
+namespace Eml.Mediator.Tests.Conventions.TestCases
 {
     internal class AllRequestsTestCases : IEnumerable<TestCaseData>
     {

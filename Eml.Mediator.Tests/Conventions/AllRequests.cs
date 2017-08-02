@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Eml.Mediator.Contracts;
+using Eml.Mediator.Tests.Conventions.TestCases;
+using Eml.Mediator.Tests.Helpers;
 using NUnit.Framework;
 using Shouldly;
 

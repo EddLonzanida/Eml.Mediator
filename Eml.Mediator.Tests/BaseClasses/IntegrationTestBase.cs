@@ -1,6 +1,5 @@
-﻿using Eml.Contracts.Bootstrapper;
-using Eml.Contracts.Factories;
-using Eml.Mediator.Contracts;
+﻿using Eml.Contracts.Factories;
+using Eml.Contracts.Mef;
 using NUnit.Framework;
 
 namespace Eml.Mediator.Tests.BaseClasses

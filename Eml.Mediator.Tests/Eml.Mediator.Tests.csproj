@@ -38,8 +38,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eml.Contracts, Version=0.1.0.9, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Eml.Contracts.0.1.0.9\lib\net462\Eml.Contracts.dll</HintPath>
+    <Reference Include="dotMemory.Unit, Version=103.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.dotMemoryUnit.2.3.20160517.113140\lib\dotMemory.Unit.dll</HintPath>
+    </Reference>
+    <Reference Include="Eml.Contracts, Version=0.1.0.12, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eml.Contracts.0.1.0.12\lib\net462\Eml.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.4.11\lib\net45\NLog.dll</HintPath>
@@ -80,12 +83,15 @@
     <Compile Include="Commands\TestCommandWithMultipleEngine.cs" />
     <Compile Include="Commands\TestCommandWithNoAsyncEngine.cs" />
     <Compile Include="Commands\TestCommandWithNoEngine.cs" />
-    <Compile Include="Conventions\AllAsyncCommandsTestCases.cs" />
+    <Compile Include="Conventions\TestCases\AllAsyncCommandsTestCases.cs" />
     <Compile Include="Conventions\AllCommands.cs" />
-    <Compile Include="Conventions\AllCommandsTestCases.cs" />
+    <Compile Include="Conventions\TestCases\AllCommandsTestCases.cs" />
+    <Compile Include="Conventions\TestCases\AllExportsTestCases.cs" />
     <Compile Include="Conventions\AllRequests.cs" />
-    <Compile Include="Conventions\AllRequestsTestCases.cs" />
-    <Compile Include="Conventions\TypeExtensions.cs" />
+    <Compile Include="Conventions\TestCases\AllRequestsTestCases.cs" />
+    <Compile Include="Conventions\AllEngines.cs" />
+    <Compile Include="Helpers\AssemblyExtensions.cs" />
+    <Compile Include="Helpers\TypeExtensions.cs" />
     <Compile Include="Requests\Async\WhenMakingAnAsyncRequest.cs" />
     <Compile Include="Requests\Async\WhenMakingAnAsyncRequestThatThrowsException.cs" />
     <Compile Include="Requests\Async\WhenMakingAnAsyncRequestWithMultipleEngine.cs" />
@@ -98,7 +104,7 @@
     <Compile Include="Requests\Engines\TestRequestEngine.cs" />
     <Compile Include="Requests\Engines\TestRequestWithExceptionAsyncEngine.cs" />
     <Compile Include="Requests\Engines\TestRequestWithExceptionEngine.cs" />
-    <Compile Include="Requests\Sync\WhenMakingAnAsyncRequestWithMultipleEngine.cs" />
+    <Compile Include="Requests\Sync\WhenMakingARequestWithMultipleEngine.cs" />
     <Compile Include="Requests\Sync\WhenMakingARequest.cs" />
     <Compile Include="Requests\Sync\WhenMakingARequestThatThrowsException.cs" />
     <Compile Include="Requests\Sync\WhenMakingARequestWithoutEngine.cs" />

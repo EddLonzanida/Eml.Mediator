@@ -4,33 +4,14 @@ using System.Linq;
 using System.Reflection;
 using NUnit.Framework;
 
-namespace Eml.Mediator.Tests.Conventions
+namespace Eml.Mediator.Tests.Helpers
 {
     public static class TypeExtensions
     {
-        public static bool IsInstantiable(this Type type)
-        {
-            if (type.IsInterface) return false;
-            if (type.IsAbstract) return false;
-            return !type.ContainsGenericParameters;
-        }
-
         public static bool IsAssignableTo<TTarget>(this Type type)
         {
             return typeof(TTarget).IsAssignableFrom(type);
         }
-
-        /// <summary>
-        ///     Alias for IsAssignableTo.
-        /// </summary>
-        /// <remarks>
-        ///     This alias is to avoid collisions with Autofac's extension method of the same name.
-        /// </remarks>
-        public static bool CanBeAssignedTo<TTarget>(this Type type)
-        {
-            return IsAssignableTo<TTarget>(type);
-        }
-
         public static bool IsClosedTypeOf(this Type type, Type openGenericType)
         {
             if (!openGenericType.IsGenericType) throw new ArgumentException("It's a bit difficult to have a closed type of a non-open-generic type", "openGenericType");
@@ -44,20 +25,6 @@ namespace Eml.Mediator.Tests.Conventions
 
             return assignableGenericTypes.Any();
         }
-
-        public static bool IsClosedTypeOf(this Type type, params Type[] openGenericTypes)
-        {
-            return openGenericTypes.Any(type.IsClosedTypeOf);
-        }
-
-        public static Type[] GetGenericInterfacesClosing(this Type type, Type genericInterface)
-        {
-            var genericInterfaces = type.GetInterfaces()
-                .Where(i => i.IsClosedTypeOf(genericInterface))
-                .ToArray();
-            return genericInterfaces;
-        }
-
 
         public static IEnumerable<T> DepthFirst<T>(this IEnumerable<T> source, Func<T, IEnumerable<T>> children)
         {
@@ -78,5 +45,13 @@ namespace Eml.Mediator.Tests.Conventions
                 .Select(t => new TestCaseData(t))
                 .GetEnumerator();
         }
+
+        public static bool IsInstantiable(this Type type)
+        {
+            if (type.IsInterface) return false;
+            if (type.IsAbstract) return false;
+            return !type.ContainsGenericParameters;
+        }
+
     }
 }

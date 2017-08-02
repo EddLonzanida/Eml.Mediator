@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Commands;
+using Eml.Mediator.Tests.Helpers;
 using NUnit.Framework;
 
-namespace Eml.Mediator.Tests.Conventions
+namespace Eml.Mediator.Tests.Conventions.TestCases
 {
     internal class AllCommandsTestCases : IEnumerable<TestCaseData>
     {
