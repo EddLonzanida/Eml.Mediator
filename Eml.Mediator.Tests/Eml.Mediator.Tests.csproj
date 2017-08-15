@@ -41,8 +41,8 @@
     <Reference Include="dotMemory.Unit, Version=103.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\packages\JetBrains.dotMemoryUnit.2.3.20160517.113140\lib\dotMemory.Unit.dll</HintPath>
     </Reference>
-    <Reference Include="Eml.Contracts, Version=0.1.0.15, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Eml.Contracts.0.1.0.15\lib\net462\Eml.Contracts.dll</HintPath>
+    <Reference Include="Eml.Contracts, Version=0.1.0.16, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eml.Contracts.0.1.0.16\lib\net462\Eml.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
