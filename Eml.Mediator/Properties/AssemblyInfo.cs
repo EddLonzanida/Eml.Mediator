@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Eml.Mediator")]
 [assembly: AssemblyDescription("Implement Request-Response pattern using MEF2")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Eml Solutions Team")]
+[assembly: AssemblyCompany("EmL Solutions")]
 [assembly: AssemblyProduct("Eml.Mediator")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
