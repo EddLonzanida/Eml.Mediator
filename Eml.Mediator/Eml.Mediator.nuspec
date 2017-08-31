@@ -10,6 +10,9 @@
     <description>Capture ‘business use cases’ by converting it to modular and highly testable chunk of codes. A combination of Command, Request-Response and Mediator Patterns.</description>
     <copyright>Copyright 2017 (c) Eml Solutions. All rights reserved.</copyright>
     <tags>Mediator Command Request Response Pattern Eml.Mediator Eml Solutions</tags>
+    <dependencies>
+      <dependency id="Eml.MefBootstrapper" version="[1.0.0.2, )" />
+    </dependencies>
   </metadata>
   <files>
     <file src="bin\release\*.dll" target="lib\net452" />
