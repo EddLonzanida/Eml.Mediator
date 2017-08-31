@@ -11,5 +11,7 @@
     <copyright>Copyright 2017 (c) Eml Solutions. All rights reserved.</copyright>
     <tags>Mediator Command Request Response Pattern Eml.Mediator Eml Solutions</tags>
   </metadata>
-  <file src="bin\release\*.dll" target="lib" />
+  <files>
+    <file src="bin\release\*.dll" target="lib" />
+  </files>
 </package>
