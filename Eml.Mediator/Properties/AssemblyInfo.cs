@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Eml.Mediator")]
-[assembly: AssemblyDescription("Capture ‘business use cases’ by converting it to modular and highly testable chunck of codes. A combination of Command, Request-Response and Mediator Patterns.")]
+[assembly: AssemblyDescription("Capture ‘business use cases’ by converting it to modular and highly testable chunk of codes. A combination of Command, Request-Response and Mediator Patterns.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("EmL Solutions")]
 [assembly: AssemblyProduct("Eml.Mediator")]
