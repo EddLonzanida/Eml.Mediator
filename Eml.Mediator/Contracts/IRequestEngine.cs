@@ -1,5 +1,5 @@
 using System.ComponentModel.Composition;
-using Eml.Contracts.Mef;
+using Eml.MefBootstrapper;
 
 namespace Eml.Mediator.Contracts
 {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Eml.Contracts.Factories;
 using Eml.Mediator.Contracts;
+using Eml.MefBootstrapper;
 
 namespace Eml.Mediator.Extensions
 {

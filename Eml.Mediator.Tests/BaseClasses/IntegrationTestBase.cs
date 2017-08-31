@@ -1,5 +1,4 @@
-﻿using Eml.Contracts.Factories;
-using Eml.Contracts.Mef;
+﻿using Eml.MefBootstrapper;
 using NUnit.Framework;
 
 namespace Eml.Mediator.Tests.BaseClasses
@@ -10,13 +9,7 @@ namespace Eml.Mediator.Tests.BaseClasses
         [SetUp]
         public void SetUp()
         {
-            MefLoader.Init(typeof(IntegrationTestBase));
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            ClassFactory.Dispose();
+            MefLoader.Init(new[]{"Eml*.dll"});
         }
     }
 }

@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Eml.Contracts.Mef;
 using Eml.Mediator.Tests.Helpers;
+using Eml.MefBootstrapper;
 using NUnit.Framework;
 
 namespace Eml.Mediator.Tests.Conventions.TestCases

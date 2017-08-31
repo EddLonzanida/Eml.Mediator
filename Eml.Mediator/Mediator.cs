@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading.Tasks;
-using Eml.Contracts.Factories;
 using Eml.Mediator.Contracts;
 using Eml.Mediator.Exceptions;
 using Eml.Mediator.Extensions;
+using Eml.MefBootstrapper;
 
 namespace Eml.Mediator
 {
