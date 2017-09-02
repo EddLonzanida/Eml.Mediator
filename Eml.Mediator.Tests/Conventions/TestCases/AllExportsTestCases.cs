@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Helpers;
-using Eml.MefBootstrapper;
 using NUnit.Framework;
 
 namespace Eml.Mediator.Tests.Conventions.TestCases
@@ -20,7 +20,7 @@ namespace Eml.Mediator.Tests.Conventions.TestCases
 
             assemblies.ForEach(assembly =>
             {
-                var exportableClasses = assembly.GetClasses(type =>  type.IsAssignableTo<IExportable>())
+                var exportableClasses = assembly.GetClasses(type => type.IsExportable() && !type.Name.Equals("Mediator"))
                     .Select(type => new TestCaseData(type));
                 results.AddRange(exportableClasses);
             });

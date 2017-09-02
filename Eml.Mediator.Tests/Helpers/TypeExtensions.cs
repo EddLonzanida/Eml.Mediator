@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Reflection;
 using NUnit.Framework;
@@ -52,6 +53,9 @@ namespace Eml.Mediator.Tests.Helpers
             if (type.IsAbstract) return false;
             return !type.ContainsGenericParameters;
         }
-
+        public static bool IsExportable(this Type type)
+        {
+            return type.GetCustomAttribute(typeof(ExportAttribute), true) != null;
+        }
     }
 }

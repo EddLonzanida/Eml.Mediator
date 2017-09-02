@@ -1,10 +1,9 @@
 using System.ComponentModel.Composition;
-using Eml.MefBootstrapper;
 
 namespace Eml.Mediator.Contracts
 {
     [InheritedExport]
-    public interface IRequestEngine<in TRequest, out TResponse> : IExportable
+    public interface IRequestEngine<in TRequest, out TResponse> 
         where TRequest : IRequest<TRequest, TResponse>
         where TResponse : IResponse
     {
