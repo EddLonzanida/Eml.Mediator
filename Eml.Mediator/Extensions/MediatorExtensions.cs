@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Eml.Mediator.Contracts;
-using Eml.MefBootstrapper;
+using Eml;
 
 namespace Eml.Mediator.Extensions
 {
@@ -17,7 +17,7 @@ namespace Eml.Mediator.Extensions
             where T1 : IRequest<T1, T2>
             where T2 : IResponse
         {
-            var mediator = ClassFactory.Mef.GetExportedValue<IMediator>();
+            var mediator = MefBootstrapper.ClassFactory.Mef.GetExportedValue<IMediator>();
             return mediator.Get(request);
         }
 
@@ -32,7 +32,7 @@ namespace Eml.Mediator.Extensions
             where T1 : IRequestAsync<T1, T2>
             where T2 : IResponse
         {
-            var mediator = ClassFactory.Mef.GetExportedValue<IMediator>();
+            var mediator = MefBootstrapper.ClassFactory.Mef.GetExportedValue<IMediator>();
             return await mediator.GetAsync(request);
         }
 
@@ -44,7 +44,7 @@ namespace Eml.Mediator.Extensions
         public static void Set<T>(this T command)
             where T : ICommand
         {
-            var mediator = ClassFactory.Mef.GetExportedValue<IMediator>();
+            var mediator = MefBootstrapper.ClassFactory.Mef.GetExportedValue<IMediator>();
             mediator.Set(command);
         }
 
@@ -57,7 +57,7 @@ namespace Eml.Mediator.Extensions
         public static async Task SetAsync<T>(this T commandAsync)
             where T : ICommandAsync
         {
-            var mediator = ClassFactory.Mef.GetExportedValue<IMediator>();
+            var mediator = MefBootstrapper.ClassFactory.Mef.GetExportedValue<IMediator>();
             await mediator.SetAsync(commandAsync);
         }
     }

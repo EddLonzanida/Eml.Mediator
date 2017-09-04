@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Helpers;
 using NUnit.Framework;
 
