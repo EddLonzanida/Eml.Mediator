@@ -13,7 +13,7 @@ namespace Eml.Mediator.Tests.Requests.Sync
     {
         [Test]
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
-        public void ShouldThrowException()
+        public void Response_ShouldThrowException()
         {
             var request = new TestRequestWithException(Guid.NewGuid());
 

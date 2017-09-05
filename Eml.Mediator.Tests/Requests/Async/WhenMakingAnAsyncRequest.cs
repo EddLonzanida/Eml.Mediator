@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Requests.Async
     public class WhenMakingAnAsyncRequest: IntegrationTestBase
     {
         [Test]
-        public async Task TheRequestEngineShouldReturnACorrectResponseType()
+        public async Task Response_ShouldBeCorrectType()
         {
             var request = new TestRequestAsync(Guid.NewGuid());
 
@@ -21,7 +21,7 @@ namespace Eml.Mediator.Tests.Requests.Async
         }
 
         [Test]
-        public async Task TheRequestAndResponseIdsShouldMatch()
+        public async Task Response_ShouldReturnCorrectValue()
         {
             var request = new TestRequestAsync(Guid.NewGuid());
 

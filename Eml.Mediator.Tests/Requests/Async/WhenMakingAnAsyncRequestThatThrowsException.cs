@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Requests.Async
     public class WhenMakingAnAsyncRequestThatThrowsException : IntegrationTestBase
     {
         [Test]
-        public async Task ShouldThrowException()
+        public async Task Response_ShouldThrowException()
         {
             var request = new TestRequestAsyncWithException(Guid.NewGuid());
 

@@ -12,7 +12,7 @@ namespace Eml.Mediator.Tests.Requests.Async
     public class WhenMakingAnAsyncRequestWithoutEngine : IntegrationTestBase
     {
         [Test]
-        public async Task ShouldThrowAMissingEngineException()
+        public async Task Response_ShouldThrowAMissingEngineException()
         {
             var request = new TestRequestWithNoAsyncEngine(Guid.NewGuid());
 

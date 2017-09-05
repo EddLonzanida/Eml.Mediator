@@ -12,7 +12,7 @@ namespace Eml.Mediator.Tests.Requests.Async
     public class WhenMakingAnAsyncRequestWithMultipleEngine : IntegrationTestBase
     {
         [Test]
-        public async Task ShouldThrowMultipleEngineException()
+        public async Task Response_ShouldThrowMultipleEngineException()
         {
             var request = new TestRequestWithMultipleAsyncEngine(Guid.NewGuid());
 

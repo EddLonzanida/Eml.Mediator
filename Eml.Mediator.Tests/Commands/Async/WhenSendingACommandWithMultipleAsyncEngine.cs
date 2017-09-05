@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Commands.Async
     public class WhenSendingACommandWithMultipleAsyncEngine : IntegrationTestBase
     {
         [Test]
-        public async Task ShouldThrowMultipleEngineException()
+        public async Task Command_ShouldThrowMultipleEngineException()
         {
             var command = new TestCommandWithMultipleAsyncEngine();
 

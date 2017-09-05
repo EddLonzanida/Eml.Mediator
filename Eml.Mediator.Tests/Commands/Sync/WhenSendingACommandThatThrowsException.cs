@@ -13,7 +13,7 @@ namespace Eml.Mediator.Tests.Commands.Sync
     {
         [Test]
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
-        public void ShouldThrowException()
+        public void Command_ShouldThrowException()
         {
             var command = new TestCommandWithException();
 

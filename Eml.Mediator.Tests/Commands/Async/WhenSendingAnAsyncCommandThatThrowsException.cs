@@ -10,7 +10,7 @@ namespace Eml.Mediator.Tests.Commands.Async
     public class WhenSendingAnAsyncCommandThatThrowsException : IntegrationTestBase
     {
         [Test]
-        public async Task ShouldThrowException()
+        public async Task Command_ShouldThrowException()
         {
             var command = new TestCommandAsyncWithException();
 

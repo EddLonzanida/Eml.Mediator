@@ -14,7 +14,7 @@ namespace Eml.Mediator.Tests.Requests.Sync
     {
         [Test]
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
-        public void ShouldThrowMultipleEngineException()
+        public void Response_ShouldThrowMultipleEngineException()
         {
             var request = new TestRequestWithMultipleEngine(Guid.NewGuid());
 

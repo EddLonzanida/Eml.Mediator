@@ -13,7 +13,7 @@ namespace Eml.Mediator.Tests.Commands.Sync
     {
         [Test]
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
-        public void ShouldThrowMultipleEngineException()
+        public void Command_ShouldThrowMultipleEngineException()
         {
             var command = new TestCommandWithMultipleEngine();
 

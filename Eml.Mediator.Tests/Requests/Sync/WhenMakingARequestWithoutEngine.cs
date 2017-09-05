@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Requests.Sync
     public class WhenMakingARequestWithoutEngine : IntegrationTestBase
     {
         [Test]
-        public void ShouldThrowAMissingEngineException()
+        public void Response_ShouldThrowAMissingEngineException()
         {
             var request = new TestRequestWithNoEngine(Guid.NewGuid());
 

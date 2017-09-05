@@ -9,7 +9,7 @@ namespace Eml.Mediator.Tests.Commands.Async
     public class WhenSendingAnAsyncCommand : IntegrationTestBase
     {
         [Test]
-        public async Task TheCommandEngineShouldHaveBeenCalledExactlyOnce()
+        public async Task Command_ShouldBeCalledOnce()
         {
             var command = new TestCommandAsync();
 

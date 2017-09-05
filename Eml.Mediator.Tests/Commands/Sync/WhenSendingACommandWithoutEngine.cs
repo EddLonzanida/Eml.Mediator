@@ -9,7 +9,7 @@ namespace Eml.Mediator.Tests.Commands.Sync
     public class WhenSendingACommandWithoutEngine : IntegrationTestBase
     {
         [Test]
-        public void ShouldThrowMissingEngineException()
+        public void Command_ShouldThrowMissingEngineException()
         {
             var command = new TestCommandWithNoEngine();
 

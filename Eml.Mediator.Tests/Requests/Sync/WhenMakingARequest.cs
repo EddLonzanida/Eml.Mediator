@@ -13,7 +13,7 @@ namespace Eml.Mediator.Tests.Requests.Sync
     {
         [Test]
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
-        public void TheRequestEngineShouldReturnACorrectResponseType()
+        public void Response_ShouldBeCorrectType()
         {
            var request = new TestRequest(Guid.NewGuid());
             
@@ -28,7 +28,7 @@ namespace Eml.Mediator.Tests.Requests.Sync
 
         [Test]
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
-        public void TheRequestAndResponseIdsShouldMatch()
+        public void Response_ShouldBeCorrectValue()
         {
             var request = new TestRequest(Guid.NewGuid());
 

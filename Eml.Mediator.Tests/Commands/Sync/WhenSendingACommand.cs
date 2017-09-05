@@ -12,7 +12,7 @@ namespace Eml.Mediator.Tests.Commands.Sync
     {
         [Test]
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
-        public void TheCommandEngineShouldHaveBeenCalledExactlyOnce()
+        public void Command_ShouldBeCalledOnce()
         {
             var command = new TestCommand();
 

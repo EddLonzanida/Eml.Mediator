@@ -10,7 +10,7 @@ namespace Eml.Mediator.Tests.Commands.Async
     public class WhenSendingAnAsyncCommandWithoutEngine : IntegrationTestBase
     {
         [Test]
-        public async Task ShouldThrowMissingEngineException()
+        public async Task Command_ShouldThrowMissingEngineException()
         {
             var command = new TestCommandWithNoAsyncEngine();
 
