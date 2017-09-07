@@ -36,7 +36,9 @@ namespace Eml.Mediator
             syncEngine?.Value.Set(command);
 
             if (syncEngine == null)
-                throw new MissingEngineException($"Could not find a command engine for command of type {typeof(T).Name}. Check if the class is implementing the interface: ICommandEngine.");
+                throw new MissingEngineException($"Could not find a command engine for command of type {typeof(T).Name}. " +
+                                                 $"Check if the class is implementing the interface: ICommandEngine." +
+                                                 $"Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
 
             _classFactory.Container.ReleaseExports(engines);
         }
@@ -59,7 +61,9 @@ namespace Eml.Mediator
                 await asyncEngine.Value.SetAsync(commandAsync).ConfigureAwaitFalse();
                 _classFactory.Container.ReleaseExports(engines);
             }
-            else throw new MissingEngineException($"Could not find a command engine for command of type {typeof(T).Name}. Check if the class is implementing the interface: ICommandAsyncEngine.");
+            else throw new MissingEngineException($"Could not find a command engine for command of type {typeof(T).Name}. " +
+                                                  $"Check if the class is implementing the interface: ICommandAsyncEngine." +
+                                                  $"Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
         }
 
         public T2 Get<T1, T2>(IRequest<T1, T2> request)
@@ -78,7 +82,9 @@ namespace Eml.Mediator
 
             if (syncEngine == null)
                 throw new MissingEngineException(
-                    $"Could not find a Request engine for request of type {typeof(T1).Name}. Check if the class is implementing the interface: IRequestEngine.");
+                    $"Could not find a Request engine for request of type {typeof(T1).Name}. " +
+                    $"Check if the class is implementing the interface: IRequestEngine." +
+                    $"Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
 
             var result = syncEngine.Value.Get((T1)request);
             _classFactory.Container.ReleaseExports(engines);
@@ -102,7 +108,9 @@ namespace Eml.Mediator
 
             if (asyncEngine == null)
                 throw new MissingEngineException(
-                    $"Could not find a Request engine for request of type {typeof(T1).Name}. Check if the class is implementing the interface: IRequestAsyncEngine.");
+                    $"Could not find a Request engine for request of type {typeof(T1).Name}. " +
+                    $"Check if the class is implementing the interface: IRequestAsyncEngine." +
+                    $"Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
 
             var result = await asyncEngine.Value.GetAsync((T1)request).ConfigureAwaitFalse();
             _classFactory.Container.ReleaseExports(engines);
