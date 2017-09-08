@@ -14,20 +14,33 @@ namespace Eml.Mediator
     [PartCreationPolicy(CreationPolicy.Shared)]
     public class Mediator : IMediator
     {
-        private readonly IClassFactory _classFactory;
+        public static IClassFactory ClassFactory { get; private set; }
 
-        [ImportingConstructor]
-        public Mediator(IClassFactory classFactory)
+        public static void SetClassFactory(IClassFactory classFactory)
         {
-            _classFactory = classFactory;
+            if (ClassFactory == null)
+            {
+                ClassFactory = classFactory;
+            }
         }
+        //private readonly IClassFactory _classFactory;
+
+        //[ImportingConstructor]
+        //public Mediator(IClassFactory classFactory)
+        //{
+        //    if (ClassFactory == null)
+        //    {
+        //        ClassFactory = classFactory;
+        //    }
+        //    _classFactory = classFactory;
+        //}
 
         public void Set<T>(T command) where T : ICommand
         {
-            var engines = _classFactory.Container.GetExports<ICommandEngine<T>>().ToList();
+            var engines = ClassFactory.Container.GetExports<ICommandEngine<T>>().ToList();
             if (engines.Count > 1)
             {
-                _classFactory.Container.ReleaseExports(engines);
+                ClassFactory.Container.ReleaseExports(engines);
                 var aMsgs = GetMultipleEngineExceptionMessage(engines);
                 throw new MultipleEngineException($"Check the following Command engines:{aMsgs}");
             }
@@ -40,16 +53,16 @@ namespace Eml.Mediator
                                                  $"Check if the class is implementing the interface: ICommandEngine." +
                                                  $"Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
 
-            _classFactory.Container.ReleaseExports(engines);
+            ClassFactory.Container.ReleaseExports(engines);
         }
 
         public async Task SetAsync<T>(T commandAsync)
             where T : ICommandAsync
         {
-            var engines = _classFactory.Container.GetExports<ICommandAsyncEngine<T>>().ToList();
+            var engines = ClassFactory.Container.GetExports<ICommandAsyncEngine<T>>().ToList();
             if (engines.Count > 1)
             {
-                _classFactory.Container.ReleaseExports(engines);
+                ClassFactory.Container.ReleaseExports(engines);
                 var aMsgs = GetMultipleEngineExceptionMessage(engines);
                 throw new MultipleEngineException($"Check the following Command engines:{aMsgs}");
             }
@@ -59,7 +72,7 @@ namespace Eml.Mediator
             if (asyncEngine != null)
             {
                 await asyncEngine.Value.SetAsync(commandAsync).ConfigureAwaitFalse();
-                _classFactory.Container.ReleaseExports(engines);
+                ClassFactory.Container.ReleaseExports(engines);
             }
             else throw new MissingEngineException($"Could not find a command engine for command of type {typeof(T).Name}. " +
                                                   $"Check if the class is implementing the interface: ICommandAsyncEngine." +
@@ -70,10 +83,10 @@ namespace Eml.Mediator
             where T1 : IRequest<T1, T2>
             where T2 : IResponse
         {
-            var engines = _classFactory.Container.GetExports<IRequestEngine<T1, T2>>().ToList();
+            var engines = ClassFactory.Container.GetExports<IRequestEngine<T1, T2>>().ToList();
             if (engines.Count > 1)
             {
-                _classFactory.Container.ReleaseExports(engines);
+                ClassFactory.Container.ReleaseExports(engines);
                 var aMsgs = GetMultipleEngineExceptionMessage(engines);
                 throw new MultipleEngineException($"Check the following Request engines:{aMsgs}");
             }
@@ -87,7 +100,7 @@ namespace Eml.Mediator
                     $"Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
 
             var result = syncEngine.Value.Get((T1)request);
-            _classFactory.Container.ReleaseExports(engines);
+            ClassFactory.Container.ReleaseExports(engines);
 
             return result;
         }
@@ -96,10 +109,10 @@ namespace Eml.Mediator
             where T1 : IRequestAsync<T1, T2>
             where T2 : IResponse
         {
-            var engines = _classFactory.Container.GetExports<IRequestAsyncEngine<T1, T2>>().ToList();
+            var engines = ClassFactory.Container.GetExports<IRequestAsyncEngine<T1, T2>>().ToList();
             if (engines.Count > 1)
             {
-                _classFactory.Container.ReleaseExports(engines);
+                ClassFactory.Container.ReleaseExports(engines);
                 var aMsgs = GetMultipleEngineExceptionMessage(engines);
                 throw new MultipleEngineException($"Check the following Request engines:{aMsgs}");
             }
@@ -113,7 +126,7 @@ namespace Eml.Mediator
                     $"Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
 
             var result = await asyncEngine.Value.GetAsync((T1)request).ConfigureAwaitFalse();
-            _classFactory.Container.ReleaseExports(engines);
+            ClassFactory.Container.ReleaseExports(engines);
 
             return result;
         }

@@ -31,8 +31,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-Net462|AnyCPU'">
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <OutputPath>bin\Debug-Net462\</OutputPath>
@@ -43,7 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net462|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net462|AnyCPU'">
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <OutputPath>bin\Release-Net462\</OutputPath>
     <DebugType>pdbonly</DebugType>
@@ -52,17 +50,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-
-
   <ItemGroup>
     <Reference Include="Eml.ClassFactory.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Eml.ClassFactory.Contracts.1.0.0\lib\net452\Eml.ClassFactory.Contracts.dll</HintPath>
-    </Reference>
-    <Reference Include="Eml.MefBootstrapper, Version=1.0.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Eml.MefBootstrapper.1.0.0.8\lib\net452\Eml.MefBootstrapper.dll</HintPath>
-    </Reference>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />

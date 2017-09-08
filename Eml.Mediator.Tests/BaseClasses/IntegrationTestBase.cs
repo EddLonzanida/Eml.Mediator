@@ -9,7 +9,8 @@ namespace Eml.Mediator.Tests.BaseClasses
         [SetUp]
         public void SetUp()
         {
-            MefLoader.Init(new[]{"Eml*.dll"});
+            MefLoader.Init();
+            Mediator.SetClassFactory(new MefBootstrapper.ClassFactory());
         }
     }
 }

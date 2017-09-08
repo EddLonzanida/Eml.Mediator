@@ -19,7 +19,7 @@ namespace Eml.Mediator.Tests.Conventions.TestCases
 
             assemblies.ForEach(assembly =>
             {
-                var exportableClasses = assembly.GetClasses(type => type.IsExportable() && !type.Name.Equals("Mediator"))
+                var exportableClasses = assembly.GetClasses(type => type.IsExportable() && !type.Name.Equals("Mediator") && !type.Name.Equals("ClassFactory"))
                     .Select(type => new TestCaseData(type));
                 results.AddRange(exportableClasses);
             });
