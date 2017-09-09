@@ -11,5 +11,9 @@ namespace Eml.Mediator.Tests.Requests.Engines
         {
             return await Task.Run(() => new TestResponse(request.Id));
         }
+
+        public void Dispose()
+        {
+        }
     }
 }
