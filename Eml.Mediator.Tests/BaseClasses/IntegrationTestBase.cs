@@ -10,6 +10,7 @@ namespace Eml.Mediator.Tests.BaseClasses
         public void SetUp()
         {
             MefLoader.Init();
+            var container = MefBootstrapper.ClassFactory.Mef;
             Mediator.SetClassFactory(new MefBootstrapper.ClassFactory());
         }
     }

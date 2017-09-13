@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Eml.Mediator.Contracts;
-using Eml;
 
 namespace Eml.Mediator.Extensions
 {

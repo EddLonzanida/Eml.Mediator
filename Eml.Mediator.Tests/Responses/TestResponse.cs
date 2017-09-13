@@ -1,11 +1,11 @@
 ﻿using System;
 using Eml.Mediator.Contracts;
 
-namespace Eml.Mediator.Tests.Requests
+namespace Eml.Mediator.Tests.Responses
 {
     public class TestResponse : IResponse
     {
-        public Guid ResponseToRequestId { get; private set; }
+        public Guid ResponseToRequestId { get; }
 
         public TestResponse(Guid responseToRequestId)
         {

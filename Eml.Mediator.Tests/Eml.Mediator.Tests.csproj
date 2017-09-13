@@ -121,6 +121,8 @@
     <Compile Include="Requests\Async\WhenMakingAnAsyncRequestThatThrowsException.cs" />
     <Compile Include="Requests\Async\WhenMakingAnAsyncRequestWithMultipleEngine.cs" />
     <Compile Include="Requests\Async\WhenMakingAnAsyncRequestWithoutEngine.cs" />
+    <Compile Include="Requests\AutoSuggestAsyncRequest.cs" />
+    <Compile Include="Requests\Engines\AutoSuggestAsyncEngine.cs" />
     <Compile Include="Requests\Engines\TestRequest1AsyncEngine.cs" />
     <Compile Include="Requests\Engines\TestRequest1Engine.cs" />
     <Compile Include="Requests\Engines\TestRequest2AsyncEngine.cs" />
@@ -141,7 +143,8 @@
     <Compile Include="Requests\TestRequestWithMultipleEngine.cs" />
     <Compile Include="Requests\TestRequestWithNoAsyncEngine.cs" />
     <Compile Include="Requests\TestRequestWithNoEngine.cs" />
-    <Compile Include="Requests\TestResponse.cs" />
+    <Compile Include="Responses\AutoSuggestResponse.cs" />
+    <Compile Include="Responses\TestResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

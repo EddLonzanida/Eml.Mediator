@@ -12,9 +12,17 @@ namespace Eml.Mediator.Tests.Requests.Async
     public class WhenMakingAnAsyncRequestWithoutEngine : IntegrationTestBase
     {
         [Test]
-        public async Task Response_ShouldThrowAMissingEngineException()
+        public async Task Response_ShouldThrowMissingEngineException()
         {
             var request = new TestRequestWithNoAsyncEngine(Guid.NewGuid());
+
+            await Should.ThrowAsync<MissingEngineException>(async () => await request.GetAsync());
+        }
+
+        [Test]
+        public async Task Response_ShouldThrowMissingEngineExceptionWhenRequestIsOpenGenerics()
+        {
+            var request = new AutoSuggestAsyncRequest<string>("Test");
 
             await Should.ThrowAsync<MissingEngineException>(async () => await request.GetAsync());
         }

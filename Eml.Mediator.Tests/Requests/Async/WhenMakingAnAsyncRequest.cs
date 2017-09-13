@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Eml.Mediator.Extensions;
 using Eml.Mediator.Tests.BaseClasses;
+using Eml.Mediator.Tests.Responses;
 using NUnit.Framework;
 using Shouldly;
 

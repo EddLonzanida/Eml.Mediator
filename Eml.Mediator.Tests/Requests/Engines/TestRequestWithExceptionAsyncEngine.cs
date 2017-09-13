@@ -2,6 +2,7 @@
 using System.ComponentModel.Composition;
 using System.Threading.Tasks;
 using Eml.Mediator.Contracts;
+using Eml.Mediator.Tests.Responses;
 
 namespace Eml.Mediator.Tests.Requests.Engines
 {

@@ -2,6 +2,7 @@
 using Eml.Mediator.Extensions;
 using Eml.Mediator.Tests.BaseClasses;
 using Eml.Mediator.Tests.Requests.Engines;
+using Eml.Mediator.Tests.Responses;
 using JetBrains.dotMemoryUnit;
 using NUnit.Framework;
 using Shouldly;

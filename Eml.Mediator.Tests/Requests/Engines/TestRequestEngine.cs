@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Composition;
 using Eml.Mediator.Contracts;
+using Eml.Mediator.Tests.Responses;
 
 namespace Eml.Mediator.Tests.Requests.Engines
 {
