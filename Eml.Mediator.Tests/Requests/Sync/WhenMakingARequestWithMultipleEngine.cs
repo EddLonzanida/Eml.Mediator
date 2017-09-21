@@ -18,7 +18,7 @@ namespace Eml.Mediator.Tests.Requests.Sync
         {
             var request = new TestRequestWithMultipleEngine(Guid.NewGuid());
 
-            Should.Throw<MultipleEngineException>(() => request.Get());
+            Should.Throw<MultipleEngineException>(() => mediator.Get(request));
             dotMemory.Check(memory =>
             {
                 memory.GetObjects(where => where.Type.Is<TestRequest1Engine>()).ObjectsCount.ShouldBe(0);

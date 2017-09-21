@@ -71,7 +71,6 @@
     <Compile Include="Contracts\IResponse.cs" />
     <Compile Include="Exceptions\MissingEngineException.cs" />
     <Compile Include="Exceptions\MultipleEngineException.cs" />
-    <Compile Include="Extensions\MediatorExtensions.cs" />
     <Compile Include="Extensions\TaskExtensions.cs" />
     <Compile Include="Mediator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

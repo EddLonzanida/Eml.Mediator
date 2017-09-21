@@ -18,7 +18,7 @@ namespace Eml.Mediator.Tests.Requests.Sync
         {
            var request = new TestRequest(Guid.NewGuid());
             
-           var response = request.Get();
+           var response = mediator.Get(request);
 
             response.ShouldBeOfType(typeof(TestResponse));
             dotMemory.Check(memory =>
@@ -33,7 +33,7 @@ namespace Eml.Mediator.Tests.Requests.Sync
         {
             var request = new TestRequest(Guid.NewGuid());
 
-            var response = request.Get();
+            var response = mediator.Get(request);
 
             response.ResponseToRequestId.ShouldBe(request.Id);
             dotMemory.Check(memory =>

@@ -15,7 +15,7 @@ namespace Eml.Mediator.Tests.Commands.Async
         {
             var command = new TestCommandWithMultipleAsyncEngine();
 
-            await Should.ThrowAsync<MultipleEngineException>(async () => await command.SetAsync());
+            await Should.ThrowAsync<MultipleEngineException>(async () => await mediator.SetAsync(command));
         }
     }
 }

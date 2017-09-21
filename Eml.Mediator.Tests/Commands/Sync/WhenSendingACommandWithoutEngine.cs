@@ -13,7 +13,7 @@ namespace Eml.Mediator.Tests.Commands.Sync
         {
             var command = new TestCommandWithNoEngine();
 
-            Should.Throw<MissingEngineException>(() => command.Set());
+            Should.Throw<MissingEngineException>(() => mediator.Set(command));
         }
     }
 }

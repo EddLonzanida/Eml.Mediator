@@ -1,17 +1,18 @@
-﻿using Eml.MefBootstrapper;
+﻿using Eml.Mediator.Contracts;
+using Eml.MefBootstrapper;
 using NUnit.Framework;
 
 namespace Eml.Mediator.Tests.BaseClasses
 {
     public abstract class IntegrationTestBase
     {
+        protected IMediator mediator;
 
         [SetUp]
         public void SetUp()
         {
             MefLoader.Init();
-            var container = MefBootstrapper.ClassFactory.Mef;
-            Mediator.SetClassFactory(new MefBootstrapper.ClassFactory());
+            mediator = MefBootstrapper.ClassFactory.Mef.GetExportedValue<IMediator>();
         }
     }
 }

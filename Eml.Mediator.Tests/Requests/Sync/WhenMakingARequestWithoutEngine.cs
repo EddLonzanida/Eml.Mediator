@@ -15,7 +15,7 @@ namespace Eml.Mediator.Tests.Requests.Sync
         {
             var request = new TestRequestWithNoEngine(Guid.NewGuid());
 
-            Should.Throw<MissingEngineException>(() => request.Get());
+            Should.Throw<MissingEngineException>(() => mediator.Get(request));
         }
     }
 }

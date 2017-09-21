@@ -13,7 +13,7 @@ namespace Eml.Mediator.Tests.Commands.Async
         {
             var command = new TestCommandAsync();
 
-            await command.SetAsync();
+            await mediator.SetAsync(command);
 
             command.EngineInvocationCount.ShouldBe(1);
         }

@@ -15,7 +15,7 @@ namespace Eml.Mediator.Tests.Requests.Async
         {
             var request = new TestRequestAsyncWithException(Guid.NewGuid());
 
-            await Should.ThrowAsync<NotImplementedException>(async () => await request.GetAsync());
+            await Should.ThrowAsync<NotImplementedException>(async () => await mediator.GetAsync(request));
         }
     }
 }

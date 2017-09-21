@@ -17,7 +17,7 @@ namespace Eml.Mediator.Tests.Commands.Sync
         {
             var command = new TestCommandWithMultipleEngine();
 
-            Should.Throw<MultipleEngineException>(() => command.Set());
+            Should.Throw<MultipleEngineException>(() => mediator.Set(command));
             dotMemory.Check(memory =>
             {
                 memory.GetObjects(where => where.Type.Is<TestCommand1Engine>())

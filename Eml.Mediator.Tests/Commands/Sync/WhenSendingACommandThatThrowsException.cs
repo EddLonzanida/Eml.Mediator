@@ -17,7 +17,7 @@ namespace Eml.Mediator.Tests.Commands.Sync
         {
             var command = new TestCommandWithException();
 
-            Should.Throw<NotImplementedException>(() => command.Set());
+            Should.Throw<NotImplementedException>(() => mediator.Set(command));
 
             dotMemory.Check(memory => memory
                 .GetObjects(where => where.Type.Is<TestCommandWithExceptionEngine>()).ObjectsCount.ShouldBe(0));
