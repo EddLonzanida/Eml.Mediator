@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A45D1625-4608-479F-9654-CC0A5BBDE11F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eml.Mediator.Tests.Unit</RootNamespace>
+    <AssemblyName>Eml.Mediator.Tests.Unit</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-Net462|AnyCPU'">
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug-Net462\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net462|AnyCPU'">
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <OutputPath>bin\Release-Net462\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="dotMemory.Unit, Version=109.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.dotMemoryUnit.2.4.20170830.172630\lib\dotMemory.Unit.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Shouldly, Version=2.8.3.0, Culture=neutral, PublicKeyToken=6042cbcb05cbc941, processorArchitecture=MSIL">
+      <HintPath>..\packages\Shouldly.2.8.3\lib\net451\Shouldly.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Debug' or '$(Configuration)' == 'Release'">
+    <Reference Include="Eml.ClassFactory.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eml.ClassFactory.Contracts.1.0.0\lib\net452\Eml.ClassFactory.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Eml.MefBootstrapper, Version=1.0.0.14, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eml.MefBootstrapper.1.0.0.14\lib\net452\Eml.MefBootstrapper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Debug-Net462' or '$(Configuration)' == 'Release-Net462'">
+    <Reference Include="Eml.ClassFactory.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eml.ClassFactory.Contracts.1.0.0\lib\net462\Eml.ClassFactory.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Eml.MefBootstrapper, Version=1.0.0.14, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eml.MefBootstrapper.1.0.0.14\lib\net462\Eml.MefBootstrapper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseClasses\UnitTestBase.cs" />
+    <Compile Include="Commands\Async\WhenSendingACommandWithMultipleAsyncEngine.cs" />
+    <Compile Include="Commands\Async\WhenSendingAnAsyncCommand.cs" />
+    <Compile Include="Commands\Async\WhenSendingAnAsyncCommandThatThrowsException.cs" />
+    <Compile Include="Commands\Async\WhenSendingAnAsyncCommandWithoutEngine.cs" />
+    <Compile Include="Commands\Engines\TestAsyncCommand1Engine.cs" />
+    <Compile Include="Commands\Engines\TestCommand1Engine.cs" />
+    <Compile Include="Commands\Engines\TestAsyncCommand2Engine.cs" />
+    <Compile Include="Commands\Engines\TestCommand2Engine.cs" />
+    <Compile Include="Commands\Engines\TestAsyncCommandEngine.cs" />
+    <Compile Include="Commands\Engines\TestAsyncCommandWithExceptionEngine.cs" />
+    <Compile Include="Commands\Engines\TestCommandEngine.cs" />
+    <Compile Include="Commands\Engines\TestCommandWithExceptionEngine.cs" />
+    <Compile Include="Commands\Sync\WhenSendingACommand.cs" />
+    <Compile Include="Commands\Sync\WhenSendingACommandThatThrowsException.cs" />
+    <Compile Include="Commands\Sync\WhenSendingACommandWithMultipleEngine.cs" />
+    <Compile Include="Commands\Sync\WhenSendingACommandWithoutEngine.cs" />
+    <Compile Include="Commands\TestCommand.cs" />
+    <Compile Include="Commands\TestAsyncCommand.cs" />
+    <Compile Include="Commands\TestAsyncCommandWithException.cs" />
+    <Compile Include="Commands\TestCommandWithException.cs" />
+    <Compile Include="Commands\TestAsyncCommandWithMultipleEngine.cs" />
+    <Compile Include="Commands\TestCommandWithMultipleEngine.cs" />
+    <Compile Include="Commands\TestAsyncCommandWithNoEngine.cs" />
+    <Compile Include="Commands\TestCommandWithNoEngine.cs" />
+    <Compile Include="Conventions\TestCases\AllAsyncCommandsTestCases.cs" />
+    <Compile Include="Conventions\AllCommands.cs" />
+    <Compile Include="Conventions\TestCases\AllCommandsTestCases.cs" />
+    <Compile Include="Conventions\TestCases\AllExportsTestCases.cs" />
+    <Compile Include="Conventions\AllRequests.cs" />
+    <Compile Include="Conventions\TestCases\AllRequestsTestCases.cs" />
+    <Compile Include="Conventions\AllEngines.cs" />
+    <Compile Include="Helpers\AssemblyExtensions.cs" />
+    <Compile Include="Helpers\TypeExtensions.cs" />
+    <Compile Include="Requests\Async\WhenMakingAsyncRequest.cs" />
+    <Compile Include="Requests\Async\WhenMakingAsyncRequestWithException.cs" />
+    <Compile Include="Requests\Async\WhenMakingAsyncRequestWithMultipleEngine.cs" />
+    <Compile Include="Requests\Async\WhenMakingAsyncRequestWithoutEngine.cs" />
+    <Compile Include="Requests\AutoSuggestAsyncRequest.cs" />
+    <Compile Include="Requests\Engines\AutoSuggestAsyncEngine.cs" />
+    <Compile Include="Requests\Engines\TestRequest1AsyncEngine.cs" />
+    <Compile Include="Requests\Engines\TestRequest1Engine.cs" />
+    <Compile Include="Requests\Engines\TestRequest2AsyncEngine.cs" />
+    <Compile Include="Requests\Engines\TestRequest2Engine.cs" />
+    <Compile Include="Requests\Engines\TestRequestAsyncEngine.cs" />
+    <Compile Include="Requests\Engines\TestRequestEngine.cs" />
+    <Compile Include="Requests\Engines\TestRequestWithExceptionAsyncEngine.cs" />
+    <Compile Include="Requests\Engines\TestRequestWithExceptionEngine.cs" />
+    <Compile Include="Requests\Sync\WhenMakingARequestWithMultipleEngine.cs" />
+    <Compile Include="Requests\Sync\WhenMakingARequest.cs" />
+    <Compile Include="Requests\Sync\WhenMakingARequestWithException.cs" />
+    <Compile Include="Requests\Sync\WhenMakingARequestWithoutEngine.cs" />
+    <Compile Include="Requests\TestRequest.cs" />
+    <Compile Include="Requests\TestAsyncRequest.cs" />
+    <Compile Include="Requests\TestAsyncRequestWithException.cs" />
+    <Compile Include="Requests\TestRequestWithException.cs" />
+    <Compile Include="Requests\TestAsyncRequestWithMultipleEngine.cs" />
+    <Compile Include="Requests\TestRequestWithMultipleEngine.cs" />
+    <Compile Include="Requests\TestAsyncRequestWithNoEngine.cs" />
+    <Compile Include="Requests\TestRequestWithNoEngine.cs" />
+    <Compile Include="Responses\AutoSuggestResponse.cs" />
+    <Compile Include="Responses\TestResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Eml.Mediator\Eml.Mediator.csproj">
+      <Project>{d15aa7e2-eb5f-4746-805f-245debe3e20d}</Project>
+      <Name>Eml.Mediator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props'))" />
+  </Target>
+</Project>
