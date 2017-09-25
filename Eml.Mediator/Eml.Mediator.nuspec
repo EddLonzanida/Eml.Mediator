@@ -7,7 +7,7 @@
     <authors>EmL Solutions</authors>
     <owners>EmL Solutions</owners>
     <projectUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</projectUrl>
-    <description>Capture ‘business use cases’ by converting it into modular and highly testable chunk of codes. A combination of Command, Request-Response, Mediator Pattern and Abstract Class Factory pattern.</description>
+    <description>Capture Business-Use-Cases and convert it into modular and highly testable chunk of codes. A combination of Command, Request-Response, Mediator Pattern and Abstract Class Factory pattern.</description>
     <copyright>Copyright 2017 (c) EmL Solutions. All rights reserved.</copyright>
     <tags>Mediator Command Request Response Pattern Eml.Mediator EmL Solutions</tags>
     <dependencies>
