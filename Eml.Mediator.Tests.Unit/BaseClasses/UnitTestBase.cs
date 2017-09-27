@@ -1,5 +1,4 @@
 ﻿using Eml.Mediator.Contracts;
-using Eml.MefBootstrapper;
 using NUnit.Framework;
 
 namespace Eml.Mediator.Tests.Unit.BaseClasses
@@ -11,8 +10,8 @@ namespace Eml.Mediator.Tests.Unit.BaseClasses
         [SetUp]
         public void SetUp()
         {
-            MefLoader.Init();
-            mediator = MefBootstrapper.ClassFactory.Mef.GetExportedValue<IMediator>();
+            Mef.Bootstrapper.Init();
+            mediator = Mef.ClassFactory.MefContainer.GetExportedValue<IMediator>();
         }
     }
 }
