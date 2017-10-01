@@ -1,5 +1,5 @@
 # [Eml.Mediator](https://preview.nuget.org/packages/Eml.Mediator/)
-Capture ‘business use cases’ and convert into modular & highly testable chunk of codes. A combination of Command, Request-Response and Mediator Pattern.
+Capture Business-Use-Cases and convert it into modular and highly testable chunk of codes. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern. Now supports .NetCore2.0
 
 # A. Usage - ***Command***
     
@@ -88,6 +88,7 @@ Capture ‘business use cases’ and convert into modular & highly testable chun
 ### 3. Create a Request engine.
 *TestRequestAsyncEngine* will be auto-discovered and executed by **await mediator.GetAsync(request);**.
 
+* For NetFramework
 ```javascript
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class TestRequestAsyncEngine : IRequestAsyncEngine<TestRequestAsync, TestResponse>
@@ -98,6 +99,14 @@ Capture ‘business use cases’ and convert into modular & highly testable chun
         }
     }
 ```
-
+* For NetCore2.0 *(no need to place CreationPolicy.NonShared attribute)*
+```javascript
+    public class TestRequestAsyncEngine : IRequestAsyncEngine<TestRequestAsync, TestResponse>
+    {
+        public async Task<TestResponse> GetAsync(TestRequestAsync request)  //<-Execute
+        {
+            return await Task.Run(() => new TestResponse(request.Id));
+        }
+    }
 
 ## That's it.
