@@ -1,63 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D15AA7E2-EB5F-4746-805F-245DEBE3E20D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Eml.Mediator</RootNamespace>
-    <AssemblyName>Eml.Mediator</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;netstandard2.0</TargetFrameworks>
+    <RepositoryUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</PackageProjectUrl>
+    <Description>Capture Business-Use-Cases and convert it into modular and highly testable chunk of codes. A combination of Command, Request-Response, Mediator Pattern and Abstract Class Factory pattern.</Description>
+    <Copyright>Copyright 2017 (c) EmL Solutions. All rights reserved.</Copyright>
+    <PackageTags>Mediator Command Request Response Pattern Eml.Mediator EmL Solutions</PackageTags>
+    <Authors>EmL Solutions</Authors>
+    <Company>EmL Solutions</Company>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net45' or '$(TargetFramework)' == 'net451' or '$(TargetFramework)' == 'net452' or '$(TargetFramework)' == 'net46' or '$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'net462'">
+    <DefineConstants>NETFULL</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netcoreapp2.0'">
+    <DefineConstants>NETCORE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eml.MefBootstrapper, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Eml.MefBootstrapper.1.0.0.2\lib\net452\Eml.MefBootstrapper.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Core" />
+    <PackageReference Include="Eml.ClassFactory.Contracts" Version="1.0.0.23" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Contracts\ICommand.cs" />
-    <Compile Include="Contracts\ICommandAsync.cs" />
-    <Compile Include="Contracts\ICommandAsyncEngine.cs" />
-    <Compile Include="Contracts\ICommandEngine.cs" />
-    <Compile Include="Contracts\IMediator.cs" />
-    <Compile Include="Contracts\IRequest.cs" />
-    <Compile Include="Contracts\IRequestAsync.cs" />
-    <Compile Include="Contracts\IRequestAsyncEngine.cs" />
-    <Compile Include="Contracts\IRequestEngine.cs" />
-    <Compile Include="Contracts\IResponse.cs" />
-    <Compile Include="Exceptions\MissingEngineException.cs" />
-    <Compile Include="Exceptions\MultipleEngineException.cs" />
-    <Compile Include="Extensions\MediatorExtensions.cs" />
-    <Compile Include="Extensions\TaskExtensions.cs" />
-    <Compile Include="Mediator.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

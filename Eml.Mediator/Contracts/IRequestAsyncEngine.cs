@@ -1,11 +1,22 @@
+#if NETFULL
 using System.ComponentModel.Composition;
-using System.Threading.Tasks;
-using Eml.MefBootstrapper;
+#endif
+#if NETCORE
+using Eml.ClassFactory.Contracts;
+#endif
 
+using System;
+using System.Threading.Tasks;
 namespace Eml.Mediator.Contracts
 {
+
+#if NETFULL
     [InheritedExport]
-    public interface IRequestAsyncEngine<in T1, T2> : IExportable
+    public interface IRequestAsyncEngine<in T1, T2> : IDisposable
+#endif
+#if NETCORE
+    public interface IRequestAsyncEngine<in T1, T2> : IDisposable, IInheritedExport
+#endif
         where T1 : IRequestAsync<T1, T2>
         where T2 : IResponse
     {
