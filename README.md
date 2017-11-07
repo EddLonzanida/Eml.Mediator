@@ -30,11 +30,11 @@ Capture Business-Use-Cases and convert it into modular and highly testable chunk
 ```
 
 ### 2. Create a command engine.
-*TestCommandAsyncEngine* will be auto-discovered and executed by **await command.SetAsync();**.
+*TestCommandEngine* will be auto-discovered and executed by **await command.SetAsync();**.
 
 ```javascript
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class TestCommandAsyncEngine : ICommandAsyncEngine<TestCommandAsync>
+    public class TestCommandEngine : ICommandAsyncEngine<TestCommandAsync>
     {
         public async Task SetAsync(TestCommandAsync commandAsync)
         {
@@ -86,12 +86,12 @@ Capture Business-Use-Cases and convert it into modular and highly testable chunk
 ```
 
 ### 3. Create a Request engine.
-*TestRequestAsyncEngine* will be auto-discovered and executed by **await mediator.GetAsync(request);**.
+*TestRequestEngine* will be auto-discovered and executed by **await mediator.GetAsync(request);**.
 
 * For NetFramework
 ```javascript
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class TestRequestAsyncEngine : IRequestAsyncEngine<TestRequestAsync, TestResponse>
+    public class TestRequestEngine : IRequestAsyncEngine<TestRequestAsync, TestResponse>
     {
         public async Task<TestResponse> GetAsync(TestRequestAsync request)  //<-Execute
         {
@@ -101,12 +101,16 @@ Capture Business-Use-Cases and convert it into modular and highly testable chunk
 ```
 * For NetCore2.0 *(no need to place CreationPolicy.NonShared attribute)*
 ```javascript
-    public class TestRequestAsyncEngine : IRequestAsyncEngine<TestRequestAsync, TestResponse>
+    public class TestRequestEngine : IRequestAsyncEngine<TestRequestAsync, TestResponse>
     {
         public async Task<TestResponse> GetAsync(TestRequestAsync request)  //<-Execute
         {
             return await Task.Run(() => new TestResponse(request.Id));
         }
     }
-
+```
 ## That's it.
+#### Check out [Eml.Mediator.vsix](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.Mediator) to automate the above process in one go.
+![](https://github.com/EddLonzanida/Eml.Mediator.Demo/blob/master/Art/Steps.gif)
+
+
