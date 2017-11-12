@@ -27,6 +27,6 @@
     <Compile Remove="Extensions\ExportExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.0.1.1" />
+    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.0.1.2" />
   </ItemGroup>
 </Project>
