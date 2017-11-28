@@ -14,12 +14,7 @@ namespace Eml.Mediator.Tests.Integration
 
         public WhenExecutingTestEngines()
         {
-#if NETFULL
-            classFactory = Mef.ClassFactory.MefContainer.GetExportedValue<IClassFactory>();
-#endif
-#if NETCORE
-            classFactory = Mef.ClassFactory.MefContainer.GetExport<IClassFactory>();
-#endif
+             classFactory =  Mef.ClassFactory.Get();
         }
 
         [Fact]

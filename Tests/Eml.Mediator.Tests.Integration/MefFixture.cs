@@ -12,7 +12,7 @@ namespace Eml.Mediator.Tests.Integration
 
         public void Dispose()
         {
-            Mef.ClassFactory.MefContainer?.Dispose();
+            Mef.ClassFactory.Dispose();
         }
     }
 }
