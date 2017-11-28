@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net452;net46;net461;net462;netstandard2.0</TargetFrameworks>
     <RepositoryUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</RepositoryUrl>
     <PackageProjectUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</PackageProjectUrl>
     <Description>Capture Business-Use-Cases and convert it into modular and highly testable chunk of codes. A combination of Command, Request-Response, Mediator Pattern and Abstract Class Factory pattern.</Description>
@@ -27,6 +27,6 @@
     <Compile Remove="Extensions\ExportExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.0.1.2" />
+    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.0.1.7" />
   </ItemGroup>
 </Project>

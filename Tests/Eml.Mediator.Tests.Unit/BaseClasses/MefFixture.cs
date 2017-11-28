@@ -4,23 +4,23 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Unit.BaseClasses
 {
-    public class ClassFactoryFixture : IDisposable
+    public class MefFixture : IDisposable
     {
-        public  const string CLASS_FIXTURE = "ClassFactory CollectionDefinition";
+        public  const string COLLECTION_DEFINITION = "MefFixture CollectionDefinition";
 
-        public ClassFactoryFixture()
+        public MefFixture()
         {
             Bootstrapper.Init();
         }
 
         public void Dispose()
         {
-            Mef.ClassFactory.MefContainer?.Dispose();
+            Mef.ClassFactory.Dispose();
         }
     }
 
-    [CollectionDefinition(ClassFactoryFixture.CLASS_FIXTURE)]
-    public class ClassFactoryFixtureCollectionDefinition : ICollectionFixture<ClassFactoryFixture>
+    [CollectionDefinition(MefFixture.COLLECTION_DEFINITION)]
+    public class ClassFactoryFixtureCollectionDefinition : ICollectionFixture<MefFixture>
     {
         // This class has no code, and is never created. Its purpose is simply
         // to be the place to apply [CollectionDefinition] and all the

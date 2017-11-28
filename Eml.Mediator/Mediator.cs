@@ -40,7 +40,9 @@ namespace Eml.Mediator
             {
                 if (engines.Count > 1)
                 {
+#if NETFULL
                     classFactory.ReleaseExports(engines);
+#endif
                     var aMsgs = GetMultipleEngineExceptionMessage(engines);
                     throw new MultipleEngineException($"Check the following Command engines:{aMsgs}");
                 }
@@ -57,7 +59,9 @@ namespace Eml.Mediator
             }
             finally
             {
+#if NETFULL
                 classFactory.ReleaseExports(engines);
+#endif
             }
         }
 
@@ -69,7 +73,10 @@ namespace Eml.Mediator
             {
                 if (engines.Count > 1)
                 {
+#if NETFULL
                     classFactory.ReleaseExports(engines);
+#endif
+
                     var aMsgs = GetMultipleEngineExceptionMessage(engines);
                     throw new MultipleEngineException($"Check the following Command engines:{aMsgs}");
                 }
@@ -86,7 +93,9 @@ namespace Eml.Mediator
             }
             finally
             {
+#if NETFULL
                 classFactory.ReleaseExports(engines);
+#endif
             }
         }
 
@@ -99,7 +108,9 @@ namespace Eml.Mediator
             {
                 if (engines.Count > 1)
                 {
+#if NETFULL
                     classFactory.ReleaseExports(engines);
+#endif
                     var aMsgs = GetMultipleEngineExceptionMessage(engines);
                     throw new MultipleEngineException($"Check the following Request engines:{aMsgs}");
                 }
@@ -117,7 +128,9 @@ namespace Eml.Mediator
             }
             finally
             {
+#if NETFULL
                 classFactory.ReleaseExports(engines);
+#endif
             }
         }
 
@@ -130,7 +143,9 @@ namespace Eml.Mediator
             {
                 if (engines.Count > 1)
                 {
+#if NETFULL
                     classFactory.ReleaseExports(engines);
+#endif
                     var aMsgs = GetMultipleEngineExceptionMessage(engines);
                     throw new MultipleEngineException($"Check the following Request engines:{aMsgs}");
                 }
@@ -150,7 +165,9 @@ namespace Eml.Mediator
             }
             finally
             {
+#if NETFULL
                 classFactory.ReleaseExports(engines);
+#endif
             }
         }
 

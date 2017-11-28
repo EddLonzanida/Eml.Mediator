@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;netcoreapp2.0</TargetFrameworks>
+    <TargetFrameworks>net452;net46;net461;net462;netcoreapp2.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -20,8 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.0.1.2" />
-    <PackageReference Include="Eml.MefBootstrapper" Version="2.0.1.26" />
+    <PackageReference Include="Eml.MefBootstrapper" Version="2.0.1.29" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
