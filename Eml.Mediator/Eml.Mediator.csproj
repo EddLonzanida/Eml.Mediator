@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net452;net46;net461;net462;net47;net471;netstandard2.0</TargetFrameworks>
+
     <RepositoryUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</RepositoryUrl>
     <PackageProjectUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</PackageProjectUrl>
     <Description>Capture Business-Use-Cases and convert it into modular and highly testable chunk of codes. A combination of Command, Request-Response, Mediator Pattern and Abstract Class Factory pattern.</Description>
@@ -11,13 +12,25 @@
     <Company>EmL Solutions</Company>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net45' or '$(TargetFramework)' == 'net451' or '$(TargetFramework)' == 'net452' or '$(TargetFramework)' == 'net46' or '$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'net462'">
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net45' or '$(TargetFramework)' == 'net47' or '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net451' or '$(TargetFramework)' == 'net452' or '$(TargetFramework)' == 'net46' or '$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'net462'">
     <DefineConstants>NETFULL</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netcoreapp2.0'">
     <DefineConstants>NETCORE</DefineConstants>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Eml.Mediator.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWarn>1701;1702;1705;CS1591</NoWarn>
+  </PropertyGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45' or '$(TargetFramework)' == 'net47' or '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net451' or '$(TargetFramework)' == 'net452' or '$(TargetFramework)' == 'net46' or '$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'net462'">
+    <Reference Include="System.ComponentModel.Composition" />
+  </ItemGroup>
+  
   <ItemGroup>
-    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.0.0" />
+    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.0.1.7" />
   </ItemGroup>
 </Project>

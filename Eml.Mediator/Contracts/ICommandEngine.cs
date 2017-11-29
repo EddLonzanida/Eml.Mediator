@@ -1,11 +1,11 @@
 ﻿#if NETFULL
-using System;
 using System.ComponentModel.Composition;
 #endif
 #if NETCORE
 using Eml.ClassFactory.Contracts;
-using System;
 #endif
+
+using System;
 
 namespace Eml.Mediator.Contracts
 {

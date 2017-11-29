@@ -16,9 +16,6 @@ using Eml.Mediator.Extensions;
 
 namespace Eml.Mediator
 {
-#if NETFULL
-    [PartCreationPolicy(CreationPolicy.Shared)]
-#endif
 #if NETCORE
     [Shared]
 #endif
