@@ -12,6 +12,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Eml.Mediator\Eml.Mediator.csproj" />
+    <ProjectReference Include="..\TestArtifacts\Eml.Mediator.Tests.Common\Eml.Mediator.Tests.Common.csproj" />
   </ItemGroup>
 </Project>

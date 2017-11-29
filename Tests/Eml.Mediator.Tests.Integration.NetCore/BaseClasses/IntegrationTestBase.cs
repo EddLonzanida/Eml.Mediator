@@ -1,4 +1,5 @@
-﻿using Eml.Mediator.Contracts;
+﻿using Eml.ClassFactory.Contracts;
+using Eml.Mediator.Contracts;
 using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses
@@ -7,10 +8,11 @@ namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses
     public abstract class IntegrationTestBase
     {
         protected readonly IMediator mediator;
+        protected readonly IClassFactory classFactory;
 
         protected IntegrationTestBase()
         {
-            var classFactory =  Mef.ClassFactory.Get();
+            classFactory = Mef.ClassFactory.Get();
             mediator = classFactory.GetExport<IMediator>();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
+using Eml.Mediator.Tests.Common.Requests;
+using Eml.Mediator.Tests.Common.Responses;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
-using Eml.Mediator.Tests.Integration.NetCore.Responses;
 using Shouldly;
 using Xunit;
 
