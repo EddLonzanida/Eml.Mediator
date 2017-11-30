@@ -13,6 +13,12 @@ namespace Eml.Mediator.Tests.Common.RequestEngines
 #endif
     public class TestRequestAsyncEngine : IRequestAsyncEngine<TestAsyncRequest, TestResponse>
     {
+        /// <inheritdoc/>
+        /// <summary>
+        /// Implementation can be found in <see cref="TestRequestAsyncEngine"/>
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public async Task<TestResponse> GetAsync(TestAsyncRequest request)
         {
             return await Task.Run(() => new TestResponse(request.Id));

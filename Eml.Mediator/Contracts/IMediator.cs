@@ -6,6 +6,7 @@ using Eml.ClassFactory.Contracts;
 #endif
 
 using System.Threading.Tasks;
+
 namespace Eml.Mediator.Contracts
 {
 
@@ -18,7 +19,7 @@ namespace Eml.Mediator.Contracts
 #endif
     {
         /// <summary>
-        /// Method used to invoke classes that implements ICommandEngine
+        /// Method that implements ICommandEngine
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="command"></param>
@@ -26,7 +27,7 @@ namespace Eml.Mediator.Contracts
             where T : ICommand;
 
         /// <summary>
-        /// Method used to invoke classes that implements ICommandAsyncEngine
+        /// Method that implements ICommandAsyncEngine
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="command"></param>
@@ -35,7 +36,7 @@ namespace Eml.Mediator.Contracts
             where T : ICommandAsync;
 
         /// <summary>
-        /// Method used to invoke classes that implements IRequestEngine
+        /// Method that implements IRequestEngine
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
@@ -46,7 +47,7 @@ namespace Eml.Mediator.Contracts
             where T2 : IResponse;
 
         /// <summary>
-        /// Method used to invoke classes that implements IRequestAsyncEngine
+        /// Method that implements IRequestAsyncEngine.
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
