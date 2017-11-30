@@ -4,7 +4,7 @@
     <TargetFrameworks>net452;net46;net461;net462;net47;net471</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Eml.MefBootstrapper" Version="2.0.1.34" />
+    <PackageReference Include="Eml.MefBootstrapper" Version="2.0.1.36" />
     <PackageReference Include="JetBrains.DotMemoryUnit" Version="2.4.20170830.172630" />
     <PackageReference Include="Shouldly" Version="2.8.3" />
     <PackageReference Include="xunit" Version="2.3.1" />
