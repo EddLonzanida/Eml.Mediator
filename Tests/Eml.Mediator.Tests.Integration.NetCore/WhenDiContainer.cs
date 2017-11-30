@@ -4,7 +4,7 @@ using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;using Shouldly;using Xunit;namespace Eml.Mediator.Tests.Integration.NetCore
 {
-    public class WhenExecutingTestEngines : IntegrationTestBase
+    public class WhenDiContainer : IntegrationTestBase
     {
         [Fact]
         public void TestRequestEngine_ShouldBeDiscoverable()

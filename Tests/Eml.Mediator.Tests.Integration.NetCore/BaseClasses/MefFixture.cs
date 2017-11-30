@@ -2,7 +2,7 @@
 {
     public class MefFixture : IDisposable
     {
-        public  const string COLLECTION_DEFINITION = "MefFixtureNetFull CollectionDefinition";
+        public  const string COLLECTION_DEFINITION = "MefFixtureNetCore CollectionDefinition";
 
         public MefFixture()
         {
