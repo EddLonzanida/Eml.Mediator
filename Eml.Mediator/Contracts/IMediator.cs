@@ -15,33 +15,31 @@ namespace Eml.Mediator.Contracts
     public interface IMediator
 #endif
 #if NETCORE
-     public interface IMediator : IInheritedExport
+    public interface IMediator : IInheritedExport
 #endif
     {
         /// <summary>
-        /// Method that implements ICommandEngine
+        /// Method that implements ICommandEngine.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="command"></param>
-        void Set<T>(T command) 
+        void Set<T>(T command)
             where T : ICommand;
 
         /// <summary>
-        /// Method that implements ICommandAsyncEngine
+        /// Method that implements ICommandAsyncEngine.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="command"></param>
-        /// <returns></returns>
-        Task SetAsync<T>(T command) 
+        Task SetAsync<T>(T command)
             where T : ICommandAsync;
 
         /// <summary>
-        /// Method that implements IRequestEngine
+        /// Method that implements IRequestEngine.
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
         /// <param name="request"></param>
-        /// <returns></returns>
         T2 Get<T1, T2>(IRequest<T1, T2> request)
             where T1 : IRequest<T1, T2>
             where T2 : IResponse;
@@ -52,9 +50,8 @@ namespace Eml.Mediator.Contracts
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
         /// <param name="request"></param>
-        /// <returns></returns>
         Task<T2> GetAsync<T1, T2>(IRequestAsync<T1, T2> request)
-            where T1 : IRequestAsync<T1, T2>
-            where T2 : IResponse;
+                where T1 : IRequestAsync<T1, T2>
+                where T2 : IResponse;
     }
 }
