@@ -86,7 +86,7 @@ namespace Eml.Mediator
                                                      $"{Environment.NewLine}Check if the class is implementing the interface: ICommandAsyncEngine." +
                                                      $"{Environment.NewLine}Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
 
-                await asyncEngine.Instance().SetAsync(commandAsync);
+                await asyncEngine.Instance().SetAsync(commandAsync).ConfigureAwaitFalse();
             }
             finally
             {
@@ -158,7 +158,7 @@ namespace Eml.Mediator
                             $"{Environment.NewLine}Check if the class is implementing IRequestAsyncEngine." +
                             $"{Environment.NewLine}Check if any of the constructor parameters for {typeof(T1).Name} are also in the container.");
 
-                return await asyncEngine.Instance().GetAsync((T1)request);
+                return await asyncEngine.Instance().GetAsync((T1)request).ConfigureAwaitFalse();
             }
             finally
             {
