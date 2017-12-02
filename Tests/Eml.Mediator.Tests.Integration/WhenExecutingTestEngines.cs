@@ -1,48 +1,54 @@
-using Eml.ClassFactory.Contracts;
+﻿using Eml.ClassFactory.Contracts;
 using Eml.Mediator.Contracts;
-using Eml.Mediator.Tests.Unit.Commands;
-using Eml.Mediator.Tests.Unit.Requests;
-using Eml.Mediator.Tests.Unit.Responses;
-using Shouldly;
-using Xunit;
-
-namespace Eml.Mediator.Tests.Integration
+using Eml.Mediator.Tests.Common.Commands;
+using Eml.Mediator.Tests.Common.Requests;
+using Eml.Mediator.Tests.Common.Responses;
+using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration
 {
-    public class WhenExecutingTestEngines : IClassFixture<MefFixture>
+    [TestFixture]
+    public class WhenExecutingTestEngines
     {
-        private readonly IClassFactory classFactory;
+        private IClassFactory classFactory;
 
-        public WhenExecutingTestEngines()
+        [OneTimeSetUp]
+        public void Setup()
         {
-             classFactory =  Mef.ClassFactory.Get();
+            Mef.Bootstrapper.Init();
+            classFactory = Mef.ClassFactory.Get();
         }
 
-        [Fact]
+        [Test]
         public void TestRequestEngine_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<IRequestEngine<TestRequest, TestResponse>>();
             exported.ShouldNotBeNull();
         }
 
-        [Fact]
+        [Test]
         public void TestRequestAsyncEngine_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<IRequestAsyncEngine<TestAsyncRequest, TestResponse>>();
             exported.ShouldNotBeNull();
         }
 
-        [Fact]
+        [Test]
         public void TestCommand_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<ICommandEngine<TestCommand>>();
             exported.ShouldNotBeNull();
         }
 
-        [Fact]
+        [Test]
         public void TestAsyncCommand_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<ICommandAsyncEngine<TestAsyncCommand>>();
             exported.ShouldNotBeNull();
+        }
+
+        [OneTimeTearDown]
+        public void TearDown()
+        {
+            Mef.ClassFactory.Dispose();
         }
     }
 }
