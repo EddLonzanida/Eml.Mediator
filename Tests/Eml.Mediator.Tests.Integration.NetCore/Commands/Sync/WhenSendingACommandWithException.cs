@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Sync
 {
-    public class WhenSendingACommandThatThrowsException : IntegrationTestBase
+    public class WhenSendingACommandWithException : IntegrationTestBase
     {
         [Fact]
         public void Command_ShouldThrowException()
