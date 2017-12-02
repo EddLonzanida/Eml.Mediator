@@ -1,22 +1,8 @@
-﻿#if NETFULL
-using System.ComponentModel.Composition;
-#endif
-#if NETCORE
-using Eml.ClassFactory.Contracts;
-#endif
-
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Eml.Mediator.Contracts
 {
-
-#if NETFULL
-    [InheritedExport]
     public interface IMediator
-#endif
-#if NETCORE
-    public interface IMediator : IInheritedExport
-#endif
     {
         /// <summary>
         /// Method that implements ICommandEngine.
