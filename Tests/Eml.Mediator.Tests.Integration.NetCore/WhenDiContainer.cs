@@ -10,6 +10,7 @@ using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;using Shouldly;using 
         public void TestRequestEngine_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<IRequestEngine<TestRequest, TestResponse>>();
+
             exported.ShouldNotBeNull();
         }
 
@@ -17,6 +18,7 @@ using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;using Shouldly;using 
         public void TestRequestAsyncEngine_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<IRequestAsyncEngine<TestAsyncRequest, TestResponse>>();
+
             exported.ShouldNotBeNull();
         }
 
@@ -24,6 +26,7 @@ using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;using Shouldly;using 
         public void TestCommand_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<ICommandEngine<TestCommand>>();
+
             exported.ShouldNotBeNull();
         }
 
@@ -31,6 +34,7 @@ using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;using Shouldly;using 
         public void TestAsyncCommand_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<ICommandAsyncEngine<TestAsyncCommand>>();
+
             exported.ShouldNotBeNull();
         }
     }

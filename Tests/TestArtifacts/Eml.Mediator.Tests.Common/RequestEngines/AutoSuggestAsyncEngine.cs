@@ -18,6 +18,7 @@ namespace Eml.Mediator.Tests.Common.RequestEngines
         {
             return await Task.FromResult(new AutoSuggestResponse<T>(new List<T>()));
         }
+
         public void Dispose()
         {
         }

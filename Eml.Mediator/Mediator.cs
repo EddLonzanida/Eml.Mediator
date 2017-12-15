@@ -33,6 +33,7 @@ namespace Eml.Mediator
             where T : ICommand
         {
             var engines = classFactory.GetLazyExports<ICommandEngine<T>>();
+
             try
             {
                 if (engines.Count > 1)
@@ -41,10 +42,12 @@ namespace Eml.Mediator
                     classFactory.ReleaseExports(engines);
 #endif
                     var aMsgs = GetMultipleEngineExceptionMessage(engines);
+
                     throw new MultipleEngineException($"Check the following Command engines:{aMsgs}");
                 }
 
                 var syncEngine = engines.FirstOrDefault();
+
                 if (syncEngine == null)
                     throw new MissingEngineException($"{Environment.NewLine}Could not find a Command of type {typeof(T)}. " +
                                                      $"{Environment.NewLine}Mediator should find Command Engine of type: {typeof(ICommandEngine<T>)}" +
@@ -52,6 +55,7 @@ namespace Eml.Mediator
                                                      $"{Environment.NewLine}Check if the class is implementing the interface: ICommandEngine." +
                                                      $"{Environment.NewLine}Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
                 var engine = syncEngine.Instance();
+
                 engine.Set(command);
             }
             finally
@@ -66,6 +70,7 @@ namespace Eml.Mediator
             where T : ICommandAsync
         {
             var engines = classFactory.GetLazyExports<ICommandAsyncEngine<T>>().ToList();
+
             try
             {
                 if (engines.Count > 1)
@@ -75,10 +80,12 @@ namespace Eml.Mediator
 #endif
 
                     var aMsgs = GetMultipleEngineExceptionMessage(engines);
+
                     throw new MultipleEngineException($"Check the following Command engines:{aMsgs}");
                 }
 
                 var asyncEngine = engines.FirstOrDefault();
+
                 if (asyncEngine == null)
                     throw new MissingEngineException($"{Environment.NewLine}Could not find a Command of type {typeof(T)}. " +
                                                      $"{Environment.NewLine}Mediator should find Command Engine of type: {typeof(ICommandAsyncEngine<T>)}" +
@@ -101,6 +108,7 @@ namespace Eml.Mediator
             where T2 : IResponse
         {
             var engines = classFactory.GetLazyExports<IRequestEngine<T1, T2>>().ToList();
+
             try
             {
                 if (engines.Count > 1)
@@ -109,10 +117,12 @@ namespace Eml.Mediator
                     classFactory.ReleaseExports(engines);
 #endif
                     var aMsgs = GetMultipleEngineExceptionMessage(engines);
+
                     throw new MultipleEngineException($"Check the following Request engines:{aMsgs}");
                 }
 
                 var syncEngine = engines.FirstOrDefault();
+
                 if (syncEngine == null)
                     throw new MissingEngineException(
                         $"{Environment.NewLine}Could not find a Request of type {typeof(T1)}. " +
@@ -136,6 +146,7 @@ namespace Eml.Mediator
             where T2 : IResponse
         {
             var engines = classFactory.GetLazyExports<IRequestAsyncEngine<T1, T2>>().ToList();
+
             try
             {
                 if (engines.Count > 1)
@@ -144,6 +155,7 @@ namespace Eml.Mediator
                     classFactory.ReleaseExports(engines);
 #endif
                     var aMsgs = GetMultipleEngineExceptionMessage(engines);
+
                     throw new MultipleEngineException($"Check the following Request engines:{aMsgs}");
                 }
 
@@ -171,7 +183,9 @@ namespace Eml.Mediator
         private static string GetMultipleEngineExceptionMessage<T>(IEnumerable<T> engines)
         {
             var aMsgs = engines.ToList().ConvertAll(r => r.GetType().FullName);
+
             aMsgs = aMsgs.ConvertAll(r => $"->{r}");
+
             return $"{Environment.NewLine}{string.Join(Environment.NewLine, aMsgs)}{Environment.NewLine}";
         }
     }
