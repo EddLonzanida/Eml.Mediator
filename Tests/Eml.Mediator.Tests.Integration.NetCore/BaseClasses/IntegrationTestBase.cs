@@ -8,6 +8,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses
     public abstract class IntegrationTestBase
     {
         protected readonly IMediator mediator;
+
         protected readonly IClassFactory classFactory;
 
         protected IntegrationTestBase()

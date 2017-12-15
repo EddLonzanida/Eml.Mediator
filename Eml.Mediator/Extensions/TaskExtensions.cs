@@ -12,6 +12,7 @@ namespace Eml.Mediator.Extensions
         public static Task ConfigureAwaitFalse(this Task task)
         {
             task.ConfigureAwait(false);
+
             return task;
         }
 
@@ -24,6 +25,7 @@ namespace Eml.Mediator.Extensions
         public static Task<T> ConfigureAwaitFalse<T>(this Task<T> task)
         {
             task.ConfigureAwait(false);
+
             return task;
         }
     }
