@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Async
 {
-    public class WhenSendingAnAsyncCommandThatThrowsException : IntegrationTestBase
+    public class WhenSendingAnAsyncCommandThatThrowsException : IntegrationTestDiBase
     {
         [Fact]
         public async Task Command_ShouldThrowException()

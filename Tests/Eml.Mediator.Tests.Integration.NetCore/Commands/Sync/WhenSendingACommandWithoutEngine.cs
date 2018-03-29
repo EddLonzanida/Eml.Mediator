@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Sync
 {
-    public class WhenSendingACommandWithoutEngine : IntegrationTestBase
+    public class WhenSendingACommandWithoutEngine : IntegrationTestDiBase
     {
         [Fact]
         public void Command_ShouldThrowMissingEngineException()

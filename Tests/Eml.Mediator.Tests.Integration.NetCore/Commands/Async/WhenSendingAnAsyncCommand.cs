@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Async
 {
-    public class WhenSendingAnAsyncCommand : IntegrationTestBase
+    public class WhenSendingAnAsyncCommand : IntegrationTestDiBase
     {
         [Fact]
         public async Task Command_ShouldBeCalledOnce()
