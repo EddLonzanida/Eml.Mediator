@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async
 {
-    public class WhenMakingAsyncRequestWithException : IntegrationTestBase
+    public class WhenMakingAsyncRequestWithException : IntegrationTestDiBase
     {
         [Fact]
         public async Task Response_ShouldThrowException()

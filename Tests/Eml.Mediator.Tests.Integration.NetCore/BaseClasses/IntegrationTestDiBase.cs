@@ -4,16 +4,16 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses
 {
-    [Collection(MefFixture.COLLECTION_DEFINITION)]
-    public abstract class IntegrationTestBase
+    [Collection(IntegrationTestDiFixture.COLLECTION_DEFINITION)]
+    public abstract class IntegrationTestDiBase
     {
         protected readonly IMediator mediator;
 
         protected readonly IClassFactory classFactory;
 
-        protected IntegrationTestBase()
+        protected IntegrationTestDiBase()
         {
-            classFactory = Mef.ClassFactory.Get();
+            classFactory = IntegrationTestDiFixture.ClassFactory;
             mediator = classFactory.GetExport<IMediator>();
         }
     }

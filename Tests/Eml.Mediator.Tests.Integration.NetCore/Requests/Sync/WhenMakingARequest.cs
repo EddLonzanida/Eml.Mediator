@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Sync
 {
-    public class WhenMakingARequest : IntegrationTestBase
+    public class WhenMakingARequest : IntegrationTestDiBase
     {
         [Fact]
         public void Response_ShouldBeCorrectType()

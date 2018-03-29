@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Sync
 {
-    public class WhenMakingARequestWithoutEngine : IntegrationTestBase
+    public class WhenMakingARequestWithoutEngine : IntegrationTestDiBase
     {
         [Fact]
         public void Response_ShouldThrowAMissingEngineException()
