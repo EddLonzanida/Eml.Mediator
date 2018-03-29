@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async
 {
-    public class WhenMakingAsyncRequest: IntegrationTestBase
+    public class WhenMakingAsyncRequest: IntegrationTestDiBase
     {
         [Fact]
         public async Task Response_ShouldBeCorrectType()

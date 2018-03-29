@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Sync
 {
-    public class WhenSendingACommand : IntegrationTestBase
+    public class WhenSendingACommand : IntegrationTestDiBase
     {
         [Fact]
         public void Command_ShouldBeCalledOnce()

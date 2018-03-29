@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async
 {
-    public class WhenMakingAsyncRequestWithoutEngine : IntegrationTestBase
+    public class WhenMakingAsyncRequestWithoutEngine : IntegrationTestDiBase
     {
         [Fact]
         public async Task Response_ShouldThrowMissingEngineException()
