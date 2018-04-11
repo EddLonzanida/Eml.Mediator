@@ -3,6 +3,7 @@ using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Commands;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
+using Eml.Mef;
 using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration
 {
     [TestFixture]
@@ -13,14 +14,14 @@ using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration
         [OneTimeSetUp]
         public void Setup()
         {
-            Mef.Bootstrapper.Init();
-            classFactory = Mef.ClassFactory.Get();
+            classFactory = Bootstrapper.Init();
         }
 
         [Test]
         public void TestRequestEngine_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<IRequestEngine<TestRequest, TestResponse>>();
+
             exported.ShouldNotBeNull();
         }
 
@@ -28,6 +29,7 @@ using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration
         public void TestRequestAsyncEngine_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<IRequestAsyncEngine<TestAsyncRequest, TestResponse>>();
+
             exported.ShouldNotBeNull();
         }
 
@@ -35,6 +37,7 @@ using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration
         public void TestCommand_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<ICommandEngine<TestCommand>>();
+
             exported.ShouldNotBeNull();
         }
 
@@ -42,13 +45,16 @@ using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration
         public void TestAsyncCommand_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<ICommandAsyncEngine<TestAsyncCommand>>();
+
             exported.ShouldNotBeNull();
         }
 
         [OneTimeTearDown]
         public void TearDown()
         {
-            Mef.ClassFactory.Dispose();
+            var container = classFactory.Container;
+
+            container?.Dispose();
         }
     }
 }

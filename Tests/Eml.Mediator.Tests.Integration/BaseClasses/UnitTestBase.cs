@@ -1,4 +1,6 @@
-﻿using Eml.Mediator.Contracts;
+﻿using Eml.ClassFactory.Contracts;
+using Eml.Mediator.Contracts;
+using Eml.Mef;
 using NUnit.Framework;
 
 namespace Eml.Mediator.Tests.Integration.BaseClasses
@@ -7,18 +9,22 @@ namespace Eml.Mediator.Tests.Integration.BaseClasses
     {
         protected IMediator mediator;
 
+        private IClassFactory classFactory;
+
         [OneTimeSetUp]
         public void SetUp()
         {
-            Mef.Bootstrapper.Init();
-            var classFactory = Mef.ClassFactory.Get();
+            classFactory = Bootstrapper.Init();
+
             mediator = classFactory.GetExport<IMediator>();
         }
 
         [OneTimeTearDown]
         public void TearDown()
         {
-            Mef.ClassFactory.Dispose();
+            var container = classFactory.Container;
+
+            container?.Dispose();
         }
     }
 }
