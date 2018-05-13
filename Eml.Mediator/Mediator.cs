@@ -51,7 +51,7 @@ namespace Eml.Mediator
                 if (syncEngine == null)
                     throw new MissingEngineException($"{Environment.NewLine}Could not find a Command of type {typeof(T)}. " +
                                                      $"{Environment.NewLine}Mediator should find Command Engine of type: {typeof(ICommandEngine<T>)}" +
-                                                     $"{Environment.NewLine}Make sure the concrete class of Engine type {typeof(ICommandEngine<T>)} is in the container." +
+                                                     $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(ICommandEngine<T>)} are all discoverable." +
                                                      $"{Environment.NewLine}Check if the class is implementing the interface: ICommandEngine." +
                                                      $"{Environment.NewLine}Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
                 var engine = syncEngine.Instance();
@@ -89,7 +89,7 @@ namespace Eml.Mediator
                 if (asyncEngine == null)
                     throw new MissingEngineException($"{Environment.NewLine}Could not find a Command of type {typeof(T)}. " +
                                                      $"{Environment.NewLine}Mediator should find Command Engine of type: {typeof(ICommandAsyncEngine<T>)}" +
-                                                     $"{Environment.NewLine}Make sure the concrete class of Engine type {typeof(ICommandAsyncEngine<T>)} is in the container." +
+                                                     $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(ICommandAsyncEngine<T>)} are all discoverable." +
                                                      $"{Environment.NewLine}Check if the class is implementing the interface: ICommandAsyncEngine." +
                                                      $"{Environment.NewLine}Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
 
@@ -127,7 +127,7 @@ namespace Eml.Mediator
                     throw new MissingEngineException(
                         $"{Environment.NewLine}Could not find a Request of type {typeof(T1)}. " +
                         $"{Environment.NewLine}Mediator should find Request Engine of type: {typeof(IRequestEngine<T1, T2>)}" +
-                        $"{Environment.NewLine}Make sure the concrete class of Engine type {typeof(IRequestEngine<T1, T2>)} is in the container." +
+                        $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(IRequestEngine<T1, T2>)} are all discoverable." +
                         $"{Environment.NewLine}Check if the class is implementing the interface: IRequestEngine." +
                         $"{Environment.NewLine}Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
 
@@ -165,7 +165,7 @@ namespace Eml.Mediator
                     throw new MissingEngineException(
                             $"{Environment.NewLine}Could not find a Request of type {typeof(T1)}." +
                             $"{Environment.NewLine}Mediator should find Request Engine of type: {typeof(IRequestAsyncEngine<T1, T2>)}" +
-                            $"{Environment.NewLine}Make sure the concrete class of Engine type {typeof(IRequestAsyncEngine<T1, T2>)} is in the container." +
+                            $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(IRequestAsyncEngine<T1, T2>)} are all discoverable." +
                             $"{Environment.NewLine}To check, put a breakpoint and examine the container: MefBootstrapper.classFactory.Mef." +
                             $"{Environment.NewLine}Check if the class is implementing IRequestAsyncEngine." +
                             $"{Environment.NewLine}Check if any of the constructor parameters for {typeof(T1).Name} are also in the container.");
