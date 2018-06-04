@@ -30,6 +30,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.1.0.2" />
+    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.1.0.10" />
   </ItemGroup>
 </Project>

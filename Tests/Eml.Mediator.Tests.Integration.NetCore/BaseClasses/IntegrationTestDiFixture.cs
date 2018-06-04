@@ -1,6 +1,7 @@
 ﻿using System;
 using Eml.ClassFactory.Contracts;
-using Eml.Mef;using Xunit;
+using Eml.Mef;
+using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses
 {
@@ -17,7 +18,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses
 
         public void Dispose()
         {
-            ClassFactory.Dispose();
+            Mef.ClassFactory.Dispose(ClassFactory);
         }
     }
 
