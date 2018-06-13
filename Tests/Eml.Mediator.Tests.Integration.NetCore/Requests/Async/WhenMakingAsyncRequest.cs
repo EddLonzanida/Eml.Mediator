@@ -4,7 +4,7 @@ using Eml.Mediator.Tests.Common.RequestEngines;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
-using JetBrains.dotMemoryUnit;
+//using JetBrains.dotMemoryUnit;
 using Shouldly;
 using Xunit;
 
