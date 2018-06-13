@@ -17,7 +17,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses
 
         public void Dispose()
         {
-            ClassFactory.Dispose();
+            Mef.ClassFactory.Dispose(ClassFactory);
         }
     }
 
