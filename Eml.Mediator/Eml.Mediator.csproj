@@ -13,11 +13,11 @@
     <NoWarn>1701;1702;1705;CS1591</NoWarn>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net462' or '$(TargetFramework)' == 'net47' or '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net472'">
-    <DefineConstants>NETFULL</DefineConstants>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netcoreapp2.0' or '$(TargetFramework)' == 'netcoreapp2.1'">
     <DefineConstants>NETCORE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net462' or '$(TargetFramework)' == 'net47' or '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net472'">
+    <DefineConstants>NETFULL</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net462' or '$(TargetFramework)' == 'net47'  or '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net472'">
@@ -25,6 +25,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.1.0.12" />
+    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.1.0.14" />
   </ItemGroup>
 </Project>
