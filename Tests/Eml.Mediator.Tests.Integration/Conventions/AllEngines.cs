@@ -1,19 +1,29 @@
-﻿using System;using System.ComponentModel.Composition;using System.Linq;using Eml.Mediator.Tests.Integration.Conventions.TestCases;using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration.Conventions
+﻿using System;
+using System.ComponentModel.Composition;
+using System.Linq;
+using Eml.Mediator.Tests.Integration.Conventions.TestCases;
+using Xunit;
+using Shouldly;
+
+namespace Eml.Mediator.Tests.Integration.Conventions
 {
     public class AllEngines
     {
-        [Test]
-        [TestCaseSource(typeof(AllExportsTestCases))]
+        [Theory]
+        [MemberData(nameof(ConventionsTestCases.GetAllCommandEngines), MemberType = typeof(ConventionsTestCases))]
+        [MemberData(nameof(ConventionsTestCases.GetAllRequestEngines), MemberType = typeof(ConventionsTestCases))]
+        [MemberData(nameof(ConventionsTestCases.GetAllCommandAsyncEngines), MemberType = typeof(ConventionsTestCases))]
+        [MemberData(nameof(ConventionsTestCases.GetAllRequestAsyncEngines), MemberType = typeof(ConventionsTestCases))]
         public void ShouldHaveNonSharedAttribute(Type exportedType)
         {
             var partCreationPolicyAttribute = exportedType
                 .GetCustomAttributes(typeof(PartCreationPolicyAttribute), true)
                 .FirstOrDefault();
 
-            partCreationPolicyAttribute.ShouldNotBeNull();
-
             var creationPolicyAttribute = partCreationPolicyAttribute as PartCreationPolicyAttribute;
-            creationPolicyAttribute?.CreationPolicy.ShouldBe(CreationPolicy.NonShared);
+
+            creationPolicyAttribute.ShouldNotBeNull();
+            creationPolicyAttribute.CreationPolicy.ShouldBe(CreationPolicy.NonShared);
         }
     }
 }

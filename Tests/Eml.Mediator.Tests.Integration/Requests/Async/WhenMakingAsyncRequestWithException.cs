@@ -2,14 +2,14 @@
 using System.Threading.Tasks;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Integration.BaseClasses;
-using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration.Requests.Async
+using Xunit;using Shouldly;namespace Eml.Mediator.Tests.Integration.Requests.Async
 {
-    public class WhenMakingAsyncRequestWithException : UnitTestBase
+    public class WhenMakingAsyncRequestWithException : IntegrationTestDiBase
     {
-        [Test]
+        [Fact]
         public async Task Response_ShouldThrowException()
         {
-            var request = new TestAsyncRequestWithException(Guid.NewGuid());
+            var request = new TestWithExceptionAsyncRequest(Guid.NewGuid());
 
             await Should.ThrowAsync<NotImplementedException>(async () => await mediator.GetAsync(request));
         }

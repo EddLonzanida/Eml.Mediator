@@ -6,9 +6,9 @@ using Eml.Mediator.Tests.Common.Responses;
 namespace Eml.Mediator.Tests.Common.RequestEngines
 {
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class TestRequestWithExceptionEngine : IRequestEngine<TestRequestWithException, TestResponse>
+    public class TestRequestWithExceptionEngine : IRequestEngine<TestWithExceptionRequest, TestResponse>
     {
-        public TestResponse Get(TestRequestWithException request)
+        public TestResponse Get(TestWithExceptionRequest request)
         {
             throw new System.NotImplementedException();
         }

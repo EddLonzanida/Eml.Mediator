@@ -2,14 +2,14 @@
 using Eml.Mediator.Tests.Common.Commands;
 using Eml.Mediator.Tests.Integration.BaseClasses;
 using JetBrains.dotMemoryUnit;
-using NUnit.Framework;
+using Xunit;
 using Shouldly;
 
 namespace Eml.Mediator.Tests.Integration.Commands.Sync
 {
-    public class WhenSendingACommand : UnitTestBase
+    public class WhenSendingACommand : IntegrationTestDiBase
     {
-        [Test]
+        [Fact]
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
         public void Command_ShouldBeCalledOnce()
         {

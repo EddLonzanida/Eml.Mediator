@@ -1,14 +1,14 @@
-﻿using System;using System.Threading.Tasks;using Eml.Mediator.Tests.Common.Commands;using Eml.Mediator.Tests.Integration.BaseClasses;using NUnit.Framework;
+﻿using System;using System.Threading.Tasks;using Eml.Mediator.Tests.Common.Commands;using Eml.Mediator.Tests.Integration.BaseClasses;using Xunit;
 using Shouldly;
 
 namespace Eml.Mediator.Tests.Integration.Commands.Async
 {
-    public class WhenSendingAnAsyncCommandWithException : UnitTestBase
+    public class WhenSendingAnAsyncCommandWithException : IntegrationTestDiBase
     {
-        [Test]
+        [Fact]
         public async Task Command_ShouldThrowException()
         {
-            var command = new TestAsyncCommandWithException();
+            var command = new TestWithExceptionAsyncCommand();
 
             await Should.ThrowAsync<NotImplementedException>(async () => await mediator.SetAsync(command));
         }

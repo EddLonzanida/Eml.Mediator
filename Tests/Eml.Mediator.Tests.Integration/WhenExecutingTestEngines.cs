@@ -1,23 +1,16 @@
-﻿using Eml.ClassFactory.Contracts;
-using Eml.Mediator.Contracts;
+﻿using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Commands;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
-using Eml.Mef;
-using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration
+using Eml.Mediator.Tests.Integration.BaseClasses;
+using Xunit;
+using Shouldly;
+
+namespace Eml.Mediator.Tests.Integration
 {
-    [TestFixture]
-    public class WhenExecutingTestEngines
+    public class WhenExecutingTestEngines: IntegrationTestDiBase
     {
-        private IClassFactory classFactory;
-
-        [OneTimeSetUp]
-        public void Setup()
-        {
-            classFactory = Bootstrapper.Init();
-        }
-
-        [Test]
+        [Fact]
         public void TestRequestEngine_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<IRequestEngine<TestRequest, TestResponse>>();
@@ -25,7 +18,7 @@ using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration
             exported.ShouldNotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void TestRequestAsyncEngine_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<IRequestAsyncEngine<TestAsyncRequest, TestResponse>>();
@@ -33,7 +26,7 @@ using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration
             exported.ShouldNotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void TestCommand_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<ICommandEngine<TestCommand>>();
@@ -41,20 +34,12 @@ using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration
             exported.ShouldNotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void TestAsyncCommand_ShouldBeDiscoverable()
         {
             var exported = classFactory.GetExport<ICommandAsyncEngine<TestAsyncCommand>>();
 
             exported.ShouldNotBeNull();
-        }
-
-        [OneTimeTearDown]
-        public void TearDown()
-        {
-            var container = classFactory.Container;
-
-            container?.Dispose();
         }
     }
 }

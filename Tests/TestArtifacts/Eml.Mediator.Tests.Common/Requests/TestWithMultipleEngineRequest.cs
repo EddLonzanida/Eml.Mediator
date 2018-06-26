@@ -4,11 +4,11 @@ using Eml.Mediator.Tests.Common.Responses;
 
 namespace Eml.Mediator.Tests.Common.Requests
 {
-    public class TestRequestWithNoEngine : IRequest<TestRequestWithNoEngine, TestResponse>
+    public class TestWithMultipleEngineRequest : IRequest<TestWithMultipleEngineRequest, TestResponse>
     {
         public Guid Id { get; }
 
-        public TestRequestWithNoEngine(Guid id)
+        public TestWithMultipleEngineRequest(Guid id)
         {
             Id = id;
         }

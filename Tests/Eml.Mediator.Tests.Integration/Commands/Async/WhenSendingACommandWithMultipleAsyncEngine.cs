@@ -2,14 +2,14 @@
 using Eml.Mediator.Exceptions;
 using Eml.Mediator.Tests.Common.Commands;
 using Eml.Mediator.Tests.Integration.BaseClasses;
-using NUnit.Framework;
+using Xunit;
 using Shouldly;
 
 namespace Eml.Mediator.Tests.Integration.Commands.Async
 {
-    public class WhenSendingACommandWithMultipleAsyncEngine : UnitTestBase
+    public class WhenSendingACommandWithMultipleAsyncEngine : IntegrationTestDiBase
     {
-        [Test]
+        [Fact]
         public async Task Command_ShouldThrowMultipleEngineException()
         {
             var command = new TestAsyncCommandWithMultipleEngine();

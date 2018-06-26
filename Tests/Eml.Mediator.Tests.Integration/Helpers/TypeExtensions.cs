@@ -1,4 +1,10 @@
-﻿using System;using System.Collections.Generic;using System.ComponentModel.Composition;using System.Linq;using System.Reflection;using NUnit.Framework;namespace Eml.Mediator.Tests.Integration.Helpers
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
+using System.Reflection;
+
+namespace Eml.Mediator.Tests.Integration.Helpers
 {
     public static class TypeExtensions
     {
@@ -6,6 +12,7 @@
         {
             return typeof(TTarget).IsAssignableFrom(type);
         }
+
         public static bool IsClosedTypeOf(this Type type, Type openGenericType)
         {
             if (!openGenericType.IsGenericType) throw new ArgumentException("It's a bit difficult to have a closed type of a non-open-generic type", "openGenericType");
@@ -25,27 +32,35 @@
             foreach (var item in source)
             {
                 yield return item;
+
                 foreach (var descendant in children(item).DepthFirst(children)) yield return descendant;
             }
         }
 
-        public static IEnumerator<TestCaseData> GetTestCaseEnumerator<T>(Func<TypeInfo, bool> predicate)
-            where T : class
+        public static IEnumerable<Type> GetTestCaseEnumerable<TAssembly>(Func<TypeInfo, bool> predicate)
+            where TAssembly : class
         {
-            return typeof(T).Assembly
+            var result = typeof(TAssembly).Assembly
                 .DefinedTypes
                 .Where(t => t.IsInstantiable())
-                .Where(predicate)
-                .Select(t => new TestCaseData(t))
-                .GetEnumerator();
+                .Where(predicate);
+
+            return result;
+        }
+
+        public static object[] SingleToObjectArray<T>(this T obj)
+        {
+            return new object[] { obj };
         }
 
         public static bool IsInstantiable(this Type type)
         {
             if (type.IsInterface) return false;
             if (type.IsAbstract) return false;
+
             return !type.ContainsGenericParameters;
         }
+
         public static bool IsExportable(this Type type)
         {
             return type.GetCustomAttribute(typeof(ExportAttribute), true) != null;

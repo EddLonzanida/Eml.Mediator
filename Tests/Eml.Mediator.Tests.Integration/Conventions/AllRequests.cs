@@ -1,16 +1,23 @@
-﻿using System;using System.Linq;using Eml.Mediator.Contracts;using Eml.Mediator.Tests.Integration.Conventions.TestCases;using Eml.Mediator.Tests.Integration.Helpers;using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration.Conventions
+﻿using System;
+using System.Linq;
+using Eml.Mediator.Contracts;
+using Eml.Mediator.Tests.Integration.Conventions.TestCases;
+using Eml.Mediator.Tests.Integration.Helpers;
+using Xunit;
+using Shouldly;
+
+namespace Eml.Mediator.Tests.Integration.Conventions
 {
     public class AllRequests
     {
-        [Test]
-        [TestCaseSource(typeof(AllRequestsTestCases))]
+        [Theory]
+        [MemberData(nameof(ConventionsTestCases.GetAllRequests), MemberType = typeof(ConventionsTestCases))]
         public void MustHaveExactlyOneEngine(Type requestType)
         {
             var typeArguments = requestType
                 .GetInterfaces()
                 .Single(i => i.IsClosedTypeOf(typeof(IRequest<,>)))
                 .GetGenericArguments();
-
             var engineInterfaceType = typeof(IRequestEngine<,>).MakeGenericType(typeArguments);
 
             var engineTypes = AppDomain.CurrentDomain.GetAssemblies()
@@ -21,23 +28,18 @@
             engineTypes.Length.ShouldBe(1);
         }
 
-        [Test]
-        [TestCaseSource(typeof(AllRequestsTestCases))]
-        public void MustHaveACorrespondingEngine(Type requestType)
+        [Theory]
+        [MemberData(nameof(ConventionsTestCases.GetAllRequests), MemberType = typeof(ConventionsTestCases))]
+        public void NameShouldEndWithRequest(Type type)
         {
-            var typeArguments = requestType
-                .GetInterfaces()
-                .Single(i => i.IsClosedTypeOf(typeof(IRequest<,>)))
-                .GetGenericArguments();
+            type.Name.ShouldEndWith("Request");
+        }
 
-            var engineInterfaceType = typeof(IRequestEngine<,>).MakeGenericType(typeArguments);
-
-            var engineType = AppDomain.CurrentDomain
-                                       .GetAssemblies()
-                                       .SelectMany(a => a.DefinedTypes)
-                                       .Single(t => engineInterfaceType.IsAssignableFrom(t));
-
-            engineType.Name.ShouldBe(requestType.Name + "Engine");
+        [Theory]
+        [MemberData(nameof(ConventionsTestCases.GetAllAsyncRequests), MemberType = typeof(ConventionsTestCases))]
+        public void NameShouldEndWithAsyncRequest(Type type)
+        {
+            type.Name.ShouldEndWith("AsyncRequest");
         }
     }
 }

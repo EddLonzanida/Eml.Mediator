@@ -1,12 +1,12 @@
-﻿using System;using Eml.Mediator.Tests.Common.RequestEngines;using Eml.Mediator.Tests.Common.Requests;using Eml.Mediator.Tests.Integration.BaseClasses;using JetBrains.dotMemoryUnit;using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration.Requests.Sync
+﻿using System;using Eml.Mediator.Tests.Common.RequestEngines;using Eml.Mediator.Tests.Common.Requests;using Eml.Mediator.Tests.Integration.BaseClasses;using JetBrains.dotMemoryUnit;using Xunit;using Shouldly;namespace Eml.Mediator.Tests.Integration.Requests.Sync
 {
-    public class WhenMakingARequestWithException : UnitTestBase
+    public class WhenMakingARequestWithException : IntegrationTestDiBase
     {
-        [Test]
+        [Fact]
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
         public void Response_ShouldThrowException()
         {
-            var request = new TestRequestWithException(Guid.NewGuid());
+            var request = new TestWithExceptionRequest(Guid.NewGuid());
 
             Should.Throw<NotImplementedException>(() => mediator.Get(request));
 
