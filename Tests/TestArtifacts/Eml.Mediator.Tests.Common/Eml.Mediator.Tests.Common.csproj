@@ -31,11 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eml.ClassFactory.Contracts, Version=2.1.0.10, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Eml.ClassFactory.Contracts.2.1.0.10\lib\net472\Eml.ClassFactory.Contracts.dll</HintPath>
+    <Reference Include="Eml.ClassFactory.Contracts, Version=2.1.0.17, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Eml.ClassFactory.Contracts.2.1.0.17\lib\net472\Eml.ClassFactory.Contracts.dll</HintPath>
     </Reference>
-    <Reference Include="Eml.Mediator, Version=2.1.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Eml.Mediator.2.1.0.3\lib\net472\Eml.Mediator.dll</HintPath>
+    <Reference Include="Eml.Mediator, Version=2.1.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Eml.Mediator.2.1.0.8\lib\net472\Eml.Mediator.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
