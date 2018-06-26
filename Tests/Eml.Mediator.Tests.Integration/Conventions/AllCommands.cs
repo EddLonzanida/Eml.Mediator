@@ -3,35 +3,7 @@
     public class AllCommands
     {
         [Test]
-        [TestCaseSource(typeof(AllCommandsTestCases))]
-        public void MustHaveExactlyTwoEngine(Type commandType)
-        {
-            var syncEngineInterfaceType = typeof(ICommandEngine<>).MakeGenericType(commandType);
-
-            var engineTypes = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(a => a.DefinedTypes)
-                .Where(t => syncEngineInterfaceType.IsAssignableFrom(t))
-                .ToArray();
-
-            engineTypes.Length.ShouldBe(1);
-        }
-
-        [Test]
-        [TestCaseSource(typeof(AllAsyncCommandsTestCases))]
-        public void MustHaveExactlyTwoAsyncEngine(Type commandType)
-        {
-            var asyncEngineInterfaceType = typeof(ICommandAsyncEngine<>).MakeGenericType(commandType);
-
-            var engineTypes = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(a => a.DefinedTypes)
-                .Where(t => asyncEngineInterfaceType.IsAssignableFrom(t))
-                .ToArray();
-
-            engineTypes.Length.ShouldBe(1);
-        }
-
-        [Test]
-        [TestCaseSource(typeof(AllCommandsTestCases))]
+        [TestCaseSource(typeof(ConventionsTestCases), nameof(ConventionsTestCases.GetAllCommands))]
         public void MustHaveACorrespondingEngine(Type commandType)
         {
             var syncEngineInterfaceType = typeof(ICommandEngine<>).MakeGenericType(commandType);
@@ -39,16 +11,15 @@
             var engineTypes = AppDomain.CurrentDomain
                 .GetAssemblies()
                 .SelectMany(a => a.DefinedTypes)
-                .Where(t => syncEngineInterfaceType.IsAssignableFrom(t) )
+                .Where(t => syncEngineInterfaceType.IsAssignableFrom(t))
                 .ToList();
 
             engineTypes.Count.ShouldBe(1);
-            engineTypes.TrueForAll(r => r.Name.StartsWith(commandType.Name) && r.Name.EndsWith("Engine"))
-                .ShouldBe(true);
+            engineTypes.First().Name.ShouldBe(commandType.Name + "Engine");
         }
 
         [Test]
-        [TestCaseSource(typeof(AllAsyncCommandsTestCases))]
+        [TestCaseSource(typeof(ConventionsTestCases), nameof(ConventionsTestCases.GetAllAsyncCommands))]
         public void MustHaveACorrespondingAsyncEngine(Type commandType)
         {
             var asyncEngineInterfaceType = typeof(ICommandAsyncEngine<>).MakeGenericType(commandType);
@@ -60,8 +31,21 @@
                 .ToList();
 
             engineTypes.Count.ShouldBe(1);
-            engineTypes.TrueForAll(r => r.Name.StartsWith(commandType.Name) && r.Name.EndsWith("Engine"))
-                .ShouldBe(true);
+            engineTypes.First().Name.ShouldBe(commandType.Name + "Engine");
+        }
+
+        [Theory]
+        [TestCaseSource(typeof(ConventionsTestCases), nameof(ConventionsTestCases.GetAllAsyncCommands))]
+        public void NameShouldEndWithAsyncCommand(Type type)
+        {
+            type.Name.ShouldEndWith("AsyncCommand");
+        }
+
+        [Theory]
+        [TestCaseSource(typeof(ConventionsTestCases), nameof(ConventionsTestCases.GetAllCommands))]
+        public void NameShouldEndWithCommand(Type type)
+        {
+            type.Name.ShouldEndWith("Command");
         }
     }
 }

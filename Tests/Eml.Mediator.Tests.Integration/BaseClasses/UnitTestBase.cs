@@ -15,7 +15,6 @@ namespace Eml.Mediator.Tests.Integration.BaseClasses
         public void SetUp()
         {
             classFactory = Bootstrapper.Init();
-
             mediator = classFactory.GetExport<IMediator>();
         }
 

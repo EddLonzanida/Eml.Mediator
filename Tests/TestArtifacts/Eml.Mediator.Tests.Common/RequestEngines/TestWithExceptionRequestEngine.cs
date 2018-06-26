@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.Composition;
-using System.Threading.Tasks;
 using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
@@ -7,11 +6,11 @@ using Eml.Mediator.Tests.Common.Responses;
 namespace Eml.Mediator.Tests.Common.RequestEngines
 {
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class TestRequestAsyncEngine : IRequestAsyncEngine<TestAsyncRequest, TestResponse>
+    public class TestWithExceptionRequestEngine : IRequestEngine<TestWithExceptionRequest, TestResponse>
     {
-        public async Task<TestResponse> GetAsync(TestAsyncRequest request)
+        public TestResponse Get(TestWithExceptionRequest request)
         {
-            return await Task.Run(() => new TestResponse(request.Id));
+            throw new System.NotImplementedException();
         }
 
         public void Dispose()

@@ -5,7 +5,7 @@
         [Test]
         public async Task Response_ShouldThrowMultipleEngineException()
         {
-            var request = new TestAsyncRequestWithMultipleEngine(Guid.NewGuid());
+            var request = new TestWithMultipleEngineAsyncRequest(Guid.NewGuid());
 
             await Should.ThrowAsync<MultipleEngineException>(async () => await mediator.GetAsync(request));
         }

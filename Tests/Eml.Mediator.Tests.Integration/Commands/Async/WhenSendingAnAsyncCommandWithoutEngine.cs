@@ -12,7 +12,7 @@ namespace Eml.Mediator.Tests.Integration.Commands.Async
         [Test]
         public async Task Command_ShouldThrowMissingEngineException()
         {
-            var command = new TestAsyncCommandWithNoEngine();
+            var command = new TestWithNoEngineAsyncCommand();
 
             await Should.ThrowAsync<MissingEngineException>(async () => await mediator.SetAsync(command));
         }

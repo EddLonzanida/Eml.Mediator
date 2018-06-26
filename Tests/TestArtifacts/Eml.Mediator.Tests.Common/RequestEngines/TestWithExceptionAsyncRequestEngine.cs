@@ -8,9 +8,9 @@ using Eml.Mediator.Tests.Common.Responses;
 namespace Eml.Mediator.Tests.Common.RequestEngines
 {
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class TestRequestWithExceptionAsyncEngine : IRequestAsyncEngine<TestAsyncRequestWithException, TestResponse>
+    public class TestWithExceptionAsyncRequestEngine : IRequestAsyncEngine<TestWithExceptionAsyncRequest, TestResponse>
     {
-        public Task<TestResponse> GetAsync(TestAsyncRequestWithException request)
+        public Task<TestResponse> GetAsync(TestWithExceptionAsyncRequest request)
         {
             throw new NotImplementedException();
         }

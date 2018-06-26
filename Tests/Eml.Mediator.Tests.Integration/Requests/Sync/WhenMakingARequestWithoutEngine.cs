@@ -5,7 +5,7 @@
         [Test]
         public void Response_ShouldThrowAMissingEngineException()
         {
-            var request = new TestRequestWithNoEngine(Guid.NewGuid());
+            var request = new TestWithNoEngineRequest(Guid.NewGuid());
 
             Should.Throw<MissingEngineException>(() => mediator.Get(request));
         }

@@ -29,15 +29,13 @@
             }
         }
 
-        public static IEnumerator<TestCaseData> GetTestCaseEnumerator<T>(Func<TypeInfo, bool> predicate)
-            where T : class
+        public static IEnumerable<Type> GetTestCaseEnumerable<TAssembly>(Func<TypeInfo, bool> predicate)
+            where TAssembly : class
         {
-            return typeof(T).Assembly
+            return typeof(TAssembly).Assembly
                 .DefinedTypes
                 .Where(t => t.IsInstantiable())
-                .Where(predicate)
-                .Select(t => new TestCaseData(t))
-                .GetEnumerator();
+                .Where(predicate);
         }
 
         public static bool IsInstantiable(this Type type)

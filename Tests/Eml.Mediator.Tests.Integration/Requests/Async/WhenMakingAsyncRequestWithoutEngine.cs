@@ -5,7 +5,7 @@
         [Test]
         public async Task Response_ShouldThrowMissingEngineException()
         {
-            var request = new TestAsyncRequestWithNoEngine(Guid.NewGuid());
+            var request = new TestWithNoEngineAsyncRequest(Guid.NewGuid());
 
             await Should.ThrowAsync<MissingEngineException>(async () => await mediator.GetAsync(request));
         }

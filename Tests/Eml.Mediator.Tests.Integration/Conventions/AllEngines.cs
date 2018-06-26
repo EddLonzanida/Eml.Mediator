@@ -3,7 +3,10 @@
     public class AllEngines
     {
         [Test]
-        [TestCaseSource(typeof(AllExportsTestCases))]
+        [TestCaseSource(typeof(ConventionsTestCases), nameof(ConventionsTestCases.GetAllCommandEngines))]
+        [TestCaseSource(typeof(ConventionsTestCases), nameof(ConventionsTestCases.GetAllRequestEngines))]
+        [TestCaseSource(typeof(ConventionsTestCases), nameof(ConventionsTestCases.GetAllCommandAsyncEngines))]
+        [TestCaseSource(typeof(ConventionsTestCases), nameof(ConventionsTestCases.GetAllRequestAsyncEngines))]
         public void ShouldHaveNonSharedAttribute(Type exportedType)
         {
             var partCreationPolicyAttribute = exportedType

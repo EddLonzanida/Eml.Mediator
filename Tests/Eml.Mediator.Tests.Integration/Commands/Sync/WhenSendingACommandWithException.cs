@@ -14,12 +14,12 @@ namespace Eml.Mediator.Tests.Integration.Commands.Sync
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
         public void Command_ShouldThrowException()
         {
-            var command = new TestCommandWithException();
+            var command = new TestWithExceptionCommand();
 
             Should.Throw<NotImplementedException>(() => mediator.Set(command));
 
             dotMemory.Check(memory => memory
-                .GetObjects(where => where.Type.Is<TestCommandWithExceptionEngine>()).ObjectsCount.ShouldBe(0));
+                .GetObjects(where => where.Type.Is<TestWithExceptionCommandEngine>()).ObjectsCount.ShouldBe(0));
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Eml.Mediator.Tests.Integration.Commands.Sync
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
         public void Command_ShouldThrowMultipleEngineException()
         {
-            var command = new TestCommandWithMultipleEngine();
+            var command = new TestWithMultipleEngineCommand();
 
             Should.Throw<MultipleEngineException>(() => mediator.Set(command));
             dotMemory.Check(memory =>

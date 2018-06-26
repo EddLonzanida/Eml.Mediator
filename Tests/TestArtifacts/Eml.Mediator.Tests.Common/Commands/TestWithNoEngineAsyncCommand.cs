@@ -2,11 +2,11 @@ using Eml.Mediator.Contracts;
 
 namespace Eml.Mediator.Tests.Common.Commands
 {
-    public class TestCommandWithMultipleEngine : ICommand
+    public class TestWithNoEngineAsyncCommand : ICommandAsync
     {
         public int EngineInvocationCount { get; set; }
 
-        public TestCommandWithMultipleEngine()
+        public TestWithNoEngineAsyncCommand()
         {
             EngineInvocationCount = 0;
         }

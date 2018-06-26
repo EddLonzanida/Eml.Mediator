@@ -8,7 +8,7 @@ namespace Eml.Mediator.Tests.Integration.Commands.Async
         [Test]
         public async Task Command_ShouldThrowException()
         {
-            var command = new TestAsyncCommandWithException();
+            var command = new TestWithExceptionAsyncCommand();
 
             await Should.ThrowAsync<NotImplementedException>(async () => await mediator.SetAsync(command));
         }

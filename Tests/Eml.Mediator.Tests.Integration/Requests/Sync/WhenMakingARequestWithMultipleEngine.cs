@@ -6,7 +6,7 @@
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
         public void Response_ShouldThrowMultipleEngineException()
         {
-            var request = new TestRequestWithMultipleEngine(Guid.NewGuid());
+            var request = new TestWithMultipleEngineRequest(Guid.NewGuid());
 
             Should.Throw<MultipleEngineException>(() => mediator.Get(request));
 

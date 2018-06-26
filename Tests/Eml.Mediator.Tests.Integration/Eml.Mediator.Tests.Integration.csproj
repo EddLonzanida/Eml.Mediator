@@ -76,10 +76,8 @@
     <Compile Include="Conventions\AllCommands.cs" />
     <Compile Include="Conventions\AllEngines.cs" />
     <Compile Include="Conventions\AllRequests.cs" />
-    <Compile Include="Conventions\TestCases\AllAsyncCommandsTestCases.cs" />
-    <Compile Include="Conventions\TestCases\AllCommandsTestCases.cs" />
-    <Compile Include="Conventions\TestCases\AllExportsTestCases.cs" />
-    <Compile Include="Conventions\TestCases\AllRequestsTestCases.cs" />
+    <Compile Include="Conventions\AllResponses.cs" />
+    <Compile Include="Conventions\TestCases\ConventionsTestCases.cs" />
     <Compile Include="Helpers\AssemblyExtensions.cs" />
     <Compile Include="Helpers\TypeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

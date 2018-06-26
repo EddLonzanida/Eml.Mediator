@@ -7,9 +7,9 @@ using Eml.Mediator.Tests.Common.Responses;
 namespace Eml.Mediator.Tests.Common.RequestEngines
 {
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class TestRequest2AsyncEngine : IRequestAsyncEngine<TestAsyncRequestWithMultipleEngine, TestResponse>
+    public class TestRequest2AsyncEngine : IRequestAsyncEngine<TestWithMultipleEngineAsyncRequest, TestResponse>
     {
-        public async Task<TestResponse> GetAsync(TestAsyncRequestWithMultipleEngine request)
+        public async Task<TestResponse> GetAsync(TestWithMultipleEngineAsyncRequest request)
         {
             return await Task.Run(() => new TestResponse(request.Id));
         }

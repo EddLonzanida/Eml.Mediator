@@ -6,9 +6,9 @@ using Eml.Mediator.Tests.Common.Responses;
 namespace Eml.Mediator.Tests.Common.RequestEngines
 {
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class TestRequest1Engine : IRequestEngine<TestRequestWithMultipleEngine, TestResponse>
+    public class TestRequest1Engine : IRequestEngine<TestWithMultipleEngineRequest, TestResponse>
     {
-        public TestResponse Get(TestRequestWithMultipleEngine request)
+        public TestResponse Get(TestWithMultipleEngineRequest request)
         {
             return new TestResponse(request.Id);
         }

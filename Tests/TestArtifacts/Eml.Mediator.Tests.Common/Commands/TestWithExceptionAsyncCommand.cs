@@ -2,11 +2,11 @@
 
 namespace Eml.Mediator.Tests.Common.Commands
 {
-    public class TestAsyncCommandWithException : ICommandAsync
+    public class TestWithExceptionAsyncCommand : ICommandAsync
     {
         public int EngineInvocationCount { get; set; }
 
-        public TestAsyncCommandWithException()
+        public TestWithExceptionAsyncCommand()
         {
             EngineInvocationCount = 0;
         }
