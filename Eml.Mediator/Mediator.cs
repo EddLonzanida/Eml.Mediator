@@ -131,12 +131,15 @@ namespace Eml.Mediator
                         $"{Environment.NewLine}Check if the class is implementing the interface: IRequestEngine." +
                         $"{Environment.NewLine}Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
 
-                return syncEngine.Instance().Get((T1)request);
+                var engine = syncEngine.Instance();
+
+                return engine.Get((T1)request);
             }
             finally
             {
 #if NETFULL
-                classFactory.ReleaseExports(engines);
+                classFactory.Container.ReleaseExports(engines);
+                //classFactory.ReleaseExports(engines);
 #endif
             }
         }

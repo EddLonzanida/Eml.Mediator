@@ -34,6 +34,6 @@
   </Choose>
 
   <ItemGroup>
-    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.1.0.17" />
+    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.1.0.18" />
   </ItemGroup>
 </Project>
