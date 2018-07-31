@@ -11,6 +11,7 @@
     <Company>EmL Solutions</Company>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Eml.Mediator.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;CS1591</NoWarn>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <Choose>
@@ -34,6 +35,6 @@
   </Choose>
 
   <ItemGroup>
-    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.1.0.18" />
+    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.1.0.19" />
   </ItemGroup>
 </Project>
