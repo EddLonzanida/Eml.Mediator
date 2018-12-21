@@ -110,7 +110,7 @@ Capture Business-Use-Cases and convert it into modular and highly testable chunk
     }
 ```
 ## That's it.
-#### Check out [Eml.Mediator.vsix](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.Mediator) to automate the above process in one go.
+#### Check out [Eml.VsExtensions.vsix](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.EmlExtensions) to automate the above process in one go.
 ![](https://github.com/EddLonzanida/Eml.Mediator.Demo/blob/master/Art/Steps.gif)
 
 
