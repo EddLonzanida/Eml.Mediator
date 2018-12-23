@@ -10,7 +10,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Sync
         {
             var command = new TestCommandWithException();
 
-            Should.Throw<NotImplementedException>(() => mediator.Set(command));
+            Should.Throw<NotImplementedException>(() => mediator.Execute(command));
         }
     }
 }

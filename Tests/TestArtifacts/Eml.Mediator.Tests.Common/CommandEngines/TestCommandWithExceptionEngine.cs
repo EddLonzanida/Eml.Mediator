@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Common.CommandEngines
 #endif
     public class TestCommandWithExceptionEngine : ICommandEngine<TestCommandWithException>
     {
-        public void Set(TestCommandWithException command)
+        public void Execute(TestCommandWithException command)
         {
             throw new System.NotImplementedException();
         }

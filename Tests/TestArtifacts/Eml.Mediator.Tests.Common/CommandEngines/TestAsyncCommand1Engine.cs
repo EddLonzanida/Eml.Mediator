@@ -12,7 +12,7 @@ namespace Eml.Mediator.Tests.Common.CommandEngines
 #endif
     public class TestAsyncCommand1Engine : ICommandAsyncEngine<TestAsyncCommandWithMultipleEngine>
     {
-        public async Task SetAsync(TestAsyncCommandWithMultipleEngine commandAsync)
+        public async Task ExecuteAsync(TestAsyncCommandWithMultipleEngine commandAsync)
         {
             await Task.Run(() => commandAsync.EngineInvocationCount++);
         }

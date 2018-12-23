@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Async
         {
             var command = new TestAsyncCommandWithException();
 
-            await Should.ThrowAsync<NotImplementedException>(async () => await mediator.SetAsync(command));
+            await Should.ThrowAsync<NotImplementedException>(async () => await mediator.ExecuteAsync(command));
         }
     }
 }

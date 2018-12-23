@@ -9,7 +9,7 @@ namespace Eml.Mediator.Contracts
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="command"></param>
-        void Set<T>(T command)
+        void Execute<T>(T command)
             where T : ICommand;
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace Eml.Mediator.Contracts
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="command"></param>
-        Task SetAsync<T>(T command)
+        Task ExecuteAsync<T>(T command)
             where T : ICommandAsync;
 
         /// <summary>

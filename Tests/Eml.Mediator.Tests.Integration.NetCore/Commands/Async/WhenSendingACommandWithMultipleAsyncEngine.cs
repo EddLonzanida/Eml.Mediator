@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Async
         {
             var command = new TestAsyncCommandWithMultipleEngine();
 
-            await Should.ThrowAsync<MultipleEngineException>(async () => await mediator.SetAsync(command));
+            await Should.ThrowAsync<MultipleEngineException>(async () => await mediator.ExecuteAsync(command));
         }
     }
 }

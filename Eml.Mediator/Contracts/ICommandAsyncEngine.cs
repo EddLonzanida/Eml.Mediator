@@ -19,6 +19,6 @@ namespace Eml.Mediator.Contracts
 #endif
         where T : ICommandAsync
     {
-        Task SetAsync(T commandAsync);
+        Task ExecuteAsync(T commandAsync);
     }
 }
