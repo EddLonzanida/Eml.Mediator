@@ -29,7 +29,7 @@ namespace Eml.Mediator
             this.classFactory = classFactory;
         }
 
-        public void Set<T>(T command)
+        public void Execute<T>(T command)
             where T : ICommand
         {
             var engines = classFactory.GetLazyExports<ICommandEngine<T>>();
@@ -41,9 +41,9 @@ namespace Eml.Mediator
 #if NETFULL
                     classFactory.ReleaseExports(engines);
 #endif
-                    var aMsgs = GetMultipleEngineExceptionMessage(engines);
+                    var aMessages = GetMultipleEngineExceptionMessage(engines);
 
-                    throw new MultipleEngineException($"Check the following Command engines:{aMsgs}");
+                    throw new MultipleEngineException($"Check the following Command engines:{aMessages}");
                 }
 
                 var syncEngine = engines.FirstOrDefault();
@@ -56,7 +56,7 @@ namespace Eml.Mediator
                                                      $"{Environment.NewLine}Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
                 var engine = syncEngine.Instance();
 
-                engine.Set(command);
+                engine.Execute(command);
             }
             finally
             {
@@ -66,7 +66,7 @@ namespace Eml.Mediator
             }
         }
 
-        public async Task SetAsync<T>(T commandAsync)
+        public async Task ExecuteAsync<T>(T commandAsync)
             where T : ICommandAsync
         {
             var engines = classFactory.GetLazyExports<ICommandAsyncEngine<T>>().ToList();
@@ -79,9 +79,9 @@ namespace Eml.Mediator
                     classFactory.ReleaseExports(engines);
 #endif
 
-                    var aMsgs = GetMultipleEngineExceptionMessage(engines);
+                    var aMessages = GetMultipleEngineExceptionMessage(engines);
 
-                    throw new MultipleEngineException($"Check the following Command engines:{aMsgs}");
+                    throw new MultipleEngineException($"Check the following Command engines:{aMessages}");
                 }
 
                 var asyncEngine = engines.FirstOrDefault();
@@ -93,7 +93,7 @@ namespace Eml.Mediator
                                                      $"{Environment.NewLine}Check if the class is implementing the interface: ICommandAsyncEngine." +
                                                      $"{Environment.NewLine}Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
 
-                await asyncEngine.Instance().SetAsync(commandAsync);
+                await asyncEngine.Instance().ExecuteAsync(commandAsync);
             }
             finally
             {
@@ -116,9 +116,9 @@ namespace Eml.Mediator
 #if NETFULL
                     classFactory.ReleaseExports(engines);
 #endif
-                    var aMsgs = GetMultipleEngineExceptionMessage(engines);
+                    var aMessages = GetMultipleEngineExceptionMessage(engines);
 
-                    throw new MultipleEngineException($"Check the following Request engines:{aMsgs}");
+                    throw new MultipleEngineException($"Check the following Request engines:{aMessages}");
                 }
 
                 var syncEngine = engines.FirstOrDefault();
@@ -131,12 +131,15 @@ namespace Eml.Mediator
                         $"{Environment.NewLine}Check if the class is implementing the interface: IRequestEngine." +
                         $"{Environment.NewLine}Check MefLoader.Init for missing parts needed by the ImportingConstructor.");
 
-                return syncEngine.Instance().Get((T1)request);
+                var engine = syncEngine.Instance();
+
+                return engine.Get((T1)request);
             }
             finally
             {
 #if NETFULL
-                classFactory.ReleaseExports(engines);
+                classFactory.Container.ReleaseExports(engines);
+                //classFactory.ReleaseExports(engines);
 #endif
             }
         }

@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Sync
         {
             var command = new TestCommandWithMultipleEngine();
 
-            Should.Throw<MultipleEngineException>(() => mediator.Set(command));
+            Should.Throw<MultipleEngineException>(() => mediator.Execute(command));
         }
     }
 }

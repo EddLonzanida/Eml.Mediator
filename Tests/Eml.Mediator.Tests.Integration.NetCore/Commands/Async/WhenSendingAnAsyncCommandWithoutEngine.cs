@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Async
         {
             var command = new TestAsyncCommandWithNoEngine();
 
-            await Should.ThrowAsync<MissingEngineException>(async () => await mediator.SetAsync(command));
+            await Should.ThrowAsync<MissingEngineException>(async () => await mediator.ExecuteAsync(command));
         }
     }
 }

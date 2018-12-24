@@ -18,6 +18,6 @@ namespace Eml.Mediator.Contracts
 #endif
         where T : ICommand
     {
-        void Set(T command);
+        void Execute(T command);
     }
 }

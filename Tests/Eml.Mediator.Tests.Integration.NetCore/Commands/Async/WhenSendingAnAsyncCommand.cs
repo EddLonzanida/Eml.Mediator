@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Async
         {
             var command = new TestAsyncCommand();
 
-            await mediator.SetAsync(command);
+            await mediator.ExecuteAsync(command);
 
             command.EngineInvocationCount.ShouldBe(1);
         }

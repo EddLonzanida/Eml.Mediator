@@ -9,27 +9,32 @@
     <PackageTags>Mediator Command Request Response Pattern Eml.Mediator EmL Solutions</PackageTags>
     <Authors>EmL Solutions</Authors>
     <Company>EmL Solutions</Company>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Eml.Mediator.xml</DocumentationFile>
+    <NoWarn>1701;1702;1705;CS1591</NoWarn>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net462' or '$(TargetFramework)' == 'net47' or '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net472'">
-    <DefineConstants>NETFULL</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netcoreapp2.0'">
-    <DefineConstants>NETCORE</DefineConstants>
-  </PropertyGroup>
-  
-  <PropertyGroup>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Eml.Mediator.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <NoWarn>1701;1702;1705;CS1591</NoWarn>
-  </PropertyGroup>
-  
-  <ItemGroup Condition="'$(TargetFramework)' == 'net462' or '$(TargetFramework)' == 'net47'  or '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net472'">
-    <Reference Include="System.ComponentModel.Composition" />
-  </ItemGroup>
-  
+  <Choose>
+    <When Condition="'$(TargetFramework)' == 'net462' or '$(TargetFramework)' == 'net47' or '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net472'">
+      <PropertyGroup>
+        <DefineConstants>NETFULL</DefineConstants>
+      </PropertyGroup>
+      <ItemGroup>
+        <Reference Include="System.ComponentModel.Composition" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <Choose>
+        <When Condition="'$(TargetFramework)' == 'netcoreapp2.0'  or '$(TargetFramework)' == 'netcoreapp2.1' or '$(TargetFramework)' == 'netstandard2.0'">
+          <PropertyGroup>
+            <DefineConstants>NETCORE</DefineConstants>
+          </PropertyGroup>
+        </When>
+      </Choose>
+    </Otherwise>
+  </Choose>
+
   <ItemGroup>
-    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.1.0.2" />
+    <PackageReference Include="Eml.ClassFactory.Contracts" Version="2.1.0.27" />
   </ItemGroup>
 </Project>

@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Common.CommandEngines
 #endif
     public class TestCommand1Engine : ICommandEngine<TestCommandWithMultipleEngine>
     {
-        public void Set(TestCommandWithMultipleEngine command)
+        public void Execute(TestCommandWithMultipleEngine command)
         {
             command.EngineInvocationCount++;
         }
