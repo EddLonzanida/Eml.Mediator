@@ -19,7 +19,7 @@
     </When>
     <Otherwise>
       <Choose>
-        <When Condition="'$(TargetFramework)' == 'netcoreapp2.0'  or '$(TargetFramework)' == 'netcoreapp2.1' or '$(TargetFramework)' == 'netstandard2.0'">
+        <When Condition="'$(TargetFramework)' == 'netcoreapp2.0' or '$(TargetFramework)' == 'netcoreapp2.1' or '$(TargetFramework)' == 'netcoreapp2.2' or '$(TargetFramework)' == 'netstandard2.0'">
           <PropertyGroup>
             <DefineConstants>NETCORE</DefineConstants>
           </PropertyGroup>
