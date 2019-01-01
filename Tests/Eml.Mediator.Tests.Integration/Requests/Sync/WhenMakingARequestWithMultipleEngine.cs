@@ -1,8 +1,17 @@
-﻿using System;using Eml.Mediator.Exceptions;using Eml.Mediator.Tests.Common.RequestEngines;using Eml.Mediator.Tests.Common.Requests;using Eml.Mediator.Tests.Integration.BaseClasses;using JetBrains.dotMemoryUnit;using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration.Requests.Sync
+﻿using System;
+using Eml.Mediator.Exceptions;
+using Eml.Mediator.Tests.Common.RequestEngines;
+using Eml.Mediator.Tests.Common.Requests;
+using Eml.Mediator.Tests.Integration.BaseClasses;
+using JetBrains.dotMemoryUnit;
+using Xunit;
+using Shouldly;
+
+namespace Eml.Mediator.Tests.Integration.Requests.Sync
 {
-    public class WhenMakingARequestWithMultipleEngine : UnitTestBase
+    public class WhenMakingARequestWithMultipleEngine : IntegrationTestDiBase
     {
-        [Test]
+        [Fact]
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
         public void Response_ShouldThrowMultipleEngineException()
         {

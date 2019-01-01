@@ -1,19 +1,19 @@
 ﻿using System.Threading.Tasks;
 using Eml.Mediator.Tests.Common.Commands;
 using Eml.Mediator.Tests.Integration.BaseClasses;
-using NUnit.Framework;
+using Xunit;
 using Shouldly;
 
 namespace Eml.Mediator.Tests.Integration.Commands.Async
 {
-    public class WhenSendingAnAsyncCommand : UnitTestBase
+    public class WhenSendingAnAsyncCommand : IntegrationTestDiBase
     {
-        [Test]
+        [Fact]
         public async Task Command_ShouldBeCalledOnce()
         {
             var command = new TestAsyncCommand();
 
-            await mediator.SetAsync(command);
+            await mediator.ExecuteAsync(command);
 
             command.EngineInvocationCount.ShouldBe(1);
         }

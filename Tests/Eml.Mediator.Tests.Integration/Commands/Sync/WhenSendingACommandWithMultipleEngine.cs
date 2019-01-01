@@ -3,20 +3,20 @@ using Eml.Mediator.Tests.Common.CommandEngines;
 using Eml.Mediator.Tests.Common.Commands;
 using Eml.Mediator.Tests.Integration.BaseClasses;
 using JetBrains.dotMemoryUnit;
-using NUnit.Framework;
+using Xunit;
 using Shouldly;
 
 namespace Eml.Mediator.Tests.Integration.Commands.Sync
 {
-    public class WhenSendingACommandWithMultipleEngine : UnitTestBase
+    public class WhenSendingACommandWithMultipleEngine : IntegrationTestDiBase
     {
-        [Test]
+        [Fact]
         [DotMemoryUnit(FailIfRunWithoutSupport = false)]
         public void Command_ShouldThrowMultipleEngineException()
         {
             var command = new TestWithMultipleEngineCommand();
 
-            Should.Throw<MultipleEngineException>(() => mediator.Set(command));
+            Should.Throw<MultipleEngineException>(() => mediator.Execute(command));
             dotMemory.Check(memory =>
             {
                 memory.GetObjects(where => where.Type.Is<TestCommand1Engine>())

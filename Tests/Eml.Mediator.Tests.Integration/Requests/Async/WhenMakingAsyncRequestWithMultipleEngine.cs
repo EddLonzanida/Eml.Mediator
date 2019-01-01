@@ -1,8 +1,8 @@
-﻿using System;using System.Threading.Tasks;using Eml.Mediator.Exceptions;using Eml.Mediator.Tests.Common.Requests;using Eml.Mediator.Tests.Integration.BaseClasses;using NUnit.Framework;using Shouldly;namespace Eml.Mediator.Tests.Integration.Requests.Async
+﻿using System;using System.Threading.Tasks;using Eml.Mediator.Exceptions;using Eml.Mediator.Tests.Common.Requests;using Eml.Mediator.Tests.Integration.BaseClasses;using Xunit;using Shouldly;namespace Eml.Mediator.Tests.Integration.Requests.Async
 {
-    public class WhenMakingAsyncRequestWithMultipleEngine : UnitTestBase
+    public class WhenMakingAsyncRequestWithMultipleEngine : IntegrationTestDiBase
     {
-        [Test]
+        [Fact]
         public async Task Response_ShouldThrowMultipleEngineException()
         {
             var request = new TestWithMultipleEngineAsyncRequest(Guid.NewGuid());

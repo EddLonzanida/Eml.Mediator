@@ -12,7 +12,9 @@ namespace Eml.Mediator.Tests.Integration.Helpers
         {
             var assemblies = new List<Assembly>();
             var files = Directory.GetFiles(directory.FullName, filePattern).ToList();
+
             files.ForEach(r => assemblies.Add(Assembly.LoadFile(r)));
+
             return assemblies;
         }
 
@@ -24,6 +26,7 @@ namespace Eml.Mediator.Tests.Integration.Helpers
         private static IEnumerable<Type> GetTypes(this Assembly assembly, Func<Type, bool> selector)
         {
             var types = assembly.GetTypes();
+
             return types.Where(type => selector(type) && type.IsPublic);
         }
     }

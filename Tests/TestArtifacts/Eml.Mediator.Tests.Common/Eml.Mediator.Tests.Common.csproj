@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Eml.Mediator.Tests.Common</RootNamespace>
     <AssemblyName>Eml.Mediator.Tests.Common</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -31,11 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eml.ClassFactory.Contracts, Version=2.1.0.17, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Eml.ClassFactory.Contracts.2.1.0.17\lib\net472\Eml.ClassFactory.Contracts.dll</HintPath>
+    <Reference Include="Eml.ClassFactory.Contracts, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Eml.ClassFactory.Contracts.2.2.0\lib\net462\Eml.ClassFactory.Contracts.dll</HintPath>
     </Reference>
-    <Reference Include="Eml.Mediator, Version=2.1.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Eml.Mediator.2.1.0.8\lib\net472\Eml.Mediator.dll</HintPath>
+    <Reference Include="Eml.Mediator, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Eml.Mediator.2.2.0\lib\net462\Eml.Mediator.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -52,11 +52,11 @@
     <Compile Include="CommandEngines\TestAsyncCommand1Engine.cs" />
     <Compile Include="CommandEngines\TestAsyncCommand2Engine.cs" />
     <Compile Include="CommandEngines\TestAsyncCommandEngine.cs" />
-    <Compile Include="CommandEngines\TestWithExceptionAsyncCommandEngine.cs" />
+    <Compile Include="CommandEngines\TestAsyncCommandWithExceptionEngine.cs" />
     <Compile Include="CommandEngines\TestCommand1Engine.cs" />
     <Compile Include="CommandEngines\TestCommand2Engine.cs" />
     <Compile Include="CommandEngines\TestCommandEngine.cs" />
-    <Compile Include="CommandEngines\TestWithExceptionCommandEngine.cs" />
+    <Compile Include="CommandEngines\TestCommandWithExceptionEngine.cs" />
     <Compile Include="Commands\TestAsyncCommand.cs" />
     <Compile Include="Commands\TestWithExceptionAsyncCommand.cs" />
     <Compile Include="Commands\TestWithMultipleEngineAsyncCommand.cs" />
@@ -72,10 +72,10 @@
     <Compile Include="RequestEngines\TestRequest1Engine.cs" />
     <Compile Include="RequestEngines\TestRequest2AsyncEngine.cs" />
     <Compile Include="RequestEngines\TestRequest2Engine.cs" />
-    <Compile Include="RequestEngines\TestAsyncRequestEngine.cs" />
+    <Compile Include="RequestEngines\TestRequestAsyncEngine.cs" />
     <Compile Include="RequestEngines\TestRequestEngine.cs" />
-    <Compile Include="RequestEngines\TestWithExceptionAsyncRequestEngine.cs" />
-    <Compile Include="RequestEngines\TestWithExceptionRequestEngine.cs" />
+    <Compile Include="RequestEngines\TestRequestWithExceptionAsyncEngine.cs" />
+    <Compile Include="RequestEngines\TestRequestWithExceptionEngine.cs" />
     <Compile Include="Requests\TestAsyncRequest.cs" />
     <Compile Include="Requests\TestWithExceptionAsyncRequest.cs" />
     <Compile Include="Requests\TestWithMultipleEngineAsyncRequest.cs" />
