@@ -1,11 +1,11 @@
 ﻿using Eml.ClassFactory.Contracts;
 using Eml.Mediator.Contracts;
-using Xunit;
+using Eml.Mef;
+using System;
 
 namespace Eml.Mediator.Tests.Integration.BaseClasses
 {
-    [Collection(IntegrationTestDiFixture.COLLECTION_DEFINITION)]
-    public abstract class IntegrationTestDiBase
+    public abstract class IntegrationTestDiBase : IDisposable
     {
         protected readonly IClassFactory classFactory;
 
@@ -13,8 +13,13 @@ namespace Eml.Mediator.Tests.Integration.BaseClasses
 
         protected IntegrationTestDiBase()
         {
-            classFactory = IntegrationTestDiFixture.ClassFactory;
+            classFactory = Bootstrapper.Init();
             mediator = classFactory.GetExport<IMediator>();
+        }
+
+        public void Dispose()
+        {
+            Mef.ClassFactory.Dispose(classFactory);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Eml.Mediator.Tests.Common.CommandEngines
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class TestAsyncCommandWithExceptionEngine : ICommandAsyncEngine<TestWithExceptionAsyncCommand>
     {
-        public Task SetAsync(TestWithExceptionAsyncCommand commandAsync)
+        public Task ExecuteAsync(TestWithExceptionAsyncCommand commandAsync)
         {
             throw new NotImplementedException();
         }

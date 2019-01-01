@@ -10,6 +10,7 @@ namespace Eml.Mediator.Tests.Integration
 {
     public class WhenExecutingTestEngines: IntegrationTestDiBase
     {
+
         [Fact]
         public void TestRequestEngine_ShouldBeDiscoverable()
         {

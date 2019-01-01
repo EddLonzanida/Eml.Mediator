@@ -15,7 +15,7 @@ namespace Eml.Mediator.Tests.Integration.Commands.Sync
         {
             var command = new TestCommand();
 
-            mediator.Set(command);
+            mediator.Execute(command);
 
             command.EngineInvocationCount.ShouldBe(1);
 

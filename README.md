@@ -1,5 +1,5 @@
 # [Eml.Mediator](https://preview.nuget.org/packages/Eml.Mediator/)
-Capture Business-Use-Cases and convert it into modular and highly testable chunk of codes. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern. Now supports .NetCore2.0
+Capture Business-Use-Cases and convert it into modular and highly testable chunk of codes. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern. Now supports .NetCore2.2
 
 # A. Usage - ***Command***
     
@@ -7,9 +7,9 @@ Capture Business-Use-Cases and convert it into modular and highly testable chunk
     [Test]
     public async Task Command_ShouldBeCalledOnce()
     {
-        var command = new TestCommandAsync();       //<-Data
+        var command = new TestCommandAsync();			//<-Data
 
-        await mediator.SetAsync(command);           //<-Execute
+        await mediator.ExecuteAsync(command);           //<-Execute
 
         command.EngineInvocationCount.ShouldBe(1);
     }
@@ -30,13 +30,13 @@ Capture Business-Use-Cases and convert it into modular and highly testable chunk
 ```
 
 ### 2. Create a command engine.
-*TestCommandEngine* will be auto-discovered and executed by **await command.SetAsync();**.
+*TestCommandEngine* will be auto-discovered and executed by **await command.ExecuteAsync();**.
 
 ```javascript
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class TestCommandEngine : ICommandAsyncEngine<TestCommandAsync>
     {
-        public async Task SetAsync(TestCommandAsync commandAsync)
+        public async Task ExecuteAsync(TestCommandAsync commandAsync)
         {
             await Task.Run(() => commandAsync.EngineInvocationCount++);
         }
@@ -99,7 +99,7 @@ Capture Business-Use-Cases and convert it into modular and highly testable chunk
         }
     }
 ```
-* For NetCore2.0 *(no need to place CreationPolicy.NonShared attribute)*
+* For NetCore2.2 *(no need to place CreationPolicy.NonShared attribute)*
 ```javascript
     public class TestRequestEngine : IRequestAsyncEngine<TestRequestAsync, TestResponse>
     {
@@ -110,7 +110,7 @@ Capture Business-Use-Cases and convert it into modular and highly testable chunk
     }
 ```
 ## That's it.
-#### Check out [Eml.Mediator.vsix](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.Mediator) to automate the above process in one go.
+#### Check out [EmlExtensions.vsix](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.EmlExtensions) to automate the above process in one go.
 ![](https://github.com/EddLonzanida/Eml.Mediator.Demo/blob/master/Art/Steps.gif)
 
 

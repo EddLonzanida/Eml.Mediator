@@ -16,11 +16,10 @@ namespace Eml.Mediator.Tests.Integration.Conventions.TestCases
         {
             if (_allAsyncCommands == null)
             {
-
                 _allAsyncCommands = TypeExtensions
-                .GetTestCaseEnumerable<TestCommand>(t => t.IsAssignableTo<ICommandAsync>()
-                                                                  && !t.Name.EndsWith(nameof(TestAsyncCommandWithNoEngine))
-                                                                  && !t.Name.EndsWith(nameof(TestAsyncCommandWithMultipleEngine)))
+                                    .GetTestCaseEnumerable<TestCommand>(t => t.IsAssignableTo<ICommandAsync>()
+                                          && !t.Name.EndsWith(nameof(TestWithNoEngineAsyncCommand))
+                                          && !t.Name.EndsWith(nameof(TestWithMultipleEngineAsyncCommand)))
                 .Select(x => new object[] { x });
             }
 
@@ -33,10 +32,10 @@ namespace Eml.Mediator.Tests.Integration.Conventions.TestCases
         {
             if (_allAsyncRequests == null)
                 _allAsyncRequests = TypeExtensions
-                .GetTestCaseEnumerable<AssemblyMarker>(t =>
-                    t.IsClosedTypeOf(typeof(IRequestAsync<,>))
-                    && !t.Name.EndsWith(nameof(TestWithNoEngineAsyncRequest))
-                    && !t.Name.EndsWith(nameof(TestWithMultipleEngineAsyncRequest)))
+                                    .GetTestCaseEnumerable<AssemblyMarker>(t =>
+                                        t.IsClosedTypeOf(typeof(IRequestAsync<,>))
+                                        && !t.Name.EndsWith(nameof(TestWithNoEngineAsyncRequest))
+                                        && !t.Name.EndsWith(nameof(TestWithMultipleEngineAsyncRequest)))
                 .Select(x => new object[] { x });
 
             return _allAsyncRequests;
@@ -65,8 +64,8 @@ namespace Eml.Mediator.Tests.Integration.Conventions.TestCases
                 _allCommands = TypeExtensions
                                 .GetTestCaseEnumerable<TestCommand>(t =>
                                     t.IsAssignableTo<ICommand>()
-                                    && !t.Name.Contains(nameof(TestCommandWithNoEngine))
-                                    && !t.Name.EndsWith(nameof(TestCommandWithMultipleEngine)))
+                                    && !t.Name.Contains(nameof(TestWithNoEngineCommand))
+                                    && !t.Name.EndsWith(nameof(TestWithMultipleEngineCommand)))
                                 .Select(x => new object[] { x });
 
             return _allCommands;
@@ -79,7 +78,7 @@ namespace Eml.Mediator.Tests.Integration.Conventions.TestCases
             if (_allResponses == null)
                 _allResponses = TypeExtensions
                                 .GetTestCaseEnumerable<AssemblyMarker>(t => t.IsAssignableTo<IResponse>())
-                                .Select(x => new object[] { x });
+                .Select(x => new object[] { x });
 
             return _allResponses;
         }
@@ -91,7 +90,7 @@ namespace Eml.Mediator.Tests.Integration.Conventions.TestCases
             if (_allCommandEngines == null)
                 _allCommandEngines = TypeExtensions
                                     .GetTestCaseEnumerable<AssemblyMarker>(t => t.IsClosedTypeOf(typeof(ICommandEngine<>)))
-                                    .Select(x => new object[] { x });
+                .Select(x => new object[] { x });
 
             return _allCommandEngines;
         }
@@ -103,7 +102,7 @@ namespace Eml.Mediator.Tests.Integration.Conventions.TestCases
             if (_allCommandAsyncEngines == null)
                 _allCommandAsyncEngines = TypeExtensions
                                           .GetTestCaseEnumerable<AssemblyMarker>(t => t.IsClosedTypeOf(typeof(ICommandAsyncEngine<>)))
-                                          .Select(x => new object[] { x });
+                .Select(x => new object[] { x });
 
             return _allCommandAsyncEngines;
         }
@@ -115,7 +114,7 @@ namespace Eml.Mediator.Tests.Integration.Conventions.TestCases
             if (_allRequestEngines == null)
                 _allRequestEngines = TypeExtensions
                                     .GetTestCaseEnumerable<AssemblyMarker>(t => t.IsClosedTypeOf(typeof(IRequestEngine<,>)))
-                                    .Select(x => new object[] { x });
+                .Select(x => new object[] { x });
 
             return _allRequestEngines;
         }
@@ -127,7 +126,7 @@ namespace Eml.Mediator.Tests.Integration.Conventions.TestCases
             if (_allRequestAsyncEngines == null)
                 _allRequestAsyncEngines = TypeExtensions
                                          .GetTestCaseEnumerable<AssemblyMarker>(t => t.IsClosedTypeOf(typeof(IRequestAsyncEngine<,>)))
-                                         .Select(x => new object[] { x });
+                .Select(x => new object[] { x });
 
             return _allRequestAsyncEngines;
         }

@@ -11,9 +11,9 @@ namespace Eml.Mediator.Tests.Integration.Commands.Sync
         [Fact]
         public void Command_ShouldThrowMissingEngineException()
         {
-            var command = new TestCommandWithNoEngine();
+            var command = new TestWithNoEngineCommand();
 
-            Should.Throw<MissingEngineException>(() => mediator.Set(command));
+            Should.Throw<MissingEngineException>(() => mediator.Execute(command));
         }
     }
 }

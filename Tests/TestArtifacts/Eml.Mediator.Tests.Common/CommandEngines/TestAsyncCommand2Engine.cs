@@ -6,9 +6,9 @@ using Eml.Mediator.Tests.Common.Commands;
 namespace Eml.Mediator.Tests.Common.CommandEngines
 {
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class TestAsyncCommand2Engine : ICommandAsyncEngine<TestAsyncCommandWithMultipleEngine>
+    public class TestAsyncCommand2Engine : ICommandAsyncEngine<TestWithMultipleEngineAsyncCommand>
     {
-        public async Task SetAsync(TestAsyncCommandWithMultipleEngine commandAsync)
+        public async Task ExecuteAsync(TestWithMultipleEngineAsyncCommand commandAsync)
         {
             await Task.Run(() => commandAsync.EngineInvocationCount++);
         }

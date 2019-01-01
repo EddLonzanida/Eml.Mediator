@@ -31,11 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eml.ClassFactory.Contracts, Version=2.1.0.17, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Eml.ClassFactory.Contracts.2.1.0.17\lib\net462\Eml.ClassFactory.Contracts.dll</HintPath>
+    <Reference Include="Eml.ClassFactory.Contracts, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Eml.ClassFactory.Contracts.2.2.0\lib\net462\Eml.ClassFactory.Contracts.dll</HintPath>
     </Reference>
-    <Reference Include="Eml.Mediator, Version=2.1.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Eml.Mediator.2.1.0.8\lib\net462\Eml.Mediator.dll</HintPath>
+    <Reference Include="Eml.Mediator, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Eml.Mediator.2.2.0\lib\net462\Eml.Mediator.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -59,12 +59,12 @@
     <Compile Include="CommandEngines\TestCommandWithExceptionEngine.cs" />
     <Compile Include="Commands\TestAsyncCommand.cs" />
     <Compile Include="Commands\TestWithExceptionAsyncCommand.cs" />
-    <Compile Include="Commands\TestAsyncCommandWithMultipleEngine.cs" />
-    <Compile Include="Commands\TestAsyncCommandWithNoEngine.cs" />
+    <Compile Include="Commands\TestWithMultipleEngineAsyncCommand.cs" />
+    <Compile Include="Commands\TestWithNoEngineAsyncCommand.cs" />
     <Compile Include="Commands\TestCommand.cs" />
     <Compile Include="Commands\TestWithExceptionCommand.cs" />
-    <Compile Include="Commands\TestCommandWithMultipleEngine.cs" />
-    <Compile Include="Commands\TestCommandWithNoEngine.cs" />
+    <Compile Include="Commands\TestWithMultipleEngineCommand.cs" />
+    <Compile Include="Commands\TestWithNoEngineCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\AutoSuggestAsyncRequest.cs" />
     <Compile Include="RequestEngines\AutoSuggestAsyncEngine.cs" />
