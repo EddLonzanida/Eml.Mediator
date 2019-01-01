@@ -21,5 +21,6 @@ namespace Eml.Mediator.Tests.Integration.Commands.Sync
             dotMemory.Check(memory => memory
                 .GetObjects(where => where.Type.Is<TestWithExceptionCommandEngine>()).ObjectsCount.ShouldBe(0));
         }
+        
     }
 }

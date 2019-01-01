@@ -5,7 +5,7 @@ using Eml.Mediator.Tests.Common.Commands;
 namespace Eml.Mediator.Tests.Common.CommandEngines
 {
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class TestCommandWithExceptionEngine : ICommandEngine<TestWithExceptionCommand>
+    public class TestWithExceptionCommandEngine : ICommandEngine<TestWithExceptionCommand>
     {
         public void Execute(TestWithExceptionCommand command)
         {
