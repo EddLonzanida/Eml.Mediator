@@ -1,4 +1,4 @@
-# [Eml.Mediator](https://preview.nuget.org/packages/Eml.Mediator/)
+# [Eml.Mediator](https://www.nuget.org/packages/Eml.Mediator/)
 
 # A. Usage - ***Command***
     
