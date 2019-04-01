@@ -110,7 +110,7 @@
 ```
 ## That's it.
 #### Check out [EmlExtensions.vsix](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.EmlExtensions) to automate the above process in one go.
-![](https://github.com/EddLonzanida/Eml.Mediator.Demo/blob/8c905d69f3b55701fc4880e2b8501d3c0d5ea268/Art/Steps.gif)
+![](https://raw.githubusercontent.com/EddLonzanida/Eml.Mediator.Demo/master/Art/Steps.gif)
 
 
 
