@@ -4,7 +4,7 @@
     <TargetFrameworks>net462;net47;net471;net472;netstandard2.0</TargetFrameworks>
     <RepositoryUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</RepositoryUrl>
     <PackageProjectUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</PackageProjectUrl>
-    <Description>Capture Business-Use-Cases and convert it into modular and highly testable chunk of codes. A combination of Command, Request-Response, Mediator Pattern and Abstract Class Factory pattern.</Description>
+    <Description>Capture Business-Use-Cases and convert it into modular and highly testable chunk of codes. One step closer to migrating or disecting monolithic apps. A combination of Command, Request-Response, Mediator Pattern and Abstract Class Factory pattern. Provide a common ground for projects with large number of developers. Now supports .NetCore2.2.</Description>
     <Copyright>Copyright 2017 (c) EmL Solutions. All rights reserved.</Copyright>
     <PackageTags>Mediator Command Request Response Pattern Eml.Mediator EmL Solutions</PackageTags>
     <Authors>EmL Solutions</Authors>
@@ -12,8 +12,12 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Eml.Mediator.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;CS1591</NoWarn>
     <LangVersion>latest</LangVersion>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
-
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(TargetFramework)' == 'net462' or '$(TargetFramework)' == 'net47' or '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net472'">
       <PropertyGroup>
