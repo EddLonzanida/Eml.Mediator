@@ -1,5 +1,4 @@
 # [Eml.Mediator](https://preview.nuget.org/packages/Eml.Mediator/)
-Capture Business-Use-Cases and convert it into modular and highly testable chunk of codes. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern. Now supports .NetCore2.2
 
 # A. Usage - ***Command***
     
@@ -111,6 +110,7 @@ Capture Business-Use-Cases and convert it into modular and highly testable chunk
 ```
 ## That's it.
 #### Check out [EmlExtensions.vsix](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.EmlExtensions) to automate the above process in one go.
-![](https://github.com/EddLonzanida/Eml.Mediator.Demo/blob/master/Art/Steps.gif)
+![](https://github.com/EddLonzanida/Eml.Mediator.Demo/blob/8c905d69f3b55701fc4880e2b8501d3c0d5ea268/Art/Steps.gif)
+
 
 
