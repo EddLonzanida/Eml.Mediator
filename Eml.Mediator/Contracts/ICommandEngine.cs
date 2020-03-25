@@ -9,12 +9,19 @@ using System;
 
 namespace Eml.Mediator.Contracts
 {
+    /// <summary>
+    /// Base Interface used to identify ICommandEngine&lt; T&gt;
+    /// </summary>
+    public interface ICommandEngine
+    {
+    }
+
 #if NETFULL
     [InheritedExport]
-    public interface ICommandEngine<in T> : IDisposable
+    public interface ICommandEngine<in T> : ICommandEngine, IDisposable
 #endif
 #if NETCORE
-    public interface ICommandEngine<in T> : IDisposable, IInheritedExport
+    public interface ICommandEngine<in T> : ICommandEngine, IDisposable, IInheritedExport
 #endif
         where T : ICommand
     {

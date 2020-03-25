@@ -1,6 +1,13 @@
 ﻿namespace Eml.Mediator.Contracts
 {
-    public interface IRequest<TRequest, TResponse>
+    /// <summary>
+    /// Base Interface used to identify IRequest&lt;TRequest, TResponse&gt;
+    /// </summary>
+    public interface IRequest
+    {
+    }
+
+    public interface IRequest<TRequest, TResponse> : IRequest
         where TRequest : IRequest<TRequest, TResponse>
         where TResponse : IResponse
     {

@@ -10,12 +10,19 @@ using System.Threading.Tasks;
 
 namespace Eml.Mediator.Contracts
 {
+    /// <summary>
+    /// Base Interface used to identify ICommandAsyncEngine&lt; T&gt;
+    /// </summary>
+    public interface ICommandAsyncEngine
+    {
+    }
+
 #if NETFULL
     [InheritedExport]
-    public interface ICommandAsyncEngine<in T> : IDisposable
+    public interface ICommandAsyncEngine<in T> : ICommandAsyncEngine, IDisposable
 #endif
 #if NETCORE
-    public interface ICommandAsyncEngine<in T> : IDisposable, IInheritedExport
+    public interface ICommandAsyncEngine<in T> : ICommandAsyncEngine, IDisposable, IInheritedExport
 #endif
         where T : ICommandAsync
     {
