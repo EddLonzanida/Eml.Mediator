@@ -12,7 +12,7 @@ namespace Eml.Mediator.Tests.Common.RequestEngines
 #endif
     public class TestRequestEngine : IRequestEngine<TestRequest, TestResponse>
     {
-        public TestResponse Get(TestRequest request)
+        public TestResponse Execute(TestRequest request)
         {
             return new TestResponse(request.Id);
         }

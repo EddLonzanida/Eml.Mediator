@@ -19,7 +19,7 @@ namespace Eml.Mediator.Tests.Common.RequestEngines
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<TestResponse> GetAsync(TestAsyncRequest request)
+        public async Task<TestResponse> ExecuteAsync(TestAsyncRequest request)
         {
             return await Task.Run(() => new TestResponse(request.Id));
         }

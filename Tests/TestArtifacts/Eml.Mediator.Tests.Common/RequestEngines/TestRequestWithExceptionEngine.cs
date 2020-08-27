@@ -12,7 +12,7 @@ namespace Eml.Mediator.Tests.Common.RequestEngines
 #endif
     public class TestRequestWithExceptionEngine : IRequestEngine<TestRequestWithException, TestResponse>
     {
-        public TestResponse Get(TestRequestWithException request)
+        public TestResponse Execute(TestRequestWithException request)
         {
             throw new System.NotImplementedException();
         }

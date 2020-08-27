@@ -26,6 +26,6 @@ namespace Eml.Mediator.Contracts
         where TRequest : IRequest<TRequest, TResponse>
         where TResponse : IResponse
     {
-        TResponse Get(TRequest request);
+        TResponse Execute(TRequest request);
     }
 }

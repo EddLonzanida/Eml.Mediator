@@ -92,7 +92,7 @@
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class TestRequestEngine : IRequestAsyncEngine<TestRequestAsync, TestResponse>
     {
-        public async Task<TestResponse> GetAsync(TestRequestAsync request)  //<-Execute
+        public async Task<TestResponse> ExecuteAsync(TestRequestAsync request)  //<-Execute
         {
             return await Task.Run(() => new TestResponse(request.Id));
         }
@@ -102,7 +102,7 @@
 ```javascript
     public class TestRequestEngine : IRequestAsyncEngine<TestRequestAsync, TestResponse>
     {
-        public async Task<TestResponse> GetAsync(TestRequestAsync request)  //<-Execute
+        public async Task<TestResponse> ExecuteAsync(TestRequestAsync request)  //<-Execute
         {
             return await Task.Run(() => new TestResponse(request.Id));
         }

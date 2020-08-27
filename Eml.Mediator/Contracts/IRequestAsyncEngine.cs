@@ -27,6 +27,6 @@ namespace Eml.Mediator.Contracts
         where T1 : IRequestAsync<T1, T2>
         where T2 : IResponse
     {
-        Task<T2> GetAsync(T1 request);
+        Task<T2> ExecuteAsync(T1 request);
     }
 }

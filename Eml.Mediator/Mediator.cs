@@ -133,7 +133,7 @@ namespace Eml.Mediator
 
                 var engine = syncEngine.Instance();
 
-                return engine.Get((T1)request);
+                return engine.Execute((T1)request);
             }
             finally
             {
@@ -173,7 +173,7 @@ namespace Eml.Mediator
                             $"{Environment.NewLine}Check if the class is implementing IRequestAsyncEngine." +
                             $"{Environment.NewLine}Check if any of the constructor parameters for {typeof(T1).Name} are also in the container.");
 
-                return await asyncEngine.Instance().GetAsync((T1)request);
+                return await asyncEngine.Instance().ExecuteAsync((T1)request);
             }
             finally
             {

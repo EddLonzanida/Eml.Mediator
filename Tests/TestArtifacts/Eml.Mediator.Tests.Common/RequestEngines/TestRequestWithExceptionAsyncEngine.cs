@@ -14,7 +14,7 @@ namespace Eml.Mediator.Tests.Common.RequestEngines
 #endif
     public class TestRequestWithExceptionAsyncEngine : IRequestAsyncEngine<TestAsyncRequestWithException, TestResponse>
     {
-        public Task<TestResponse> GetAsync(TestAsyncRequestWithException request)
+        public Task<TestResponse> ExecuteAsync(TestAsyncRequestWithException request)
         {
             throw new NotImplementedException();
         }

@@ -13,7 +13,7 @@ namespace Eml.Mediator.Tests.Common.RequestEngines
 #endif
     public class TestRequest1AsyncEngine : IRequestAsyncEngine<TestAsyncRequestWithMultipleEngine, TestResponse>
     {
-        public async Task<TestResponse> GetAsync(TestAsyncRequestWithMultipleEngine request)
+        public async Task<TestResponse> ExecuteAsync(TestAsyncRequestWithMultipleEngine request)
         {
             return await Task.Run(() => new TestResponse(request.Id));
         }

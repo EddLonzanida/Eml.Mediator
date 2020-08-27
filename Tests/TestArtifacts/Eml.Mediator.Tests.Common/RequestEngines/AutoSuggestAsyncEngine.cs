@@ -14,7 +14,7 @@ namespace Eml.Mediator.Tests.Common.RequestEngines
 #endif
     public class AutoSuggestAsyncEngine<T> : IRequestAsyncEngine<AutoSuggestAsyncRequest<T>, AutoSuggestResponse<T>>
     {
-        public async Task<AutoSuggestResponse<T>> GetAsync(AutoSuggestAsyncRequest<T> request)
+        public async Task<AutoSuggestResponse<T>> ExecuteAsync(AutoSuggestAsyncRequest<T> request)
         {
             return await Task.FromResult(new AutoSuggestResponse<T>(new List<T>()));
         }

@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;using Eml.Mediator.Exceptions;using Eml.Mediator.Tests.Common.Commands;using Shouldly;
+﻿using System.Threading.Tasks;
+using Eml.Mediator.Exceptions;
+using Eml.Mediator.Tests.Common.Commands;
+using Shouldly;
 using Xunit;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 
