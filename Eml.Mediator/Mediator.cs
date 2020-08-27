@@ -103,7 +103,7 @@ namespace Eml.Mediator
             }
         }
 
-        public T2 Get<T1, T2>(IRequest<T1, T2> request)
+        public T2 Execute<T1, T2>(IRequest<T1, T2> request)
             where T1 : IRequest<T1, T2>
             where T2 : IResponse
         {
@@ -144,7 +144,7 @@ namespace Eml.Mediator
             }
         }
 
-        public async Task<T2> GetAsync<T1, T2>(IRequestAsync<T1, T2> request)
+        public async Task<T2> ExecuteAsync<T1, T2>(IRequestAsync<T1, T2> request)
             where T1 : IRequestAsync<T1, T2>
             where T2 : IResponse
         {

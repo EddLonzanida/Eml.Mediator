@@ -14,7 +14,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Sync
         {
            var request = new TestRequest(Guid.NewGuid());
             
-           var response = mediator.Get(request);
+           var response = mediator.Execute(request);
 
             response.ShouldBeOfType(typeof(TestResponse));
         }
@@ -24,7 +24,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Sync
         {
             var request = new TestRequest(Guid.NewGuid());
 
-            var response = mediator.Get(request);
+            var response = mediator.Execute(request);
 
             response.ResponseToRequestId.ShouldBe(request.Id);
         }

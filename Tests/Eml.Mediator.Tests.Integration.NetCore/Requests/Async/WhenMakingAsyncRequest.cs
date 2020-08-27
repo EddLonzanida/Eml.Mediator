@@ -18,7 +18,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async
         {
             var request = new TestAsyncRequest(Guid.NewGuid());
 
-            var response = await mediator.GetAsync(request);
+            var response = await mediator.ExecuteAsync(request);
 
             response.ShouldBeOfType(typeof(TestResponse));
 
@@ -33,7 +33,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async
         {
             var request = new TestAsyncRequest(Guid.NewGuid());
 
-            var response = await mediator.GetAsync(request);
+            var response = await mediator.ExecuteAsync(request);
 
             response.ResponseToRequestId.ShouldBe(request.Id);
         }

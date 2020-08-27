@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async
         {
             var request = new TestAsyncRequestWithMultipleEngine(Guid.NewGuid());
 
-            await Should.ThrowAsync<MultipleEngineException>(async () => await mediator.GetAsync(request));
+            await Should.ThrowAsync<MultipleEngineException>(async () => await mediator.ExecuteAsync(request));
         }
     }
 }
