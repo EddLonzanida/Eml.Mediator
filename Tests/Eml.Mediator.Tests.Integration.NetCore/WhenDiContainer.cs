@@ -2,7 +2,11 @@ using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Commands;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
-using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;using Shouldly;using Xunit;namespace Eml.Mediator.Tests.Integration.NetCore
+using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
+using Shouldly;
+using Xunit;
+
+namespace Eml.Mediator.Tests.Integration.NetCore
 {
     public class WhenDiContainer : IntegrationTestDiBase
     {
@@ -36,6 +40,14 @@ using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;using Shouldly;using 
             var exported = classFactory.GetExport<ICommandAsyncEngine<TestAsyncCommand>>();
 
             exported.ShouldNotBeNull();
+        }
+
+        [Fact]
+        public void UserIdCacheAsyncEngine_ShouldBeDiscoverable()
+        {
+            var export = classFactory.GetExport<IRequestAsyncEngine<UserIdCacheAsyncRequest<int>, UserIdCacheResponse<int>>>();
+
+            export.ShouldNotBeNull();
         }
     }
 }
