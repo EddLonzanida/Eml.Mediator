@@ -1,15 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6F83BA0E-773E-484C-8637-B7580E47DD67}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestArtifacts", "TestArtifacts", "{668441E8-79C4-489E-B0DA-6F3C95BEFB9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eml.Mediator.Tests.Integration", "Tests\Eml.Mediator.Tests.Integration\Eml.Mediator.Tests.Integration.csproj", "{A572FD19-65B7-44B8-8AB2-AF31375117CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eml.Mediator.Tests.Common", "Tests\TestArtifacts\Eml.Mediator.Tests.Common\Eml.Mediator.Tests.Common.csproj", "{E7CBEFD9-D54C-4F84-B05F-FD10A1D742AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eml.Mediator.Tests.Common", "Tests\TestArtifacts\Eml.Mediator.Tests.Common\Eml.Mediator.Tests.Common.csproj", "{E7CBEFD9-D54C-4F84-B05F-FD10A1D742AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eml.Mediator.Tests.Integration.NetCore", "Tests\Eml.Mediator.Tests.Integration.NetCore\Eml.Mediator.Tests.Integration.NetCore.csproj", "{79FF3DA3-38C9-4653-82BE-56791D64499C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A19975E6-AE4A-4FBE-8CFB-CF0896364559}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		NuGet.config = NuGet.config
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +25,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A572FD19-65B7-44B8-8AB2-AF31375117CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A572FD19-65B7-44B8-8AB2-AF31375117CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A572FD19-65B7-44B8-8AB2-AF31375117CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A572FD19-65B7-44B8-8AB2-AF31375117CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E7CBEFD9-D54C-4F84-B05F-FD10A1D742AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E7CBEFD9-D54C-4F84-B05F-FD10A1D742AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7CBEFD9-D54C-4F84-B05F-FD10A1D742AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7CBEFD9-D54C-4F84-B05F-FD10A1D742AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79FF3DA3-38C9-4653-82BE-56791D64499C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79FF3DA3-38C9-4653-82BE-56791D64499C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79FF3DA3-38C9-4653-82BE-56791D64499C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79FF3DA3-38C9-4653-82BE-56791D64499C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{668441E8-79C4-489E-B0DA-6F3C95BEFB9D} = {6F83BA0E-773E-484C-8637-B7580E47DD67}
-		{A572FD19-65B7-44B8-8AB2-AF31375117CE} = {6F83BA0E-773E-484C-8637-B7580E47DD67}
 		{E7CBEFD9-D54C-4F84-B05F-FD10A1D742AB} = {668441E8-79C4-489E-B0DA-6F3C95BEFB9D}
+		{79FF3DA3-38C9-4653-82BE-56791D64499C} = {6F83BA0E-773E-484C-8637-B7580E47DD67}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39E0F7A5-5D02-456D-A11D-E20466DDC5D5}

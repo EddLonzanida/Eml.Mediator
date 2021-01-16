@@ -1,19 +1,17 @@
-﻿using System.ComponentModel.Composition;
-using Eml.Mediator.Contracts;
+﻿using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Commands;
 
 namespace Eml.Mediator.Tests.Common.CommandEngines
 {
-    [PartCreationPolicy(CreationPolicy.NonShared)]
+    /// <summary>
+    /// DI signature: ICommandEngine&lt;TestCommand&gt;.
+    /// <inheritdoc cref="ICommandEngine{TestCommand}"/>
+    /// </summary>
     public class TestCommandEngine : ICommandEngine<TestCommand>
     {
         public void Execute(TestCommand command)
         {
             command.EngineInvocationCount++;
-        }
-
-        public void Dispose()
-        {
         }
     }
 }

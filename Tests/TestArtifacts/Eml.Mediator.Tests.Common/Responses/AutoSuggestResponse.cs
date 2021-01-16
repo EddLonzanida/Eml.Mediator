@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Eml.Mediator.Contracts;
-
-namespace Eml.Mediator.Tests.Common.Responses
+﻿using System.Collections.Generic;using Eml.Mediator.Contracts;namespace Eml.Mediator.Tests.Common.Responses
 {
     public class AutoSuggestResponse<T> : IResponse
     {

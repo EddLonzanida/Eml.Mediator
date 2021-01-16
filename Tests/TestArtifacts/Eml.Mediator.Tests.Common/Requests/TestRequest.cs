@@ -1,6 +1,5 @@
-﻿using System;
-using Eml.Mediator.Contracts;
-using Eml.Mediator.Tests.Common.Responses;
+﻿using System;using Eml.Mediator.Contracts;using Eml.Mediator.Tests.Common.Responses;
+using Eml.Mediator.Tests.Common.RequestEngines;
 
 namespace Eml.Mediator.Tests.Common.Requests
 {
@@ -8,6 +7,9 @@ namespace Eml.Mediator.Tests.Common.Requests
     {
         public Guid Id { get; private set; }
 
+        /// <summary>
+        /// This request will be processed by <see cref="TestRequestEngine"/>.
+        /// </summary>
         public TestRequest(Guid id)
         {
             Id = id;
