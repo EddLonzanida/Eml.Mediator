@@ -1,15 +1,9 @@
-﻿#if NETFULL
-using System.ComponentModel.Composition;
-#endif
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Commands;
 
 namespace Eml.Mediator.Tests.Common.CommandEngines
 {
-#if NETFULL
-    [PartCreationPolicy(CreationPolicy.NonShared)]
-#endif
     public class TestAsyncCommandEngine : ICommandAsyncEngine<TestAsyncCommand>
     {
         public async Task ExecuteAsync(TestAsyncCommand commandAsync)

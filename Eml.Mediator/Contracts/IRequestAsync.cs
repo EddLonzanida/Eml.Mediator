@@ -1,7 +1,7 @@
 namespace Eml.Mediator.Contracts
 {
     /// <summary>
-    /// Base Interface used to identify IRequestAsync&lt;T1, T2&gt;
+    /// No implementations. Serves as a common denominator for all IRequestAsync&lt;T1, T2&gt;
     /// </summary>
     public interface IRequestAsync
     {

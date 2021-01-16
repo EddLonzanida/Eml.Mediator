@@ -1,28 +1,17 @@
-﻿#if NETFULL
-using System.ComponentModel.Composition;
-#endif
-#if NETCORE
-using Eml.ClassFactory.Contracts;
-#endif
-
-using System;
-
-namespace Eml.Mediator.Contracts
+﻿namespace Eml.Mediator.Contracts
 {
     /// <summary>
-    /// Base Interface used to identify ICommandEngine&lt; T&gt;
+    /// No implementations. Serves as a common denominator for all ICommandEngine&lt; T&gt;
+    /// Transient.
     /// </summary>
     public interface ICommandEngine
     {
     }
 
-#if NETFULL
-    [InheritedExport]
-    public interface ICommandEngine<in T> : ICommandEngine, IDisposable
-#endif
-#if NETCORE
-    public interface ICommandEngine<in T> : ICommandEngine, IDisposable, IInheritedExport
-#endif
+    /// <summary>
+    /// Transient.
+    /// </summary>
+    public interface ICommandEngine<in T> : ICommandEngine
         where T : ICommand
     {
         void Execute(T command);

@@ -1,31 +1,21 @@
-﻿#if NETFULL
-using System.ComponentModel.Composition;
-#endif
-#if NETCORE
-using Eml.ClassFactory.Contracts;
-#endif
-
-using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Eml.Mediator.Contracts
 {
     /// <summary>
-    /// Base Interface used to identify ICommandAsyncEngine&lt; T&gt;
+    /// No implementations. Serves as a common denominator for all ICommandAsyncEngine&lt; T&gt;
+    /// Transient.
     /// </summary>
     public interface ICommandAsyncEngine
     {
     }
 
-#if NETFULL
-    [InheritedExport]
-    public interface ICommandAsyncEngine<in T> : ICommandAsyncEngine, IDisposable
-#endif
-#if NETCORE
-    public interface ICommandAsyncEngine<in T> : ICommandAsyncEngine, IDisposable, IInheritedExport
-#endif
+    /// <summary>
+    /// Transient.
+    /// </summary>
+    public interface ICommandAsyncEngine<in T> : ICommandAsyncEngine
         where T : ICommandAsync
     {
-        Task ExecuteAsync(T commandAsync);
+        Task ExecuteAsync(T command);
     }
 }

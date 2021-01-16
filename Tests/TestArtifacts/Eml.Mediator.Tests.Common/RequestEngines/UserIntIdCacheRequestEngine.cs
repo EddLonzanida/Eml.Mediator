@@ -1,10 +1,4 @@
-﻿#if NETFULL
-using System.ComponentModel.Composition;
-#endif
-#if NETCORE
-using System.Composition;
-#endif
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Classes;
 using Eml.Mediator.Tests.Common.Exceptions;
@@ -20,7 +14,6 @@ namespace Eml.Mediator.Tests.Common.RequestEngines
         private readonly IEmlRepository<int> emlUserPiiRepository;
         private readonly IPiiRepository<int> piiUserPiiRepository;
 
-        [ImportingConstructor]
         public UserIntIdCacheRequestEngine(IPiiRepository<int> piiUserPiiRepository, IEmlRepository<int> emlUserPiiRepository)
         {
             this.piiUserPiiRepository = piiUserPiiRepository;
