@@ -11,9 +11,9 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Async
         [Fact]
         public async Task Command_ShouldBeCalledOnce()
         {
-            var command = new TestAsyncCommand();
+            var command = new TestAsyncCommand();   //<-Data
 
-            await mediator.ExecuteAsync(command);
+            await mediator.ExecuteAsync(command);   //<-Execute
 
             command.EngineInvocationCount.ShouldBe(1);
         }
