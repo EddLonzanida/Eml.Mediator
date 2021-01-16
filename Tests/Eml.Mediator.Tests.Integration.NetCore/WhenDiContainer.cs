@@ -2,14 +2,19 @@ using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Commands;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
-using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;using Shouldly;using Xunit;namespace Eml.Mediator.Tests.Integration.NetCore
+using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
+using Microsoft.Extensions.DependencyInjection;
+using Shouldly;
+using Xunit;
+
+namespace Eml.Mediator.Tests.Integration.NetCore
 {
     public class WhenDiContainer : IntegrationTestDiBase
     {
         [Fact]
         public void TestRequestEngine_ShouldBeDiscoverable()
         {
-            var exported = classFactory.GetExport<IRequestEngine<TestRequest, TestResponse>>();
+            var exported = classFactory.GetRequiredService<IRequestEngine<TestRequest, TestResponse>>();
 
             exported.ShouldNotBeNull();
         }
@@ -17,7 +22,7 @@ using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;using Shouldly;using 
         [Fact]
         public void TestRequestAsyncEngine_ShouldBeDiscoverable()
         {
-            var exported = classFactory.GetExport<IRequestAsyncEngine<TestAsyncRequest, TestResponse>>();
+            var exported = classFactory.GetRequiredService<IRequestAsyncEngine<TestAsyncRequest, TestResponse>>();
 
             exported.ShouldNotBeNull();
         }
@@ -25,7 +30,7 @@ using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;using Shouldly;using 
         [Fact]
         public void TestCommand_ShouldBeDiscoverable()
         {
-            var exported = classFactory.GetExport<ICommandEngine<TestCommand>>();
+            var exported = classFactory.GetRequiredService<ICommandEngine<TestCommand>>();
 
             exported.ShouldNotBeNull();
         }
@@ -33,9 +38,17 @@ using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;using Shouldly;using 
         [Fact]
         public void TestAsyncCommand_ShouldBeDiscoverable()
         {
-            var exported = classFactory.GetExport<ICommandAsyncEngine<TestAsyncCommand>>();
+            var exported = classFactory.GetRequiredService<ICommandAsyncEngine<TestAsyncCommand>>();
 
             exported.ShouldNotBeNull();
+        }
+
+        [Fact]
+        public void UserIdCacheAsyncEngine_ShouldBeDiscoverable()
+        {
+            var export = classFactory.GetRequiredService<IRequestAsyncEngine<UserIdCacheAsyncRequest<int>, UserIdCacheResponse<int>>>();
+
+            export.ShouldNotBeNull();
         }
     }
 }

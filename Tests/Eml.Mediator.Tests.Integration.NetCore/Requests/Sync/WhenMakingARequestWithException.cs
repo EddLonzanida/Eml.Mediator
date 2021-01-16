@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Sync
         {
             var request = new TestRequestWithException(Guid.NewGuid());
 
-            Should.Throw<NotImplementedException>(() => mediator.Get(request));
+            Should.Throw<NotImplementedException>(() => mediator.Execute(request));
         }
     }
 }

@@ -1,25 +1,20 @@
-#if NETFULL
-using System.ComponentModel.Composition;
-#endif
-#if NETCORE
-using Eml.ClassFactory.Contracts;
-#endif
-
-using System;
-
 namespace Eml.Mediator.Contracts
 {
+    /// <summary>
+    /// No implementations. Serves as a common denominator for all IRequestEngine&lt;in TRequest, out TResponse&gt;
+    /// Transient.
+    /// </summary>
+    public interface IRequestEngine
+    {
+    }
 
-#if NETFULL
-    [InheritedExport]
-    public interface IRequestEngine<in TRequest, out TResponse> : IDisposable
-#endif
-#if NETCORE
-    public interface IRequestEngine<in TRequest, out TResponse> : IDisposable, IInheritedExport
-#endif
+    /// <summary>
+    /// Transient.
+    /// </summary>
+    public interface IRequestEngine<in TRequest, out TResponse> : IRequestEngine
         where TRequest : IRequest<TRequest, TResponse>
         where TResponse : IResponse
     {
-        TResponse Get(TRequest request);
+        TResponse Execute(TRequest request);
     }
 }

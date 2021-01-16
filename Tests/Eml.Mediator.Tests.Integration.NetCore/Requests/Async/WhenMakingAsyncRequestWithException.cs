@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async
         {
             var request = new TestAsyncRequestWithException(Guid.NewGuid());
 
-            await Should.ThrowAsync<NotImplementedException>(async () => await mediator.GetAsync(request));
+            await Should.ThrowAsync<NotImplementedException>(async () => await mediator.ExecuteAsync(request));
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿namespace Eml.Mediator.Contracts
 {
-    public interface ICommandAsync
+    /// <summary>
+    /// No implementations. Serves as a common denominator for all ICommandAsync
+    /// </summary>
+    public interface ICommandAsync : ICommand
     {
     }
 }

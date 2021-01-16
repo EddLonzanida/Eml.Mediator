@@ -1,16 +1,10 @@
-﻿#if NETFULL
-using System.ComponentModel.Composition;
-#endif
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
 
 namespace Eml.Mediator.Tests.Common.RequestEngines
 {
-#if NETFULL
-    [PartCreationPolicy(CreationPolicy.NonShared)]
-#endif
     public class TestRequestAsyncEngine : IRequestAsyncEngine<TestAsyncRequest, TestResponse>
     {
         /// <inheritdoc/>
@@ -19,7 +13,7 @@ namespace Eml.Mediator.Tests.Common.RequestEngines
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<TestResponse> GetAsync(TestAsyncRequest request)
+        public async Task<TestResponse> ExecuteAsync(TestAsyncRequest request)
         {
             return await Task.Run(() => new TestResponse(request.Id));
         }

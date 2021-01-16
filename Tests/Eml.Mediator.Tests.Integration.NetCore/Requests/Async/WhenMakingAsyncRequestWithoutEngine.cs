@@ -11,7 +11,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async
         {
             var request = new TestAsyncRequestWithNoEngine(Guid.NewGuid());
 
-            await Should.ThrowAsync<MissingEngineException>(async () => await mediator.GetAsync(request));
+            await Should.ThrowAsync<MissingEngineException>(async () => await mediator.ExecuteAsync(request));
         }
 
         [Fact]
@@ -19,7 +19,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async
         {
             var request = new AutoSuggestAsyncRequest<string>("Test");
 
-            await Should.ThrowAsync<MissingEngineException>(async () => await mediator.GetAsync(request));
+            await Should.ThrowAsync<MissingEngineException>(async () => await mediator.ExecuteAsync(request));
         }
     }
 }
