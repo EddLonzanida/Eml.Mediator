@@ -10,9 +10,5 @@ namespace Eml.Mediator.Tests.Common.CommandEngines
         {
             await Task.Run(() => commandAsync.EngineInvocationCount++);
         }
-
-        public void Dispose()
-        {
-        }
     }
 }

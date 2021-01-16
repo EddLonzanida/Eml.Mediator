@@ -9,9 +9,5 @@ namespace Eml.Mediator.Tests.Common.CommandEngines
         {
             command.EngineInvocationCount++;
         }
-
-        public void Dispose()
-        {
-        }
     }
 }

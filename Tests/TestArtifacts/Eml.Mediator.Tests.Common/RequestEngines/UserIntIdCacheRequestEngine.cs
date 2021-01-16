@@ -56,9 +56,5 @@ namespace Eml.Mediator.Tests.Common.RequestEngines
 
             return new UserIdCacheResponse<int>(piiUserId, emlUserId);
         }
-
-        public void Dispose()
-        {
-        }
     }
 }
