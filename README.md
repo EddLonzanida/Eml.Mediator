@@ -1,5 +1,9 @@
 # [Eml.Mediator](https://preview.nuget.org/packages/Eml.Mediator/)
-Capture Business-Use-Cases and convert it into modular and highly testable chunk of codes. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern. Now supports .Net5
+Capture Business-Use-Cases and convert it into modular & highly testable chunk of codes. One step closer to migrating or disecting monolithic apps. A combination of Command and Request-Response pattern.
+
+Provides a common ground for projects with lots of developers.
+
+.Net5 is now supported.
 
 # A. Usage - ***Command***
     
@@ -113,6 +117,51 @@ Capture Business-Use-Cases and convert it into modular and highly testable chunk
         }
     }
 ```
+
+# C. DI Registration
+Requires [Scrutor](https://github.com/khellang/Scrutor) for the automated registration.
+
+See **[IntegrationTestDiFixture.cs](Tests/Eml.Mediator.Tests.Integration.NetCore/BaseClasses/IntegrationTestDiFixture.cs)** for more details.
+```javascript
+    private static void ConfigureServices(IServiceCollection services)
+    {
+        services.Scan(scan => scan
+            .FromAssemblyDependencies(typeof(IntegrationTestDiFixture).Assembly)
+
+                // Register IMediator
+                .AddClasses(classes => classes.AssignableTo<IMediator>())
+                .AsSelfWithInterfaces()
+                .WithSingletonLifetime()
+
+                // Register RequestEngines, CommandEngines - Async
+                .AddClasses(classes => classes.AssignableTo(typeof(IRequestAsyncEngine<,>)))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime()
+                
+                // Register RequestEngines, CommandEngines
+                .AddClasses(classes => classes.AssignableTo(typeof(IRequestEngine<,>)))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime()
+
+                // Register CommandEngines - Async
+                .AddClasses(classes => classes.AssignableTo(typeof(ICommandAsyncEngine<>)))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime()
+                
+                // Register CommandEngines
+                .AddClasses(classes => classes.AssignableTo(typeof(ICommandEngine<>)))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime()
+
+                // IDiDiscoverableTransient
+                .AddClasses(classes => classes.AssignableTo(typeof(IDiDiscoverableTransient)))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime()
+        );
+    }
+```
+
+
 ## That's it.
 #### Check out [EmlExtensions.vsix](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.EmlExtensions) to automate the above process in one go.
 ![](Art/Steps.gif)

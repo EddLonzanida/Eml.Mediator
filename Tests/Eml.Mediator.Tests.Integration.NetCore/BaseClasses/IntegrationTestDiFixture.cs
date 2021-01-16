@@ -25,14 +25,13 @@ namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses
         {
             services.Scan(scan => scan
                 .FromAssemblyDependencies(typeof(IntegrationTestDiFixture).Assembly)
-                // .FromAssemblyOf<IntegrationTestDiFixture>()
 
                     // Register IMediator
                     .AddClasses(classes => classes.AssignableTo<IMediator>())
                     .AsSelfWithInterfaces()
                     .WithSingletonLifetime()
 
-                    // Register RequestEngines, CommandEngines
+                    // Register RequestEngines, CommandEngines - Async
                     .AddClasses(classes => classes.AssignableTo(typeof(IRequestAsyncEngine<,>)))
                     .AsImplementedInterfaces()
                     .WithTransientLifetime()
@@ -41,7 +40,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses
                     .AsImplementedInterfaces()
                     .WithTransientLifetime()
 
-                    // Register CommandEngines
+                    // Register CommandEngines - Async
                     .AddClasses(classes => classes.AssignableTo(typeof(ICommandAsyncEngine<>)))
                     .AsImplementedInterfaces()
                     .WithTransientLifetime()
