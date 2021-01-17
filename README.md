@@ -1,9 +1,10 @@
-# [Eml.Mediator](https://preview.nuget.org/packages/Eml.Mediator/)
+# [Eml.Mediator](https://www.nuget.org/packages/Eml.Mediator/5.0.0)
 Capture Business-Use-Cases and convert it into modular & highly testable chunk of codes. One step closer to migrating or disecting monolithic apps. A combination of Command and Request-Response pattern.
 
 Provides a common ground for projects with lots of developers.
 
 .Net5 is now supported.
+* **Breaking changes:** Starting with [Eml.Mediator.5.0.0](https://www.nuget.org/packages/Eml.Mediator/5.0.0), support to lower versions of .Net framework *has been removed.* You need to upgrade to .Net5 or higher.
 
 # A. Usage - ***Command***
     
