@@ -1,5 +1,5 @@
 # [Eml.Mediator](https://www.nuget.org/packages/Eml.Mediator/5.0.0)
-Capture Business-Use-Cases and convert it into modular & highly testable chunk of codes. One step closer to migrating or disecting monolithic apps. A combination of Command and Request-Response pattern.
+Capture Business-use-cases and convert it into a modular, highly testable chunk of codes. One step closer to disecting & migrating monolithic apps. A combination of Command and Request-Response pattern.
 
 Provides a common ground for projects with lots of developers.
 
@@ -164,7 +164,7 @@ See **[IntegrationTestDiFixture.cs](Tests/Eml.Mediator.Tests.Integration.NetCore
 
 
 ## That's it.
-#### Check out [EmlExtensions.vsix](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.EmlExtensions) to automate the above process in one go.
+##### Check out [Eml.Mediator.vsix](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.Mediator) to automate the steps above.
 ![](Art/Steps.gif)
 
 
