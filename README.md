@@ -1,9 +1,14 @@
 # [Eml.Mediator](https://www.nuget.org/packages/Eml.Mediator/)
-Capture Business-use-cases and convert it into a modular, highly testable chunk of codes. One step closer to dissecting & migrating monolithic apps. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern.
 
-Provides a common ground for projects with large number of developers.
+* Has own Visual Studio Addin for easy use.
 
-.Net5 is now supported.
+* Small size.
+
+* Capture Business-use-cases and convert it into a modular, highly testable chunk of codes. One step closer to dissecting & migrating monolithic apps. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern.
+
+* Provides a common ground for projects with large number of developers.
+
+* .Net5 is now supported.
 
 # A. Usage - ***Command***
     
