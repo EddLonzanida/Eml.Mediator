@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.1</TargetFrameworks>
 		<PackageProjectUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</PackageProjectUrl>
-		<Description>Has own Visual Studio Addin for easy use. Small size. Capture Business-use-cases and convert it into a modular, highly testable chunk of codes. One step closer to dissecting &amp; migrating monolithic apps. Provides a common ground for projects with large number of developers. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern. Now supports .Net5.</Description>
+		<Description>Has own Visual Studio Addin for easier use. Small size. Capture Business-use-cases and convert it into a modular, highly testable chunk of codes. One step closer to dissecting &amp; migrating monolithic apps. Provides a common ground for projects with large number of developers. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern. Now supports .Net5.</Description>
 		<PackageTags>Mediator Request Response Command Abstract Class Factory Pattern EmL Solutions</PackageTags>
 		<Authors>EmL Solutions</Authors>
 		<Company>EmL Solutions</Company>

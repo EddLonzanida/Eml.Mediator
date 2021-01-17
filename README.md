@@ -1,6 +1,6 @@
 # [Eml.Mediator](https://www.nuget.org/packages/Eml.Mediator/)
 
-* Has own Visual Studio Addin for easy use.
+* Has own [Visual Studio Addin](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.Mediator) for easier use.
 
 * Small size.
 
