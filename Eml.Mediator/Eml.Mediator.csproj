@@ -3,7 +3,7 @@
 		<TargetFrameworks>netstandard2.1</TargetFrameworks>
 		<RepositoryUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</PackageProjectUrl>
-		<Description>Capture Business-Use-Cases and convert it into modular and highly testable chunk of codes. One step closer to migrating or disecting monolithic apps. A combination of Command and Request-Response pattern. Provide a common ground for projects with large number of developers. Now supports .Net5.</Description>
+		<Description>Capture Business-use-cases and convert it into a modular, highly testable chunk of codes. One step closer to dissecting &amp; migrating monolithic apps. Provides a common ground for projects with large number of developers. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern. Now supports .Net5.</Description>
 		<Copyright>Copyright 2017 (c) EmL Solutions. All rights reserved.</Copyright>
 		<PackageTags>Command Request Response Pattern Eml.Mediator EmL Solutions</PackageTags>
 		<Authors>EmL Solutions</Authors>
@@ -14,10 +14,10 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	</PropertyGroup>
-	<ItemGroup>
-		<None Include="..\README.md" Pack="true" PackagePath="" />
-	</ItemGroup>
-	<ItemGroup>
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
-	</ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+  </ItemGroup>
 </Project>
