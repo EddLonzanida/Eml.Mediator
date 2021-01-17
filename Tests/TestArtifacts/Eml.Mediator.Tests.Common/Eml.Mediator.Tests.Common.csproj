@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Eml.Mediator" Version="5.0.2" />
+    <PackageReference Include="Eml.Mediator" Version="5.0.5" />
   </ItemGroup>
 
  
