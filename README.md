@@ -173,7 +173,7 @@ See **[IntegrationTestDiFixture.cs](Tests/Eml.Mediator.Tests.Integration.NetCore
 See **[ConsumerClassWithMediator.cs](Tests/Eml.Mediator.Tests.Integration.NetCore/Requests/Async/ConsumerClassWithMediator.cs)** for more details.
 
 ```
-    public class ConsumerClassWithMediator : IDiDiscoverableTransient
+    public class ConsumerClassWithMediator : IConsumerClassWithMediator
     {
         private readonly IMediator mediator;
 
@@ -196,7 +196,7 @@ See **[ConsumerClassWithMediator.cs](Tests/Eml.Mediator.Tests.Integration.NetCor
 * This is the equivalent class without leveraging IMediator.
 See **[ConsumerClassWithoutMediator.cs](Tests/Eml.Mediator.Tests.Integration.NetCore/Requests/Async/ConsumerClassWithMediator.cs)** for more details.
 ```
-    public class ConsumerClassWithoutMediator : IDiDiscoverableTransient
+    public class ConsumerClassWithoutMediator : IConsumerClassWithoutMediator
     {
         private readonly IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine;
 

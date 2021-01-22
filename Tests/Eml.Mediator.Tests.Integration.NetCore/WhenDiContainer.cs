@@ -3,6 +3,7 @@ using Eml.Mediator.Tests.Common.Commands;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
+using Eml.Mediator.Tests.Integration.NetCore.Requests.Async;
 using Microsoft.Extensions.DependencyInjection;
 using Shouldly;
 using Xunit;
@@ -46,9 +47,25 @@ namespace Eml.Mediator.Tests.Integration.NetCore
         [Fact]
         public void UserIdCacheAsyncEngine_ShouldBeDiscoverable()
         {
-            var export = classFactory.GetRequiredService<IRequestAsyncEngine<UserIdCacheAsyncRequest<int>, UserIdCacheResponse<int>>>();
+            var exported = classFactory.GetRequiredService<IRequestAsyncEngine<UserIdCacheAsyncRequest<int>, UserIdCacheResponse<int>>>();
 
-            export.ShouldNotBeNull();
+            exported.ShouldNotBeNull();
+        }
+
+        [Fact]
+        public void ConsumerClassWithMediator_ShouldBeDiscoverable()
+        {
+            var exported = classFactory.GetRequiredService<IConsumerClassWithMediator>();
+
+            exported.ShouldNotBeNull();
+        }
+
+        [Fact]
+        public void CConsumerClassWithoutMediator_ShouldBeDiscoverable()
+        {
+            var exported = classFactory.GetRequiredService<IConsumerClassWithoutMediator>();
+
+            exported.ShouldNotBeNull();
         }
     }
 }
