@@ -1,6 +1,6 @@
 # [Eml.Mediator](https://www.nuget.org/packages/Eml.Mediator/)
 
-* Has own [Visual Studio Addin](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.Mediator) for easy use.
+* Has own [Visual Studio Addin](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.Mediator) for easier use.
 
 * Small size.
 
@@ -199,8 +199,9 @@ See **[ConsumerClassWithoutMediator.cs](Tests/Eml.Mediator.Tests.Integration.Net
     public class ConsumerClassWithoutMediator : IConsumerClassWithoutMediator
     {
         private readonly IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine;
-
-        public ConsumerClassWithoutMediator(IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine)     //<-Normal dependency injection. Inject engine
+        
+        // Normal dependency injection. Inject engine
+        public ConsumerClassWithoutMediator(IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine)
         {
             this.engine = engine;
         }
