@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eml.Mediator", "Eml.Mediator\Eml.Mediator.csproj", "{26388F8F-D99F-451F-B55C-A8070DC4B7A0}"
 EndProject
@@ -12,6 +12,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestArtifacts", "TestArtifacts", "{CFB83567-92D9-48F9-AEB5-E276B9556139}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eml.Mediator.Tests.Common", "Tests\TestArtifacts\Eml.Mediator.Tests.Common\Eml.Mediator.Tests.Common.csproj", "{6D195C53-BC0C-4D80-BBFD-A10B0F137C52}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{091BAE7F-0D1B-4634-9895-034292E28887}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		NuGet.config = NuGet.config
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
