@@ -5,7 +5,7 @@ namespace Eml.Mediator.Contracts
     public interface IMediator
     {
         /// <summary>
-        /// Method that implements ICommandEngine.
+        /// Method that implements ICommandEngine for type <typeparamref name="T"/> .
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="command"></param>
