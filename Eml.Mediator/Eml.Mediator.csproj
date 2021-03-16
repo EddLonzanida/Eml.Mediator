@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.1</TargetFrameworks>
+		<TargetFramework>net5.0</TargetFramework>
 		<PackageProjectUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</PackageProjectUrl>
 		<Description>Has own Visual Studio Addin for easier use. Small size. Capture Business-use-cases and convert it into a modular, highly testable chunk of codes. One step closer to dissecting &amp; migrating monolithic apps. Provides a common ground for projects with large number of developers. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern. Now supports .Net5.</Description>
 		<PackageTags>Mediator Request Response Command Abstract Class Factory Pattern EmL Solutions</PackageTags>
@@ -40,6 +40,6 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="&quot;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64\signtool.exe&quot; sign /f EmLNuGet.pfx /p &quot;^TJf2kw#n2L5yQ&quot; /fd SHA256 &quot;$(TargetDir)\Eml.Mediator.dll&quot;" />
+    <Exec Command="&quot;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64\signtool.exe&quot; sign /f EmLNuGet.pfx /p &quot;^TJf2kw#n2L5yQ&quot; /fd SHA256 &quot;$(TargetDir)\$(TargetFileName)&quot;" />
   </Target>
 </Project>
