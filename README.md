@@ -10,6 +10,13 @@
 
 * .Net5 is now supported.
 
+##### Limitations
+* ExecuteAsync will always create a new instance of the engine.
+* The lifetime of the engine ends as soon as ExecuteAsync is completed.
+* If this behavior does not suit your needs, just use dependency injection via the constructor.
+
+
+
 # A. Usage - ***Command***
     
 ```javascript
