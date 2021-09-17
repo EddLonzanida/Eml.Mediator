@@ -2,7 +2,6 @@
 using Eml.Mediator.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,14 +25,8 @@ namespace Eml.Mediator
             var items = classFactory.GetServices<ICommandEngine<T>>();
             var engines = items.ToList();
 
-            if (engines.Count > 1)
-            {
-                var aMessages = GetMultipleEngineExceptionMessage(engines);
-
-                throw new MultipleEngineException($"Check the following Command engines:{aMessages}");
-            }
-
-            var syncEngine = engines.FirstOrDefault();
+            // IServiceProvider picks up items that was registered last
+            var syncEngine = engines.LastOrDefault();
 
             if (syncEngine == null)
                 throw new MissingEngineException($"{Environment.NewLine}Could not find a Command of type {typeof(T)}. " +
@@ -51,15 +44,8 @@ namespace Eml.Mediator
             var items = classFactory.GetServices<ICommandAsyncEngine<T>>();
             var engines = items.ToList();
 
-            if (engines.Count > 1)
-            {
-
-                var aMessages = GetMultipleEngineExceptionMessage(engines);
-
-                throw new MultipleEngineException($"Check the following Command engines:{aMessages}");
-            }
-
-            var asyncEngine = engines.FirstOrDefault();
+            // IServiceProvider picks up items that was registered last
+            var asyncEngine = engines.LastOrDefault();
 
             if (asyncEngine == null)
                 throw new MissingEngineException($"{Environment.NewLine}Could not find a Command of type {typeof(T)}. " +
@@ -78,14 +64,8 @@ namespace Eml.Mediator
             var items = classFactory.GetServices<IRequestEngine<T1, T2>>();
             var engines = items.ToList();
 
-            if (engines.Count > 1)
-            {
-                var aMessages = GetMultipleEngineExceptionMessage(engines);
-
-                throw new MultipleEngineException($"Check the following Request engines:{aMessages}");
-            }
-
-            var syncEngine = engines.FirstOrDefault();
+            // IServiceProvider picks up items that was registered last
+            var syncEngine = engines.LastOrDefault();
 
             if (syncEngine == null)
                 throw new MissingEngineException(
@@ -106,14 +86,8 @@ namespace Eml.Mediator
             var items = classFactory.GetServices<IRequestAsyncEngine<T1, T2>>();
             var engines = items.ToList();
 
-            if (engines.Count > 1)
-            {
-                var aMsgs = GetMultipleEngineExceptionMessage(engines);
-
-                throw new MultipleEngineException($"Check the following Request engines:{aMsgs}");
-            }
-
-            var asyncEngine = engines.FirstOrDefault();
+            // IServiceProvider picks up items that was registered last
+            var asyncEngine = engines.LastOrDefault();
 
             if (asyncEngine == null)
                 throw new MissingEngineException(
@@ -125,15 +99,6 @@ namespace Eml.Mediator
                         $"{Environment.NewLine}Check if any of the constructor parameters for {typeof(T1).Name} are also in the container.");
 
             return await asyncEngine.ExecuteAsync((T1)request);
-        }
-
-        private static string GetMultipleEngineExceptionMessage<T>(IEnumerable<T> engines)
-        {
-            var aMsgs = engines.ToList().ConvertAll(r => r.GetType().FullName);
-
-            aMsgs = aMsgs.ConvertAll(r => $"->{r}");
-
-            return $"{Environment.NewLine}{string.Join(Environment.NewLine, aMsgs)}{Environment.NewLine}";
         }
     }
 }

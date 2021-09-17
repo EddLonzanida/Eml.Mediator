@@ -12,6 +12,9 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="Exceptions\MultipleEngineException.cs" />
+	</ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" Pack="true" PackagePath="" />
   </ItemGroup>
