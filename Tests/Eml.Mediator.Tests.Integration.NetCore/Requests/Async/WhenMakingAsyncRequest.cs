@@ -31,11 +31,11 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async
         [Fact]
         public async Task Response_ShouldReturnCorrectValue()
         {
-            var request = new TestAsyncRequest(Guid.NewGuid());
+            var request = new TestAsyncRequest(Guid.NewGuid());     //<-Request
 
-            var response = await mediator.ExecuteAsync(request);
+            var response = await mediator.ExecuteAsync(request);    //<-Execute
 
-            response.ResponseToRequestId.ShouldBe(request.Id);
+            response.ResponseToRequestId.ShouldBe(request.Id);      //<-Return Value
         }
     }
 }

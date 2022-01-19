@@ -10,9 +10,5 @@ namespace Eml.Mediator.Tests.Common.RequestEngines
         {
             return new TestResponse(request.Id);
         }
-
-        public void Dispose()
-        {
-        }
     }
 }

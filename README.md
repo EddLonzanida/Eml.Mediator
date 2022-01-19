@@ -173,6 +173,54 @@ See **[IntegrationTestDiFixture.cs](https://github.com/EddLonzanida/Eml.Mediator
     }
 ```
 
+# D. Sample Class
+
+* Simply inject IMediator in the constructor.
+See **[ConsumerClassWithMediator.cs](https://github.com/EddLonzanida/Eml.Mediator.Demo/blob/master/Tests/Eml.Mediator.Tests.Integration.NetCore/Requests/Async/ConsumerClassWithMediator.cs)** for more details.
+
+```
+    public class ConsumerClassWithMediator : IConsumerClassWithMediator
+    {
+        private readonly IMediator mediator;
+
+        public ConsumerClassWithMediator(IMediator mediator)        //<-Inject IMediator
+        {
+            this.mediator = mediator;
+        }
+
+        public async Task<TestResponse> DoSomething()
+        {
+            var request = new TestAsyncRequest(Guid.NewGuid());     //<-Request
+
+            var response = await mediator.ExecuteAsync(request);    //<-Execute
+
+            return response;                                        //<-Return Value
+        }
+    }
+```
+
+* This is the equivalent class without leveraging IMediator.
+See **[ConsumerClassWithoutMediator.cs](https://github.com/EddLonzanida/Eml.Mediator.Demo/blob/master/Tests/Eml.Mediator.Tests.Integration.NetCore/Requests/Async/ConsumerClassWithMediator.cs)** for more details.
+```
+    public class ConsumerClassWithoutMediator : IConsumerClassWithoutMediator
+    {
+        private readonly IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine;
+
+        public ConsumerClassWithoutMediator(IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine)     //<-Normal dependency injection. Inject engine
+        {
+            this.engine = engine;
+        }
+
+        public async Task<TestResponse> DoSomething()
+        {
+            var request = new TestAsyncRequest(Guid.NewGuid());     //<-Request
+
+            var response = await engine.ExecuteAsync(request);      //<-Execute
+
+            return response;                                        //<-Return Value
+        }
+    }
+```
 
 ## That's it.
 ##### Check out [Eml.Mediator.vsix](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.Mediator) to automate the steps above.

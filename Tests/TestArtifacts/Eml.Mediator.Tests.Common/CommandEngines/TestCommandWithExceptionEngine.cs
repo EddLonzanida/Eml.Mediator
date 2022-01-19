@@ -9,9 +9,5 @@ namespace Eml.Mediator.Tests.Common.CommandEngines
         {
             throw new System.NotImplementedException();
         }
-
-        public void Dispose()
-        {
-        }
     }
 }
