@@ -1,12 +1,11 @@
 using System;
 
-namespace Eml.Mediator.Exceptions
+namespace Eml.Mediator.Exceptions;
+
+public class MissingResponseException : Exception
 {
-    public class MissingResponseException : Exception
+    public MissingResponseException(string message)
+        : base(message)
     {
-        public MissingResponseException(string message)
-            : base(message)
-        {
-        }
     }
 }
