@@ -1,0 +1,43 @@
+﻿# Editor configuration, see https://editorconfig.org
+root = true
+
+[*.cs]
+# API1000: Action returns undeclared status code.
+dotnet_diagnostic.API1000.severity = none
+
+[*]
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+tab_width = 4
+indent_size = 4
+indent_style = space
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = true
+
+[*.{razor,cshtml}]
+charset = utf-8-bom
+
+[*.cs]
+#### Naming styles ####
+
+# Naming rules
+
+dotnet_naming_rule.enum_should_be_begins_with_e.severity = suggestion
+dotnet_naming_rule.enum_should_be_begins_with_e.symbols = enum
+dotnet_naming_rule.enum_should_be_begins_with_e.style = begins_with_e
+
+# Symbol specifications
+
+dotnet_naming_symbols.enum.applicable_kinds = enum
+dotnet_naming_symbols.enum.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.enum.required_modifiers =
+
+# Naming styles
+
+dotnet_naming_style.begins_with_e.required_prefix = e
+dotnet_naming_style.begins_with_e.required_suffix =
+dotnet_naming_style.begins_with_e.word_separator =
+dotnet_naming_style.begins_with_e.capitalization = pascal_case
