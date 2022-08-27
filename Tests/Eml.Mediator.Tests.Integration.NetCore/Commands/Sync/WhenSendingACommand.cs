@@ -1,19 +1,19 @@
-﻿using Eml.Mediator.Tests.Common.Commands;using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
+﻿using Eml.Mediator.Tests.Common.Commands;
+using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 using Shouldly;
 using Xunit;
 
-namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Sync
+namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Sync;
+
+public class WhenSendingACommand : IntegrationTestDiBase
 {
-    public class WhenSendingACommand : IntegrationTestDiBase
+    [Fact]
+    public void Command_ShouldBeCalledOnce()
     {
-        [Fact]
-        public void Command_ShouldBeCalledOnce()
-        {
-            var command = new TestCommand();
+        var command = new TestCommand();
 
-            mediator.Execute(command);
+        mediator.Execute(command);
 
-            command.EngineInvocationCount.ShouldBe(1);
-        }
+        command.EngineInvocationCount.ShouldBe(1);
     }
 }

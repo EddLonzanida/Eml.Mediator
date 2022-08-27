@@ -1,12 +1,11 @@
 using System;
 
-namespace Eml.Mediator.Exceptions
+namespace Eml.Mediator.Exceptions;
+
+public class MissingEngineException : Exception
 {
-    public class MissingEngineException : Exception
+    public MissingEngineException(string message)
+        : base(message)
     {
-        public MissingEngineException(string message)
-            : base(message)
-        {
-        }
     }
 }
