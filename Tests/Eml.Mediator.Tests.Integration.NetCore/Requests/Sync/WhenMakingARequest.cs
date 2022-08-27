@@ -1,32 +1,31 @@
-﻿using System;
-using Eml.Mediator.Tests.Common.Requests;
+﻿using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 using Shouldly;
+using System;
 using Xunit;
 
-namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Sync
+namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Sync;
+
+public class WhenMakingARequest : IntegrationTestDiBase
 {
-    public class WhenMakingARequest : IntegrationTestDiBase
+    [Fact]
+    public void Response_ShouldBeCorrectType()
     {
-        [Fact]
-        public void Response_ShouldBeCorrectType()
-        {
-           var request = new TestRequest(Guid.NewGuid());
-            
-           var response = mediator.Execute(request);
+        var request = new TestRequest(Guid.NewGuid());
 
-            response.ShouldBeOfType(typeof(TestResponse));
-        }
+        var response = mediator.Execute(request);
 
-        [Fact]
-        public void Response_ShouldBeCorrectValue()
-        {
-            var request = new TestRequest(Guid.NewGuid());
+        response.ShouldBeOfType(typeof(TestResponse));
+    }
 
-            var response = mediator.Execute(request);
+    [Fact]
+    public void Response_ShouldBeCorrectValue()
+    {
+        var request = new TestRequest(Guid.NewGuid());
 
-            response.ResponseToRequestId.ShouldBe(request.Id);
-        }
+        var response = mediator.Execute(request);
+
+        response.ResponseToRequestId.ShouldBe(request.Id);
     }
 }

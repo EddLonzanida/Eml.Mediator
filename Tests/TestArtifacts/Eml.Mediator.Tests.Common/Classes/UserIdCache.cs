@@ -1,31 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Eml.Mediator.Tests.Common.Classes
+namespace Eml.Mediator.Tests.Common.Classes;
+
+public interface IIdTimestamp<out T>
 {
-    public interface IIdTimestamp<out T>
+    T PiiUserId { get; }
+
+    DateTime Timestamp { get; }
+}
+
+public static class UserIdCache<T>
+{
+    public static Dictionary<string, IdTimestamp<T>> Items => new();
+}
+
+public class IdTimestamp<T> : IIdTimestamp<T>
+{
+    public T EmlUserId { get; }
+
+    public IdTimestamp(T piiUserId, T emlUserId)
     {
-        T PiiUserId { get; }
-        DateTime Timestamp { get; }
+        PiiUserId = piiUserId;
+        EmlUserId = emlUserId;
+        Timestamp = DateTime.Now;
     }
 
-    public static class UserIdCache<T>
-    {
-        public static Dictionary<string, IdTimestamp<T>> Items => new Dictionary<string, IdTimestamp<T>>();
-    }
+    public T PiiUserId { get; }
 
-    public class IdTimestamp<T> : IIdTimestamp<T>
-    {
-        public T PiiUserId { get; }
-        public T EmlUserId { get; }
-
-        public DateTime Timestamp { get; }
-
-        public IdTimestamp(T piiUserId, T emlUserId)
-        {
-            PiiUserId = piiUserId;
-            EmlUserId = emlUserId;
-            Timestamp = DateTime.Now;
-        }
-    }
+    public DateTime Timestamp { get; }
 }
