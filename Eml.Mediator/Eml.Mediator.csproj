@@ -1,48 +1,35 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<PackageProjectUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</PackageProjectUrl>
-		<Description>Has own Visual Studio Addin for easier use. Small size. Capture Business-use-cases and convert it into a modular, highly testable chunk of codes. One step closer to dissecting &amp; migrating monolithic apps. Provides a common ground for projects with large number of developers. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern. Now supports .Net5.</Description>
-		<PackageTags>Mediator Request Response Command Abstract Class Factory Pattern EmL Solutions</PackageTags>
-		<Authors>EmL Solutions</Authors>
-		<Company>EmL Solutions</Company>
-		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Eml.Mediator.xml</DocumentationFile>
-		<NoWarn>1701;1702;1705;CS1591</NoWarn>
-		<LangVersion>latest</LangVersion>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-	</PropertyGroup>
-	<ItemGroup>
-	  <Compile Remove="Exceptions\MultipleEngineException.cs" />
-	</ItemGroup>
-  <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-  </ItemGroup>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <PackageProjectUrl>https://github.com/EddLonzanida/Eml.Mediator.Demo</PackageProjectUrl>
+        <Description>Has own Visual Studio Addin for easier use. Small size. Capture Business-use-cases and convert it into a modular, highly testable chunk of codes. One step closer to dissecting &amp; migrating monolithic apps. Provides a common ground for projects with large number of developers. A combination of Command, Request-Response, Mediator and Abstract Class Factory pattern. Now supports .Net5.</Description>
+        <PackageTags>Mediator Request Response Command Abstract Class Factory Pattern EmL Solutions</PackageTags>
+        <Authors>EmL Solutions</Authors>
+        <Company>EmL Solutions</Company>
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Eml.Mediator.xml</DocumentationFile>
+        <NoWarn>1701;1702;1705;CS1591</NoWarn>
+        <LangVersion>latest</LangVersion>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Remove="Exceptions\MultipleEngineException.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    </ItemGroup>
 
+    <Choose>
+        <When Condition=" '$(Configuration)'=='Release' ">
+            <PropertyGroup>
+                <SignAssembly>true</SignAssembly>
+                <DelaySign>false</DelaySign>
+                <AssemblyOriginatorKeyFile>EmLNuGet.snk</AssemblyOriginatorKeyFile>
+            </PropertyGroup>
+        </When>
+    </Choose>
 
-  <Choose>
-    <When Condition=" '$(Configuration)'=='Release' ">
-      <PropertyGroup>
-        <SignAssembly>true</SignAssembly>
-        <DelaySign>false</DelaySign>
-        <AssemblyOriginatorKeyFile>EmLNuGet.snk</AssemblyOriginatorKeyFile>
-      </PropertyGroup>
-    </When>
-  </Choose>
-
-  <ItemGroup>
-    <None Update="EmLNuGet.pfx">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="EmLNuGet.snk">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="&quot;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64\signtool.exe&quot; sign /f EmLNuGet.pfx /p &quot;^TJf2kw#n2L5yQ&quot; /fd SHA256 &quot;$(TargetDir)\$(TargetFileName)&quot;" />
-  </Target>
 </Project>
