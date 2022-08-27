@@ -27,7 +27,7 @@
             <PropertyGroup>
                 <SignAssembly>true</SignAssembly>
                 <DelaySign>false</DelaySign>
-                <AssemblyOriginatorKeyFile>EmLNuGet.snk</AssemblyOriginatorKeyFile>
+                <AssemblyOriginatorKeyFile>$(SnkFile)</AssemblyOriginatorKeyFile>
             </PropertyGroup>
         </When>
     </Choose>
