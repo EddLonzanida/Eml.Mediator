@@ -1,4 +1,4 @@
-﻿using Eml.Mediator.Tests.Common.Requests;
+using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
 using System;
 using System.Security.Authentication;
@@ -7,7 +7,7 @@ namespace Eml.Mediator.Tests.Common.Classes;
 
 public static class UserIdCacheAsyncRequestExtensions
 {
-    public static UserIdCacheResponse<T> GetUserIdMemCache<T>(this UserIdCacheAsyncRequest<T> request, int maxCacheCount)
+    public static UserIdCacheResponse<T>? GetUserIdMemCache<T>(this UserIdCacheAsyncRequest<T> request, int maxCacheCount)
     {
         var nameIdentifier = request.NameIdentifier;
 
@@ -34,10 +34,7 @@ public static class UserIdCacheAsyncRequestExtensions
         {
             var cachedId = UserIdCache<T>.Items[nameIdentifier];
 
-            if (cachedId != null)
-            {
-                return new UserIdCacheResponse<T>(cachedId.PiiUserId, cachedId.EmlUserId);
-            }
+            return new UserIdCacheResponse<T>(cachedId.PiiUserId, cachedId.EmlUserId);
         }
 
         return null;
