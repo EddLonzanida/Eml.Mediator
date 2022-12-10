@@ -1,17 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
-    <IsPackable>false</IsPackable>
-    <NoWarn>1701;1702;1705;CS1591</NoWarn>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Eml.Mediator.Tests.Common.xml</DocumentationFile>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <NoWarn>1701;1702;1705;CS1591</NoWarn>
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Eml.Mediator.Tests.Common.xml</DocumentationFile>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Eml.Mediator" Version="5.0.5" />
-  </ItemGroup>
-
- 
+    <ItemGroup>
+        <PackageReference Include="Eml.Mediator" Version="7.0.0" />
+    </ItemGroup>
 
 </Project>

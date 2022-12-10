@@ -1,7 +1,7 @@
-﻿using System;
 using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Classes;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses
@@ -10,7 +10,7 @@ namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses
     {
         public const string COLLECTION_DEFINITION = "IntegrationTestDiFixture CollectionDefinition";
 
-        public static IServiceProvider ServiceProvider { get; private set; }
+        public static IServiceProvider ServiceProvider { get; private set; } = null!;
 
         public IntegrationTestDiFixture()
         {
