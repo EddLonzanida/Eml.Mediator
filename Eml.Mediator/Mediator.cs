@@ -2,6 +2,7 @@ using Eml.Mediator.Contracts;
 using Eml.Mediator.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,6 +26,13 @@ public class Mediator : IMediator
         var items = classFactory.GetServices<ICommandEngine<T>>();
         var engines = items.ToList();
 
+        if (engines.Count > 1)
+        {
+            var errorMessages = GetMultipleEngineExceptionMessage(engines);
+
+            throw new MultipleEngineException($"Check the following Command engines:{errorMessages}");
+        }
+
         // IServiceProvider picks up items that was registered last
         var syncEngine = engines.LastOrDefault();
 
@@ -45,6 +53,13 @@ public class Mediator : IMediator
     {
         var items = classFactory.GetServices<ICommandAsyncEngine<T>>();
         var engines = items.ToList();
+
+        if (engines.Count > 1)
+        {
+            var errorMessages = GetMultipleEngineExceptionMessage(engines);
+
+            throw new MultipleEngineException($"Check the following Command engines:{errorMessages}");
+        }
 
         // IServiceProvider picks up items that was registered last
         var asyncEngine = engines.LastOrDefault();
@@ -68,6 +83,13 @@ public class Mediator : IMediator
         var items = classFactory.GetServices<IRequestEngine<T1, T2>>();
         var engines = items.ToList();
 
+        if (engines.Count > 1)
+        {
+            var errorMessages = GetMultipleEngineExceptionMessage(engines);
+
+            throw new MultipleEngineException($"Check the following Request engines:{errorMessages}");
+        }
+
         // IServiceProvider picks up items that was registered last
         var syncEngine = engines.LastOrDefault();
 
@@ -81,7 +103,7 @@ public class Mediator : IMediator
                 $"{Environment.NewLine}Check IServiceCollection if IMediator is registered.");
         }
 
-        return syncEngine.Execute((T1) request);
+        return syncEngine.Execute((T1)request);
     }
 
     public async Task<T2> ExecuteAsync<T1, T2>(IRequestAsync<T1, T2> request)
@@ -90,6 +112,14 @@ public class Mediator : IMediator
     {
         var items = classFactory.GetServices<IRequestAsyncEngine<T1, T2>>();
         var engines = items.ToList();
+
+        if (engines.Count > 1)
+        {
+            var errorMessages = GetMultipleEngineExceptionMessage(engines);
+
+            throw new MultipleEngineException($"Check the following Request engines:{errorMessages}");
+        }
+
 
         // IServiceProvider picks up items that was registered last
         var asyncEngine = engines.LastOrDefault();
@@ -105,6 +135,17 @@ public class Mediator : IMediator
                 $"{Environment.NewLine}Check if any of the constructor parameters for {typeof(T1).Name} are also in the container.");
         }
 
-        return await asyncEngine.ExecuteAsync((T1) request);
+        return await asyncEngine.ExecuteAsync((T1)request);
+    }
+
+    private static string GetMultipleEngineExceptionMessage<T>(IEnumerable<T> engines)
+    {
+        var errorMessages = engines.ToList()
+            .ConvertAll(r => r?.GetType().FullName ?? string.Empty)
+            .Where(x => !string.IsNullOrWhiteSpace(x))
+            .ToList()
+            .ConvertAll(r => $"->{r}");
+
+        return $"{Environment.NewLine}{string.Join(Environment.NewLine, errorMessages)}{Environment.NewLine}";
     }
 }

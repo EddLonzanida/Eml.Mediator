@@ -1,4 +1,4 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Classes;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -10,7 +10,7 @@ public class IntegrationTestDiFixture : IDisposable
 {
     public const string COLLECTION_DEFINITION = "IntegrationTestDiFixture CollectionDefinition";
 
-    public static IServiceProvider ServiceProvider { get; private set; }
+    public static IServiceProvider ServiceProvider { get; private set; } = null!;
 
     public IntegrationTestDiFixture()
     {
