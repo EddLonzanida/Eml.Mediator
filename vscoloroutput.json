@@ -1,0 +1,208 @@
+{
+    "EnableStopOnBuildError": false,
+    "ShowElapsedBuildTime": false,
+    "ShowBuildReport": false,
+    "ShowDebugWindowOnDebug": false,
+    "HighlightFindResults": false,
+    "ShowTimeStamps": false,
+    "ShowTimeStampOnEveryLine": false,
+    "ShowHoursInTimeStamps": false,
+    "FormatTimeInSystemLocale": false,
+    "SuppressDonation": true,
+    "Patterns": [
+        {
+            "ClassificationType": 5,
+            "IgnoreCase": false,
+            "RegExPattern": "\\+\\+\\+\\>"
+        },
+        {
+            "ClassificationType": 0,
+            "IgnoreCase": false,
+            "RegExPattern": ".*[t|c]sc\\.exe.*"
+        },
+        {
+            "ClassificationType": 1,
+            "IgnoreCase": false,
+            "RegExPattern": "(=====|-----|Projects build report|Status    \\| Project \\[Config\\|platform\\])"
+        },
+        {
+            "ClassificationType": 1,
+            "IgnoreCase": true,
+            "RegExPattern": "0 error.+0 warning"
+        },
+        {
+            "ClassificationType": 1,
+            "IgnoreCase": true,
+            "RegExPattern": "^\\s*0 error\\(s\\)\\s*$"
+        },
+        {
+            "ClassificationType": 1,
+            "IgnoreCase": true,
+            "RegExPattern": "^\\s*0 warning\\(s\\)\\s*$"
+        },
+        {
+            "ClassificationType": 1,
+            "IgnoreCase": true,
+            "RegExPattern": "0 failed|Succeeded"
+        },
+        {
+            "ClassificationType": 2,
+            "IgnoreCase": true,
+            "RegExPattern": "(\\W|^)^(?!.*warning\\s(BC|CS|CA)\\d+:).*((?<!\/)error|fail|crit|failed|exception)[^\\w\\.\\-\\+]"
+        },
+        {
+            "ClassificationType": 2,
+            "IgnoreCase": true,
+            "RegExPattern": "(exception:|stack trace:)"
+        },
+        {
+            "ClassificationType": 2,
+            "IgnoreCase": true,
+            "RegExPattern": "^\\s+at\\s"
+        },
+        {
+            "ClassificationType": 3,
+            "IgnoreCase": true,
+            "RegExPattern": "(\\W|^)(warning|warn)\\W"
+        },
+        {
+            "ClassificationType": 4,
+            "IgnoreCase": true,
+            "RegExPattern": "(\\W|^)(information|info)\\W"
+        },
+        {
+            "ClassificationType": 2,
+            "IgnoreCase": true,
+            "RegExPattern": "Could not find file"
+        },
+        {
+            "ClassificationType": 2,
+            "IgnoreCase": true,
+            "RegExPattern": "failed"
+        },
+        {
+            "ClassificationType": 5,
+            "IgnoreCase": true,
+            "RegExPattern": "(?<=UPDATE ).*(?= (SET))"
+        },
+        {
+            "ClassificationType": 5,
+            "IgnoreCase": true,
+            "RegExPattern": "(?<=MERGE )\\[*\\w+\\b\\]*"
+        },
+        {
+            "ClassificationType": 5,
+            "IgnoreCase": true,
+            "RegExPattern": "INSERT INTO"
+        },
+        {
+            "ClassificationType": 5,
+            "IgnoreCase": true,
+            "RegExPattern": "INSERT \\("
+        },
+        {
+            "ClassificationType": 7,
+            "IgnoreCase": true,
+            "RegExPattern": "SET NOCOUNT ON;"
+        },
+        {
+            "ClassificationType": 7,
+            "IgnoreCase": true,
+            "RegExPattern": "SET IMPLICIT_TRANSACTIONS OFF"
+        },
+        {
+            "ClassificationType": 7,
+            "IgnoreCase": true,
+            "RegExPattern": ".*Executed DbCommand"
+        },
+        {
+            "ClassificationType": 5,
+            "IgnoreCase": true,
+            "RegExPattern": "(?<=(FROM|JOIN) ).*(?= AS)"
+        },
+        {
+            "ClassificationType": 7,
+            "IgnoreCase": true,
+            "RegExPattern": "SET SESSION TRANSACTION ISOLATION LEVEL.*"
+        },
+        {
+            "ClassificationType": 7,
+            "IgnoreCase": true,
+            "RegExPattern": ".*\\bCOMMIT;.*"
+        }
+    ],
+    "BuildMessageColor": {
+        "knownColor": 79,
+        "name": null,
+        "state": 1,
+        "value": 0
+    },
+    "BuildTextColor": {
+        "knownColor": 164,
+        "name": null,
+        "state": 1,
+        "value": 0
+    },
+    "ErrorTextColor": {
+        "knownColor": 160,
+        "name": null,
+        "state": 1,
+        "value": 0
+    },
+    "WarningTextColor": {
+        "knownColor": 125,
+        "name": null,
+        "state": 1,
+        "value": 0
+    },
+    "InformationTextColor": {
+        "knownColor": 79,
+        "name": null,
+        "state": 1,
+        "value": 0
+    },
+    "CustomTextColor1": {
+        "knownColor": 57,
+        "name": null,
+        "state": 1,
+        "value": 0
+    },
+    "CustomTextColor2": {
+        "knownColor": 60,
+        "name": null,
+        "state": 1,
+        "value": 0
+    },
+    "CustomTextColor3": {
+        "knownColor": 78,
+        "name": null,
+        "state": 1,
+        "value": 0
+    },
+    "CustomTextColor4": {
+        "knownColor": 39,
+        "name": null,
+        "state": 1,
+        "value": 0
+    },
+    "FindSearchTermColor": {
+        "knownColor": 79,
+        "name": null,
+        "state": 1,
+        "value": 0
+    },
+    "TimeStampElapsed": "mm':'ss':'fff",
+    "FindFileNameColor": {
+        "knownColor": 78,
+        "name": null,
+        "state": 1,
+        "value": 0
+    },
+    "TimeStampDifference": "mm':'ss':'fff",
+    "TimeStampColor": {
+        "knownColor": 45,
+        "name": null,
+        "state": 1,
+        "value": 0
+    }
+}

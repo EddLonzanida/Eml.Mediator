@@ -1,26 +1,25 @@
-﻿# Editor configuration, see https://editorconfig.org
+# Editor configuration, see https://editorconfig.org
 root = true
-
-[*.cs]
-# API1000: Action returns undeclared status code.
-dotnet_diagnostic.API1000.severity = none
 
 [*]
 charset = utf-8
 insert_final_newline = true
 trim_trailing_whitespace = true
+
 tab_width = 4
 indent_size = 4
 indent_style = space
 
-[*.md]
+[*.{md,json}]
 max_line_length = off
-trim_trailing_whitespace = true
 
 [*.{razor,cshtml}]
 charset = utf-8-bom
 
 [*.cs]
+# API1000: Action returns undeclared status code.
+dotnet_diagnostic.API1000.severity = none
+
 #### Naming styles ####
 
 # Naming rules
