@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Eml.Mediator" Version="7.0.0" />
+        <ProjectReference Include="..\..\..\Eml.Mediator\Eml.Mediator.csproj" />
     </ItemGroup>
 
 </Project>

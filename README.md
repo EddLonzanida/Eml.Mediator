@@ -9,7 +9,13 @@
 * Provides a common ground for projects with large number of developers.
 
 * .Net5 is now supported.
-  * **Breaking changes:** Starting with [Eml.Mediator.5.0.0](https://www.nuget.org/packages/Eml.Mediator/5.0.0), support to lower versions of .Net framework *has been removed.* You need to upgrade to .Net5 or higher.
+
+##### Limitations
+* ExecuteAsync will always create a new instance of the engine.
+* The lifetime of the engine ends as soon as ExecuteAsync is completed.
+* If this behavior does not suit your needs, just use dependency injection via the constructor.
+
+
 
 # A. Usage - ***Command***
     
@@ -127,7 +133,7 @@
 # C. DI Registration
 Requires [Scrutor](https://github.com/khellang/Scrutor) for the automated registration.
 
-See **[IntegrationTestDiFixture.cs](Tests/Eml.Mediator.Tests.Integration.NetCore/BaseClasses/IntegrationTestDiFixture.cs)** for more details.
+See **[IntegrationTestDiFixture.cs](https://github.com/EddLonzanida/Eml.Mediator.Demo/blob/master/Tests/Eml.Mediator.Tests.Integration.NetCore/BaseClasses/IntegrationTestDiFixture.cs)** for more details.
 ```javascript
     private static void ConfigureServices(IServiceCollection services)
     {
@@ -170,7 +176,7 @@ See **[IntegrationTestDiFixture.cs](Tests/Eml.Mediator.Tests.Integration.NetCore
 # D. Sample Class
 
 * Simply inject IMediator in the constructor.
-See **[ConsumerClassWithMediator.cs](Tests/Eml.Mediator.Tests.Integration.NetCore/Requests/Async/ConsumerClassWithMediator.cs)** for more details.
+See **[ConsumerClassWithMediator.cs](https://github.com/EddLonzanida/Eml.Mediator.Demo/blob/master/Tests/Eml.Mediator.Tests.Integration.NetCore/Requests/Async/ConsumerClassWithMediator.cs)** for more details.
 
 ```
     public class ConsumerClassWithMediator : IConsumerClassWithMediator
@@ -194,14 +200,13 @@ See **[ConsumerClassWithMediator.cs](Tests/Eml.Mediator.Tests.Integration.NetCor
 ```
 
 * This is the equivalent class without leveraging IMediator.
-See **[ConsumerClassWithoutMediator.cs](Tests/Eml.Mediator.Tests.Integration.NetCore/Requests/Async/ConsumerClassWithMediator.cs)** for more details.
+See **[ConsumerClassWithoutMediator.cs](https://github.com/EddLonzanida/Eml.Mediator.Demo/blob/master/Tests/Eml.Mediator.Tests.Integration.NetCore/Requests/Async/ConsumerClassWithMediator.cs)** for more details.
 ```
     public class ConsumerClassWithoutMediator : IConsumerClassWithoutMediator
     {
         private readonly IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine;
-        
-        // Normal dependency injection. Inject engine
-        public ConsumerClassWithoutMediator(IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine)
+
+        public ConsumerClassWithoutMediator(IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine)     //<-Normal dependency injection. Inject engine
         {
             this.engine = engine;
         }
@@ -216,8 +221,8 @@ See **[ConsumerClassWithoutMediator.cs](Tests/Eml.Mediator.Tests.Integration.Net
         }
     }
 ```
+
 ## That's it.
 ##### Check out [Eml.Mediator.vsix](https://marketplace.visualstudio.com/items?itemName=eDuDeTification.Mediator) to automate the steps above.
-![](Art/Steps.gif)
-
+![](https://github.com/EddLonzanida/Eml.Mediator.Demo/blob/master/Art/Steps.gif)
 

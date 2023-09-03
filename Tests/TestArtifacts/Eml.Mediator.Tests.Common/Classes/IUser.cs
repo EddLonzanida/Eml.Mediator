@@ -1,7 +1,6 @@
-namespace Eml.Mediator.Tests.Common.Classes
+namespace Eml.Mediator.Tests.Common.Classes;
+
+public interface IUser<out T> : IDiDiscoverableTransient
 {
-    public interface IUser<out T> : IDiDiscoverableTransient
-    {
-        T? Id { get; }
-    }
+    T? Id { get; }
 }

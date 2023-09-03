@@ -1,18 +1,19 @@
-﻿using System;using Eml.Mediator.Contracts;using Eml.Mediator.Tests.Common.Responses;
+﻿using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.RequestEngines;
+using Eml.Mediator.Tests.Common.Responses;
+using System;
 
-namespace Eml.Mediator.Tests.Common.Requests
+namespace Eml.Mediator.Tests.Common.Requests;
+
+public class TestAsyncRequestWithException : IRequestAsync<TestAsyncRequestWithException, TestResponse>
 {
-    public class TestAsyncRequestWithException : IRequestAsync<TestAsyncRequestWithException, TestResponse>
-    {
-        public Guid Id { get; }
+    public Guid Id { get; }
 
-        /// <summary>
-        /// This request will be processed by <see cref="TestRequestWithExceptionAsyncEngine"/>.
-        /// </summary>
-        public TestAsyncRequestWithException(Guid id)
-        {
-            Id = id;
-        }
+    /// <summary>
+    ///     This request will be processed by <see cref="TestRequestWithExceptionAsyncEngine" />.
+    /// </summary>
+    public TestAsyncRequestWithException(Guid id)
+    {
+        Id = id;
     }
 }
