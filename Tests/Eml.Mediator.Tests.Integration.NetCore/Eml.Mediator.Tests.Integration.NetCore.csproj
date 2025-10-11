@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-        <!--<TargetFrameworks>net462;net47;net471;net472;netcoreapp2.2</TargetFrameworks>-->
         <IsPackable>false</IsPackable>
         <Nullable>enable</Nullable>
     </PropertyGroup>

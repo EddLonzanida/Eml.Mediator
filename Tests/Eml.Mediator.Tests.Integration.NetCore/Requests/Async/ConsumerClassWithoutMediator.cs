@@ -1,4 +1,4 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
 using System;
@@ -17,7 +17,7 @@ public class ConsumerClassWithoutMediator : IConsumerClassWithoutMediator
 
     public async Task<TestResponse> DoSomething()
     {
-        var request = new TestAsyncRequest(Guid.NewGuid()); //<-Request
+        var request = new TestAsyncRequest(Guid.CreateVersion7()); //<-Request
 
         var response = await engine.ExecuteAsync(request); //<-Execute
 

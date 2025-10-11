@@ -1,4 +1,4 @@
-﻿using Eml.Mediator.Exceptions;
+using Eml.Mediator.Exceptions;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 using Shouldly;
@@ -13,7 +13,7 @@ public class WhenMakingAsyncRequestWithoutEngine : IntegrationTestDiBase
     [Fact]
     public async Task Response_ShouldThrowMissingEngineException()
     {
-        var request = new TestAsyncRequestWithNoEngine(Guid.NewGuid());
+        var request = new TestAsyncRequestWithNoEngine(Guid.CreateVersion7());
 
         await Should.ThrowAsync<MissingEngineException>(async () => await mediator.ExecuteAsync(request));
     }

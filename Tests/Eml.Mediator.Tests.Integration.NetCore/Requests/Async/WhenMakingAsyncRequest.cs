@@ -1,4 +1,4 @@
-﻿using Eml.Mediator.Tests.Common.Requests;
+using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 using Shouldly;
@@ -15,7 +15,7 @@ public class WhenMakingAsyncRequest : IntegrationTestDiBase
     //[DotMemoryUnit(FailIfRunWithoutSupport = false)]
     public async Task Response_ShouldBeCorrectType()
     {
-        var request = new TestAsyncRequest(Guid.NewGuid());
+        var request = new TestAsyncRequest(Guid.CreateVersion7());
 
         var response = await mediator.ExecuteAsync(request);
 
@@ -30,7 +30,7 @@ public class WhenMakingAsyncRequest : IntegrationTestDiBase
     [Fact]
     public async Task Response_ShouldReturnCorrectValue()
     {
-        var request = new TestAsyncRequest(Guid.NewGuid()); //<-Request
+        var request = new TestAsyncRequest(Guid.CreateVersion7()); //<-Request
 
         var response = await mediator.ExecuteAsync(request); //<-Execute
 

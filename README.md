@@ -71,7 +71,7 @@
     [Fact]
     public async Task Response_ShouldReturnCorrectValue()
     {
-        var request = new TestAsyncRequest(Guid.NewGuid());     //<-Request
+        var request = new TestAsyncRequest(Guid.CreateVersion7());     //<-Request
 
         var response = await mediator.ExecuteAsync(request);    //<-Execute
 
@@ -190,7 +190,7 @@ See **[ConsumerClassWithMediator.cs](https://github.com/EddLonzanida/Eml.Mediato
 
         public async Task<TestResponse> DoSomething()
         {
-            var request = new TestAsyncRequest(Guid.NewGuid());     //<-Request
+            var request = new TestAsyncRequest(Guid.CreateVersion7());     //<-Request
 
             var response = await mediator.ExecuteAsync(request);    //<-Execute
 
@@ -213,7 +213,7 @@ See **[ConsumerClassWithoutMediator.cs](https://github.com/EddLonzanida/Eml.Medi
 
         public async Task<TestResponse> DoSomething()
         {
-            var request = new TestAsyncRequest(Guid.NewGuid());     //<-Request
+            var request = new TestAsyncRequest(Guid.CreateVersion7());     //<-Request
 
             var response = await engine.ExecuteAsync(request);      //<-Execute
 
