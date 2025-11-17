@@ -7,13 +7,13 @@ namespace Eml.Mediator.Tests.Common.Classes;
 
 public static class UserIdCacheAsyncRequestExtensions
 {
-    public static UserIdCacheResponse<T>? GetUserIdMemCache<T>(this UserIdCacheAsyncRequest<T> request, int maxCacheCount)
+    public static UserIdCacheResponse<T>? GetUserIdMemCache<T>(this UserIdCacheAsyncRequest<T> request, int maxCacheCount, TimeProvider timeProvider)
     {
         var nameIdentifier = request.NameIdentifier;
 
         if (UserIdCache<T>.Items.Count > maxCacheCount)
         {
-            var threshHold = DateTime.Now.AddHours(-1);
+            var threshHold = timeProvider.GetUtcNow().AddHours(-1);
 
             foreach (var item in UserIdCache<T>.Items)
             {

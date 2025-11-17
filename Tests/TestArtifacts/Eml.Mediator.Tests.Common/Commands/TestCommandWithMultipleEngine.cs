@@ -4,10 +4,5 @@ namespace Eml.Mediator.Tests.Common.Commands;
 
 public class TestCommandWithMultipleEngine : ICommand
 {
-    public int EngineInvocationCount { get; set; }
-
-    public TestCommandWithMultipleEngine()
-    {
-        EngineInvocationCount = 0;
-    }
+    public int EngineInvocationCount { get; set; } = 0;
 }

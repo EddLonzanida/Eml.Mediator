@@ -1,12 +1,6 @@
-﻿using System;
+using System;
 
 namespace Eml.Mediator.Exceptions
 {
-    public class MultipleEngineException : Exception
-    {
-        public MultipleEngineException(string message) 
-            : base(message)
-        {
-        }
-    }
+    public class MultipleEngineException(string message) : Exception(message);
 }

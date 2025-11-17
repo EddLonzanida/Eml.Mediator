@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
         <PackageProjectUrl>https://github.com/EddLonzanida/Eml.Mediator</PackageProjectUrl>
@@ -10,7 +10,7 @@
         <NoWarn>1701;1702;1705;CS1591</NoWarn>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-        <Nullable>enable</Nullable>
+        <Nullable>enable</Nullable><!--<LangVersion>preview</LangVersion>-->
     </PropertyGroup>
 
     <Choose>
@@ -28,19 +28,17 @@
             <PropertyGroup>
                 <DefineConstants>NET9</DefineConstants>
             </PropertyGroup>
-            <ItemGroup>
-                <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.9" />
-            </ItemGroup>
         </When>
         <When Condition="'$(TargetFramework)' == 'net8.0'">
             <PropertyGroup>
                 <DefineConstants>NET8</DefineConstants>
             </PropertyGroup>
-            <ItemGroup>
-                <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.9" />
-            </ItemGroup>
         </When>
     </Choose>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />
+    </ItemGroup>
 
     <ItemGroup>
         <None Include="..\README.md" Pack="true" PackagePath="" />

@@ -1,14 +1,9 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 using System.Collections.Generic;
 
 namespace Eml.Mediator.Tests.Common.Responses;
 
-public class AutoSuggestResponse<T> : IResponse
+public class AutoSuggestResponse<T>(IEnumerable<T> suggestions) : IResponse
 {
-    public IEnumerable<T> Suggestions { get; }
-
-    public AutoSuggestResponse(IEnumerable<T> suggestions)
-    {
-        Suggestions = suggestions;
-    }
+    public IEnumerable<T> Suggestions { get; } = suggestions;
 }
