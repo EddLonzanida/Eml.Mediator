@@ -13,7 +13,7 @@ public static class UserIdCacheAsyncRequestExtensions
 
         if (UserIdCache<T>.Items.Count > maxCacheCount)
         {
-            var threshHold = timeProvider.GetUtcNow().AddHours(-1);
+            var threshHold = timeProvider.GetUtcNow().UtcDateTime;
 
             foreach (var item in UserIdCache<T>.Items)
             {
