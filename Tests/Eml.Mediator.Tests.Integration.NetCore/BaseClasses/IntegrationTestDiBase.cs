@@ -1,11 +1,12 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
+using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using Xunit;
 
+[assembly: AssemblyFixture(typeof(IntegrationTestDiFixture))]
 namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 
-[Collection(IntegrationTestDiFixture.COLLECTION_DEFINITION)]
 public abstract class IntegrationTestDiBase
 {
     protected readonly IServiceProvider classFactory;

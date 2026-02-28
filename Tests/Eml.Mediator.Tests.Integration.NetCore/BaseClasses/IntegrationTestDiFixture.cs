@@ -2,7 +2,6 @@ using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Classes;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 
@@ -27,6 +26,7 @@ public class IntegrationTestDiFixture : IDisposable
 
     private static void ConfigureServices(IServiceCollection services)
     {
+        services.AddSingleton(TimeProvider.System);
         services.Scan(scan => scan
             .FromAssemblyDependencies(typeof(IntegrationTestDiFixture).Assembly)
             // .FromAssemblyOf<IntegrationTestDiFixture>()
@@ -60,12 +60,4 @@ public class IntegrationTestDiFixture : IDisposable
             .WithTransientLifetime()
         );
     }
-}
-
-[CollectionDefinition(IntegrationTestDiFixture.COLLECTION_DEFINITION)]
-public class ClassFactoryFixtureCollectionDefinition : ICollectionFixture<IntegrationTestDiFixture>
-{
-    // This class has no code, and is never created. Its purpose is simply
-    // to be the place to apply [CollectionDefinition] and all the
-    // ICollectionFixture<> interfaces.
 }
