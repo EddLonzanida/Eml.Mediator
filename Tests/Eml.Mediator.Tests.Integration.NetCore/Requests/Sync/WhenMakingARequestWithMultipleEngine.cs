@@ -12,7 +12,7 @@ public class WhenMakingARequestWithMultipleEngine : IntegrationTestDiBase
     [Fact]
     public void Response_ShouldThrowMultipleEngineException()
     {
-        var request = new TestRequestWithMultipleEngine(Guid.NewGuid());
+        var request = new TestRequestWithMultipleEngine(Guid.CreateVersion7());
 
         Should.Throw<MultipleEngineException>(() => mediator.Execute(request));
     }

@@ -2,10 +2,4 @@ using System;
 
 namespace Eml.Mediator.Exceptions;
 
-public class MissingCommandException : Exception
-{
-    public MissingCommandException(string message)
-        : base(message)
-    {
-    }
-}
+public class MissingCommandException(string message) : Exception(message);

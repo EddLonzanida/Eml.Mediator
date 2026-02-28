@@ -1,4 +1,4 @@
-﻿using Eml.Mediator.Tests.Common.Requests;
+using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 using Shouldly;
@@ -12,7 +12,7 @@ public class WhenMakingARequest : IntegrationTestDiBase
     [Fact]
     public void Response_ShouldBeCorrectType()
     {
-        var request = new TestRequest(Guid.NewGuid());
+        var request = new TestRequest(Guid.CreateVersion7());
 
         var response = mediator.Execute(request);
 
@@ -22,7 +22,7 @@ public class WhenMakingARequest : IntegrationTestDiBase
     [Fact]
     public void Response_ShouldBeCorrectValue()
     {
-        var request = new TestRequest(Guid.NewGuid());
+        var request = new TestRequest(Guid.CreateVersion7());
 
         var response = mediator.Execute(request);
 

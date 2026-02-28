@@ -7,8 +7,8 @@ public interface IRequestAsync
 {
 }
 
-public interface IRequestAsync<T1, T2> : IRequestAsync
-    where T1 : IRequestAsync<T1, T2>
-    where T2 : IResponse
+public interface IRequestAsync<TRequest, TResponse> : IRequestAsync
+    where TRequest : IRequestAsync<TRequest, TResponse>
+    where TResponse : IResponse
 {
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Eml.Mediator.Tests.Common.Classes;
@@ -15,18 +15,12 @@ public static class UserIdCache<T>
     public static Dictionary<string, IdTimestamp<T>> Items => new();
 }
 
-public class IdTimestamp<T> : IIdTimestamp<T>
+public class IdTimestamp<T>(T piiUserId, T emlUserId, TimeProvider timeProvider)
+    : IIdTimestamp<T>
 {
-    public T EmlUserId { get; }
+    public T EmlUserId { get; } = emlUserId;
 
-    public IdTimestamp(T piiUserId, T emlUserId)
-    {
-        PiiUserId = piiUserId;
-        EmlUserId = emlUserId;
-        Timestamp = DateTime.Now;
-    }
+    public T PiiUserId { get; } = piiUserId;
 
-    public T PiiUserId { get; }
-
-    public DateTime Timestamp { get; }
+    public DateTime Timestamp { get; } = timeProvider.GetUtcNow().UtcDateTime;
 }

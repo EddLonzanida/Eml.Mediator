@@ -1,16 +1,10 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 
 namespace Eml.Mediator.Tests.Common.Responses;
 
-public class UserIdCacheResponse<T> : IResponse
+public class UserIdCacheResponse<T>(T piiUserId, T emlUserId) : IResponse
 {
-    public T PiiUserId { get; }
+    public T PiiUserId { get; } = piiUserId;
 
-    public T EmlUserId { get; }
-
-    public UserIdCacheResponse(T piiUserId, T emlUserId)
-    {
-        PiiUserId = piiUserId;
-        EmlUserId = emlUserId;
-    }
+    public T EmlUserId { get; } = emlUserId;
 }
