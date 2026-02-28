@@ -1,31 +1,24 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Classes;
 using Eml.Mediator.Tests.Common.Exceptions;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
+using System;
 using System.Threading.Tasks;
 
 namespace Eml.Mediator.Tests.Common.RequestEngines;
 
-public class UserIntIdCacheRequestEngine : IRequestAsyncEngine<UserIdCacheAsyncRequest<int>, UserIdCacheResponse<int>>
+public class UserIntIdCacheRequestEngine(IPiiRepository<int> piiUserPiiRepository, IEmlRepository<int> emlUserPiiRepository, TimeProvider timeProvider)
+    : IRequestAsyncEngine<UserIdCacheAsyncRequest<int>, UserIdCacheResponse<int>>
 {
     private const int MaxCacheCount = 500;
-
-    private readonly IEmlRepository<int> emlUserPiiRepository;
-    private readonly IPiiRepository<int> piiUserPiiRepository;
-
-    public UserIntIdCacheRequestEngine(IPiiRepository<int> piiUserPiiRepository, IEmlRepository<int> emlUserPiiRepository)
-    {
-        this.piiUserPiiRepository = piiUserPiiRepository;
-        this.emlUserPiiRepository = emlUserPiiRepository;
-    }
 
     public async Task<UserIdCacheResponse<int>> ExecuteAsync(UserIdCacheAsyncRequest<int> request)
     {
         // Retrieve from memory
-        var userIdCacheResponse = request.GetUserIdMemCache(MaxCacheCount);
+        var userIdCacheResponse = request.GetUserIdMemCache(MaxCacheCount, timeProvider);
 
-        if (userIdCacheResponse != null)
+        if (userIdCacheResponse is not null)
         {
             return userIdCacheResponse;
         }
@@ -33,9 +26,10 @@ public class UserIntIdCacheRequestEngine : IRequestAsyncEngine<UserIdCacheAsyncR
         // Retrieve from db
         var nameIdentifier = request.NameIdentifier;
         var email = nameIdentifier;
+
         var piiUser = await piiUserPiiRepository.FindAsync(email);
 
-        if (piiUser == null)
+        if (piiUser is null)
         {
             throw new PiiUserNotFoundException(nameIdentifier);
         }
@@ -43,13 +37,13 @@ public class UserIntIdCacheRequestEngine : IRequestAsyncEngine<UserIdCacheAsyncR
         var piiUserId = piiUser.Id;
         var emlUser = await emlUserPiiRepository.FindAsync(piiUserId);
 
-        if (emlUser == null)
+        if (emlUser is null)
         {
             throw new EmlUserNotFoundException(piiUserId.ToString());
         }
 
         var emlUserId = emlUser.Id;
-        var idTimestamp = new IdTimestamp<int>(piiUserId, emlUserId);
+        var idTimestamp = new IdTimestamp<int>(piiUserId, emlUserId, timeProvider);
 
         // Save in memory for re-usability
         UserIdCache<int>.Items.Add(nameIdentifier, idTimestamp);

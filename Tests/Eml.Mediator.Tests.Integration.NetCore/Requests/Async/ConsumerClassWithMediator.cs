@@ -17,7 +17,7 @@ public class ConsumerClassWithMediator : IConsumerClassWithMediator
 
     public async Task<TestResponse> DoSomething()
     {
-        var request = new TestAsyncRequest(Guid.NewGuid()); //<-Request
+        var request = new TestAsyncRequest(Guid.CreateVersion7()); //<-Request
 
         var response = await mediator.ExecuteAsync(request); //<-Execute
 

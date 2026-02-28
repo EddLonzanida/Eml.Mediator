@@ -1,4 +1,4 @@
-﻿using Eml.Mediator.Tests.Common.Requests;
+using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 using Shouldly;
 using System;
@@ -12,7 +12,7 @@ public class WhenMakingAsyncRequestWithException : IntegrationTestDiBase
     [Fact]
     public async Task Response_ShouldThrowException()
     {
-        var request = new TestAsyncRequestWithException(Guid.NewGuid());
+        var request = new TestAsyncRequestWithException(Guid.CreateVersion7());
 
         await Should.ThrowAsync<NotImplementedException>(async () => await mediator.ExecuteAsync(request));
     }

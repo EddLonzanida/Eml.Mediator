@@ -1,4 +1,4 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 using System;
 
 namespace Eml.Mediator.Tests.Common.Responses;
@@ -6,12 +6,7 @@ namespace Eml.Mediator.Tests.Common.Responses;
 /// <summary>
 ///     TestRequestAsyncEngine return value.
 /// </summary>
-public class TestResponse : IResponse
+public class TestResponse(Guid responseToRequestId) : IResponse
 {
-    public Guid ResponseToRequestId { get; } //<-Return Value
-
-    public TestResponse(Guid responseToRequestId)
-    {
-        ResponseToRequestId = responseToRequestId;
-    }
+    public Guid ResponseToRequestId { get; } = responseToRequestId; //<-Return Value
 }

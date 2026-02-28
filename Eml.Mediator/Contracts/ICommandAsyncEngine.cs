@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 
 namespace Eml.Mediator.Contracts;
 
@@ -13,8 +13,8 @@ public interface ICommandAsyncEngine
 /// <summary>
 ///     Transient.
 /// </summary>
-public interface ICommandAsyncEngine<in T> : ICommandAsyncEngine
-    where T : ICommandAsync
+public interface ICommandAsyncEngine<in TCommand> : ICommandAsyncEngine
+    where TCommand : ICommandAsync
 {
-    Task ExecuteAsync(T command);
+    Task ExecuteAsync(TCommand command);
 }

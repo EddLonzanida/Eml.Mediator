@@ -13,9 +13,9 @@ public interface IRequestAsyncEngine
 /// <summary>
 ///     Transient.
 /// </summary>
-public interface IRequestAsyncEngine<in T1, T2> : IRequestAsyncEngine
-    where T1 : IRequestAsync<T1, T2>
-    where T2 : IResponse
+public interface IRequestAsyncEngine<in TRequest, TResponse> : IRequestAsyncEngine
+    where TRequest : IRequestAsync<TRequest, TResponse>
+    where TResponse : IResponse
 {
-    Task<T2> ExecuteAsync(T1 request);
+    Task<TResponse> ExecuteAsync(TRequest request);
 }

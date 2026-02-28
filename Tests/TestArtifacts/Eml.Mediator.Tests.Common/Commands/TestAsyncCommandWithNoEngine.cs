@@ -4,10 +4,5 @@ namespace Eml.Mediator.Tests.Common.Commands;
 
 public class TestAsyncCommandWithNoEngine : ICommandAsync
 {
-    public int EngineInvocationCount { get; set; }
-
-    public TestAsyncCommandWithNoEngine()
-    {
-        EngineInvocationCount = 0;
-    }
+    public int EngineInvocationCount { get; set; } = 0;
 }

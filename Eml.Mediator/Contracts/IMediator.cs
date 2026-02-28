@@ -1,19 +1,19 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 
 namespace Eml.Mediator.Contracts;
 
 public interface IMediator
 {
     /// <summary>
-    ///     Method that implements ICommandEngine for type <typeparamref name="T" /> .
+    ///     Method that implements ICommandEngine for type <typeparamref name="TCommand" /> .
     ///     <para>This will always create a new instance of the engine.</para>
     ///     <para>The lifetime of the engine ends as soon as this method is completed.</para>
     ///     <para>If this behavior does not suit your needs, just use dependency injection via the constructor.</para>
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TCommand"></typeparam>
     /// <param name="command"></param>
-    void Execute<T>(T command)
-        where T : ICommand;
+    void Execute<TCommand>(TCommand command)
+        where TCommand : ICommand;
 
     /// <summary>
     ///     Method that implements ICommandAsyncEngine.
@@ -21,10 +21,10 @@ public interface IMediator
     ///     <para>The lifetime of the engine ends as soon as this method is completed.</para>
     ///     <para>If this behavior does not suit your needs, just use dependency injection via the constructor.</para>
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TCommand"></typeparam>
     /// <param name="command"></param>
-    Task ExecuteAsync<T>(T command)
-        where T : ICommandAsync;
+    Task ExecuteAsync<TCommand>(TCommand command)
+        where TCommand : ICommandAsync;
 
     /// <summary>
     ///     Method that implements IRequestEngine.
@@ -32,12 +32,12 @@ public interface IMediator
     ///     <para>The lifetime of the engine ends as soon as this method is completed.</para>
     ///     <para>If this behavior does not suit your needs, just use dependency injection via the constructor.</para>
     /// </summary>
-    /// <typeparam name="T1"></typeparam>
-    /// <typeparam name="T2"></typeparam>
+    /// <typeparam name="TRequest"></typeparam>
+    /// <typeparam name="TResponse"></typeparam>
     /// <param name="request"></param>
-    T2 Execute<T1, T2>(IRequest<T1, T2> request)
-        where T1 : IRequest<T1, T2>
-        where T2 : IResponse;
+    TResponse Execute<TRequest, TResponse>(IRequest<TRequest, TResponse> request)
+        where TRequest : IRequest<TRequest, TResponse>
+        where TResponse : IResponse;
 
     /// <summary>
     ///     Method that implements IRequestAsyncEngine.
@@ -45,10 +45,10 @@ public interface IMediator
     ///     <para>The lifetime of the engine ends as soon as this method is completed.</para>
     ///     <para>If this behavior does not suit your needs, just use dependency injection via the constructor.</para>
     /// </summary>
-    /// <typeparam name="T1"></typeparam>
-    /// <typeparam name="T2"></typeparam>
+    /// <typeparam name="TRequest"></typeparam>
+    /// <typeparam name="TResponse"></typeparam>
     /// <param name="request"></param>
-    Task<T2> ExecuteAsync<T1, T2>(IRequestAsync<T1, T2> request)
-        where T1 : IRequestAsync<T1, T2>
-        where T2 : IResponse;
+    Task<TResponse> ExecuteAsync<TRequest, TResponse>(IRequestAsync<TRequest, TResponse> request)
+        where TRequest : IRequestAsync<TRequest, TResponse>
+        where TResponse : IResponse;
 }
