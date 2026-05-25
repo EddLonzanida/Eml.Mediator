@@ -1,9 +1,9 @@
-﻿namespace Eml.Mediator.Contracts;
+namespace Eml.Mediator.Contracts;
 
 /// <summary>
 ///     No implementations. Serves as a common denominator for all IRequest&lt;TRequest, TResponse&gt;
 /// </summary>
-public interface IRequest
+public interface IRequest : IRequestCallSite
 {
 }
 

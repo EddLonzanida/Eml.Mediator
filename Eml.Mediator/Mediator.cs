@@ -1,10 +1,12 @@
 using Eml.Mediator.Contracts;
 using Eml.Mediator.Exceptions;
+using Eml.Mediator.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace Eml.Mediator;
@@ -16,7 +18,9 @@ namespace Eml.Mediator;
 public class Mediator(IServiceProvider classFactory) : IMediator
 {
     [DebuggerStepThrough]
-    public void Execute<TCommand>(TCommand command)
+    public void Execute<TCommand>(TCommand command,
+        [CallerFilePath] string callerFilePath = "",
+        [CallerLineNumber] int callerLineNumber = 0)
         where TCommand : ICommand
     {
         var items = classFactory.GetServices<ICommandEngine<TCommand>>();
@@ -41,11 +45,17 @@ public class Mediator(IServiceProvider classFactory) : IMediator
                                              $"{Environment.NewLine}Check IServiceCollection if IMediator is registered.");
         }
 
+        command.CallSite = syncEngine.ToCallSite(callSiteFromHigherStack: command.CallSite,
+            callerFilePath: callerFilePath,
+            callerLineNumber: callerLineNumber);
+
         syncEngine.Execute(command);
     }
 
     [DebuggerStepThrough]
-    public async Task ExecuteAsync<TCommand>(TCommand commandAsync)
+    public async Task ExecuteAsync<TCommand>(TCommand commandAsync,
+        [CallerFilePath] string callerFilePath = "",
+        [CallerLineNumber] int callerLineNumber = 0)
         where TCommand : ICommandAsync
     {
         var items = classFactory.GetServices<ICommandAsyncEngine<TCommand>>();
@@ -70,11 +80,17 @@ public class Mediator(IServiceProvider classFactory) : IMediator
                                              $"{Environment.NewLine}Check IServiceCollection if IMediator is registered.");
         }
 
+        commandAsync.CallSite = asyncEngine.ToCallSite(callSiteFromHigherStack: commandAsync.CallSite,
+            callerFilePath: callerFilePath,
+            callerLineNumber: callerLineNumber);
+
         await asyncEngine.ExecuteAsync(commandAsync);
     }
 
     [DebuggerStepThrough]
-    public TResponse Execute<TRequest, TResponse>(IRequest<TRequest, TResponse> request)
+    public TResponse Execute<TRequest, TResponse>(IRequest<TRequest, TResponse> request,
+        [CallerFilePath] string callerFilePath = "",
+        [CallerLineNumber] int callerLineNumber = 0)
         where TRequest : IRequest<TRequest, TResponse>
         where TResponse : IResponse
     {
@@ -101,11 +117,17 @@ public class Mediator(IServiceProvider classFactory) : IMediator
                 $"{Environment.NewLine}Check IServiceCollection if IMediator is registered.");
         }
 
+        request.CallSite = syncEngine.ToCallSite(callSiteFromHigherStack: request.CallSite,
+            callerFilePath: callerFilePath,
+            callerLineNumber: callerLineNumber);
+
         return syncEngine.Execute((TRequest)request);
     }
 
-    [DebuggerStepThrough]
-    public async Task<TResponse> ExecuteAsync<TRequest, TResponse>(IRequestAsync<TRequest, TResponse> request)
+    //[DebuggerStepThrough]
+    public async Task<TResponse> ExecuteAsync<TRequest, TResponse>(IRequestAsync<TRequest, TResponse> request,
+        [CallerFilePath] string callerFilePath = "",
+        [CallerLineNumber] int callerLineNumber = 0)
         where TRequest : IRequestAsync<TRequest, TResponse>
         where TResponse : IResponse
     {
@@ -118,7 +140,6 @@ public class Mediator(IServiceProvider classFactory) : IMediator
 
             throw new MultipleEngineException($"Check the following Request engines:{errorMessages}");
         }
-
 
         // IServiceProvider picks up items that was registered last
         var asyncEngine = engines.LastOrDefault();
@@ -133,6 +154,10 @@ public class Mediator(IServiceProvider classFactory) : IMediator
                 $"{Environment.NewLine}Check if the class is implementing IRequestAsyncEngine." +
                 $"{Environment.NewLine}Check if any of the constructor parameters for {typeof(TRequest).Name} are also in the container.");
         }
+
+        request.CallSite = asyncEngine.ToCallSite(callSiteFromHigherStack: request.CallSite,
+            callerFilePath: callerFilePath,
+            callerLineNumber: callerLineNumber);
 
         return await asyncEngine.ExecuteAsync((TRequest)request);
     }

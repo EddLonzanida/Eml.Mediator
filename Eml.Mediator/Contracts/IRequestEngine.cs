@@ -4,7 +4,7 @@ namespace Eml.Mediator.Contracts;
 ///     No implementations. Serves as a common denominator for all IRequestEngine&lt;in TRequest, out TResponse&gt;
 ///     Transient.
 /// </summary>
-public interface IRequestEngine
+public interface IRequestEngine : IEngine
 {
 }
 
