@@ -12,7 +12,7 @@ public static class CallSiteExtensions
         string? callSiteFromHigherStack = null,
         [CallerFilePath] string callerFilePath = "",
         [CallerLineNumber] int callerLineNumber = 0)
-        where T : class, IEngine
+        where T : class, IHandler
     {
         if (!string.IsNullOrWhiteSpace(callSiteFromHigherStack))
         {

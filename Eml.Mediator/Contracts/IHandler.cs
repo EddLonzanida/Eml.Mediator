@@ -1,5 +1,5 @@
 namespace Eml.Mediator.Contracts;
 
-public interface IEngine
+public interface IHandler
 {
 }

@@ -23,7 +23,7 @@ public class Mediator(IServiceProvider classFactory) : IMediator
         [CallerLineNumber] int callerLineNumber = 0)
         where TCommand : ICommand
     {
-        var items = classFactory.GetServices<ICommandEngine<TCommand>>();
+        var items = classFactory.GetServices<ICommandHandler<TCommand>>();
         var engines = items.ToList();
 
         if (engines.Count > 1)
@@ -39,8 +39,8 @@ public class Mediator(IServiceProvider classFactory) : IMediator
         if (syncEngine is null)
         {
             throw new MissingEngineException($"{Environment.NewLine}Could not find a Command of type {typeof(TCommand)}. " +
-                                             $"{Environment.NewLine}Mediator should find Command Engine of type: {typeof(ICommandEngine<TCommand>)}" +
-                                             $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(ICommandEngine<TCommand>)} are all discoverable." +
+                                             $"{Environment.NewLine}Mediator should find Command Engine of type: {typeof(ICommandHandler<TCommand>)}" +
+                                             $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(ICommandHandler<TCommand>)} are all discoverable." +
                                              $"{Environment.NewLine}Check if the class is implementing the interface: ICommandEngine." +
                                              $"{Environment.NewLine}Check IServiceCollection if IMediator is registered.");
         }
@@ -58,7 +58,7 @@ public class Mediator(IServiceProvider classFactory) : IMediator
         [CallerLineNumber] int callerLineNumber = 0)
         where TCommand : ICommandAsync
     {
-        var items = classFactory.GetServices<ICommandAsyncEngine<TCommand>>();
+        var items = classFactory.GetServices<ICommandAsyncHandler<TCommand>>();
         var engines = items.ToList();
 
         if (engines.Count > 1)
@@ -74,8 +74,8 @@ public class Mediator(IServiceProvider classFactory) : IMediator
         if (asyncEngine is null)
         {
             throw new MissingEngineException($"{Environment.NewLine}Could not find a Command of type {typeof(TCommand)}. " +
-                                             $"{Environment.NewLine}Mediator should find Command Engine of type: {typeof(ICommandAsyncEngine<TCommand>)}" +
-                                             $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(ICommandAsyncEngine<TCommand>)} are all discoverable." +
+                                             $"{Environment.NewLine}Mediator should find Command Engine of type: {typeof(ICommandAsyncHandler<TCommand>)}" +
+                                             $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(ICommandAsyncHandler<TCommand>)} are all discoverable." +
                                              $"{Environment.NewLine}Check if the class is implementing the interface: ICommandAsyncEngine." +
                                              $"{Environment.NewLine}Check IServiceCollection if IMediator is registered.");
         }
@@ -94,7 +94,7 @@ public class Mediator(IServiceProvider classFactory) : IMediator
         where TRequest : IRequest<TRequest, TResponse>
         where TResponse : IResponse
     {
-        var items = classFactory.GetServices<IRequestEngine<TRequest, TResponse>>();
+        var items = classFactory.GetServices<IRequestHandler<TRequest, TResponse>>();
         var engines = items.ToList();
 
         if (engines.Count > 1)
@@ -111,8 +111,8 @@ public class Mediator(IServiceProvider classFactory) : IMediator
         {
             throw new MissingEngineException(
                 $"{Environment.NewLine}Could not find a Request of type {typeof(TRequest)}. " +
-                $"{Environment.NewLine}Mediator should find Request Engine of type: {typeof(IRequestEngine<TRequest, TResponse>)}" +
-                $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(IRequestEngine<TRequest, TResponse>)} are all discoverable." +
+                $"{Environment.NewLine}Mediator should find Request Engine of type: {typeof(IRequestHandler<TRequest, TResponse>)}" +
+                $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(IRequestHandler<TRequest, TResponse>)} are all discoverable." +
                 $"{Environment.NewLine}Check if the class is implementing the interface: IRequestEngine." +
                 $"{Environment.NewLine}Check IServiceCollection if IMediator is registered.");
         }
@@ -131,7 +131,7 @@ public class Mediator(IServiceProvider classFactory) : IMediator
         where TRequest : IRequestAsync<TRequest, TResponse>
         where TResponse : IResponse
     {
-        var items = classFactory.GetServices<IRequestAsyncEngine<TRequest, TResponse>>();
+        var items = classFactory.GetServices<IRequestAsyncHandler<TRequest, TResponse>>();
         var engines = items.ToList();
 
         if (engines.Count > 1)
@@ -148,8 +148,8 @@ public class Mediator(IServiceProvider classFactory) : IMediator
         {
             throw new MissingEngineException(
                 $"{Environment.NewLine}Could not find a Request of type {typeof(TRequest)}." +
-                $"{Environment.NewLine}Mediator should find Request Engine of type: {typeof(IRequestAsyncEngine<TRequest, TResponse>)}" +
-                $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(IRequestAsyncEngine<TRequest, TResponse>)} are all discoverable." +
+                $"{Environment.NewLine}Mediator should find Request Engine of type: {typeof(IRequestAsyncHandler<TRequest, TResponse>)}" +
+                $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(IRequestAsyncHandler<TRequest, TResponse>)} are all discoverable." +
                 $"{Environment.NewLine}Check IServiceCollection if IMediator is registered." +
                 $"{Environment.NewLine}Check if the class is implementing IRequestAsyncEngine." +
                 $"{Environment.NewLine}Check if any of the constructor parameters for {typeof(TRequest).Name} are also in the container.");
