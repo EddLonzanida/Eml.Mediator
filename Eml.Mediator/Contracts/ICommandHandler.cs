@@ -4,14 +4,14 @@ namespace Eml.Mediator.Contracts;
 ///     No implementations. Serves as a common denominator for all ICommandEngine&lt; T&gt;
 ///     Transient.
 /// </summary>
-public interface ICommandEngine
+public interface ICommandHandler : IHandler
 {
 }
 
 /// <summary>
 ///     Transient.
 /// </summary>
-public interface ICommandEngine<in TCommand> : ICommandEngine
+public interface ICommandHandler<in TCommand> : ICommandHandler
     where TCommand : ICommand
 {
     void Execute(TCommand command);
