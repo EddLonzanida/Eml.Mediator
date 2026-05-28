@@ -1,14 +1,16 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Responses;
 
 namespace Eml.Mediator.Tests.Common.Requests;
 
 public class UserIdCacheAsyncRequest<T> : IRequestAsync<UserIdCacheAsyncRequest<T>, UserIdCacheResponse<T>>
 {
+    public string? CallSite { get; set; }
+
     public string NameIdentifier { get; }
 
     /// <summary>
-    ///     This request will be processed by UserIntIdCacheRequestEngine.
+    ///     This request will be processed by UserIntIdCacheRequestHandler.
     /// </summary>
     public UserIdCacheAsyncRequest(string nameIdentifier)
     {

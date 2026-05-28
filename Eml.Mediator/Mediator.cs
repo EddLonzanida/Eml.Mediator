@@ -24,32 +24,32 @@ public class Mediator(IServiceProvider classFactory) : IMediator
         where TCommand : ICommand
     {
         var items = classFactory.GetServices<ICommandHandler<TCommand>>();
-        var engines = items.ToList();
+        var handlers = items.ToList();
 
-        if (engines.Count > 1)
+        if (handlers.Count > 1)
         {
-            var errorMessages = GetMultipleEngineExceptionMessage(engines);
+            var errorMessages = GetMultipleHandlerExceptionMessage(handlers);
 
-            throw new MultipleEngineException($"Check the following Command engines:{errorMessages}");
+            throw new MultipleHandlerException($"Check the following Command handlers:{errorMessages}");
         }
 
         // IServiceProvider picks up items that was registered last
-        var syncEngine = engines.LastOrDefault();
+        var syncHandler = handlers.LastOrDefault();
 
-        if (syncEngine is null)
+        if (syncHandler is null)
         {
-            throw new MissingEngineException($"{Environment.NewLine}Could not find a Command of type {typeof(TCommand)}. " +
-                                             $"{Environment.NewLine}Mediator should find Command Engine of type: {typeof(ICommandHandler<TCommand>)}" +
-                                             $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(ICommandHandler<TCommand>)} are all discoverable." +
-                                             $"{Environment.NewLine}Check if the class is implementing the interface: ICommandEngine." +
+            throw new MissingHandlerException($"{Environment.NewLine}Could not find a Command of type {typeof(TCommand)}. " +
+                                             $"{Environment.NewLine}Mediator should find Command Handler of type: {typeof(ICommandHandler<TCommand>)}" +
+                                             $"{Environment.NewLine}Make sure the constructor parameter(s) of Handler type {typeof(ICommandHandler<TCommand>)} are all discoverable." +
+                                             $"{Environment.NewLine}Check if the class is implementing the interface: ICommandHandler." +
                                              $"{Environment.NewLine}Check IServiceCollection if IMediator is registered.");
         }
 
-        command.CallSite = syncEngine.ToCallSite(callSiteFromHigherStack: command.CallSite,
+        command.CallSite = syncHandler.ToCallSite(callSiteFromHigherStack: command.CallSite,
             callerFilePath: callerFilePath,
             callerLineNumber: callerLineNumber);
 
-        syncEngine.Execute(command);
+        syncHandler.Execute(command);
     }
 
     [DebuggerStepThrough]
@@ -59,32 +59,32 @@ public class Mediator(IServiceProvider classFactory) : IMediator
         where TCommand : ICommandAsync
     {
         var items = classFactory.GetServices<ICommandAsyncHandler<TCommand>>();
-        var engines = items.ToList();
+        var handlers = items.ToList();
 
-        if (engines.Count > 1)
+        if (handlers.Count > 1)
         {
-            var errorMessages = GetMultipleEngineExceptionMessage(engines);
+            var errorMessages = GetMultipleHandlerExceptionMessage(handlers);
 
-            throw new MultipleEngineException($"Check the following Command engines:{errorMessages}");
+            throw new MultipleHandlerException($"Check the following Command handlers:{errorMessages}");
         }
 
         // IServiceProvider picks up items that was registered last
-        var asyncEngine = engines.LastOrDefault();
+        var asyncHandler = handlers.LastOrDefault();
 
-        if (asyncEngine is null)
+        if (asyncHandler is null)
         {
-            throw new MissingEngineException($"{Environment.NewLine}Could not find a Command of type {typeof(TCommand)}. " +
-                                             $"{Environment.NewLine}Mediator should find Command Engine of type: {typeof(ICommandAsyncHandler<TCommand>)}" +
-                                             $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(ICommandAsyncHandler<TCommand>)} are all discoverable." +
-                                             $"{Environment.NewLine}Check if the class is implementing the interface: ICommandAsyncEngine." +
+            throw new MissingHandlerException($"{Environment.NewLine}Could not find a Command of type {typeof(TCommand)}. " +
+                                             $"{Environment.NewLine}Mediator should find Command Handler of type: {typeof(ICommandAsyncHandler<TCommand>)}" +
+                                             $"{Environment.NewLine}Make sure the constructor parameter(s) of Handler type {typeof(ICommandAsyncHandler<TCommand>)} are all discoverable." +
+                                             $"{Environment.NewLine}Check if the class is implementing the interface: ICommandAsyncHandler." +
                                              $"{Environment.NewLine}Check IServiceCollection if IMediator is registered.");
         }
 
-        commandAsync.CallSite = asyncEngine.ToCallSite(callSiteFromHigherStack: commandAsync.CallSite,
+        commandAsync.CallSite = asyncHandler.ToCallSite(callSiteFromHigherStack: commandAsync.CallSite,
             callerFilePath: callerFilePath,
             callerLineNumber: callerLineNumber);
 
-        await asyncEngine.ExecuteAsync(commandAsync);
+        await asyncHandler.ExecuteAsync(commandAsync);
     }
 
     [DebuggerStepThrough]
@@ -95,33 +95,33 @@ public class Mediator(IServiceProvider classFactory) : IMediator
         where TResponse : IResponse
     {
         var items = classFactory.GetServices<IRequestHandler<TRequest, TResponse>>();
-        var engines = items.ToList();
+        var handlers = items.ToList();
 
-        if (engines.Count > 1)
+        if (handlers.Count > 1)
         {
-            var errorMessages = GetMultipleEngineExceptionMessage(engines);
+            var errorMessages = GetMultipleHandlerExceptionMessage(handlers);
 
-            throw new MultipleEngineException($"Check the following Request engines:{errorMessages}");
+            throw new MultipleHandlerException($"Check the following Request handlers:{errorMessages}");
         }
 
         // IServiceProvider picks up items that was registered last
-        var syncEngine = engines.LastOrDefault();
+        var syncHandler = handlers.LastOrDefault();
 
-        if (syncEngine is null)
+        if (syncHandler is null)
         {
-            throw new MissingEngineException(
+            throw new MissingHandlerException(
                 $"{Environment.NewLine}Could not find a Request of type {typeof(TRequest)}. " +
-                $"{Environment.NewLine}Mediator should find Request Engine of type: {typeof(IRequestHandler<TRequest, TResponse>)}" +
-                $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(IRequestHandler<TRequest, TResponse>)} are all discoverable." +
-                $"{Environment.NewLine}Check if the class is implementing the interface: IRequestEngine." +
+                $"{Environment.NewLine}Mediator should find Request Handler of type: {typeof(IRequestHandler<TRequest, TResponse>)}" +
+                $"{Environment.NewLine}Make sure the constructor parameter(s) of Handler type {typeof(IRequestHandler<TRequest, TResponse>)} are all discoverable." +
+                $"{Environment.NewLine}Check if the class is implementing the interface: IRequestHandler." +
                 $"{Environment.NewLine}Check IServiceCollection if IMediator is registered.");
         }
 
-        request.CallSite = syncEngine.ToCallSite(callSiteFromHigherStack: request.CallSite,
+        request.CallSite = syncHandler.ToCallSite(callSiteFromHigherStack: request.CallSite,
             callerFilePath: callerFilePath,
             callerLineNumber: callerLineNumber);
 
-        return syncEngine.Execute((TRequest)request);
+        return syncHandler.Execute((TRequest)request);
     }
 
     //[DebuggerStepThrough]
@@ -132,40 +132,40 @@ public class Mediator(IServiceProvider classFactory) : IMediator
         where TResponse : IResponse
     {
         var items = classFactory.GetServices<IRequestAsyncHandler<TRequest, TResponse>>();
-        var engines = items.ToList();
+        var handlers = items.ToList();
 
-        if (engines.Count > 1)
+        if (handlers.Count > 1)
         {
-            var errorMessages = GetMultipleEngineExceptionMessage(engines);
+            var errorMessages = GetMultipleHandlerExceptionMessage(handlers);
 
-            throw new MultipleEngineException($"Check the following Request engines:{errorMessages}");
+            throw new MultipleHandlerException($"Check the following Request handlers:{errorMessages}");
         }
 
         // IServiceProvider picks up items that was registered last
-        var asyncEngine = engines.LastOrDefault();
+        var asyncHandler = handlers.LastOrDefault();
 
-        if (asyncEngine is null)
+        if (asyncHandler is null)
         {
-            throw new MissingEngineException(
+            throw new MissingHandlerException(
                 $"{Environment.NewLine}Could not find a Request of type {typeof(TRequest)}." +
-                $"{Environment.NewLine}Mediator should find Request Engine of type: {typeof(IRequestAsyncHandler<TRequest, TResponse>)}" +
-                $"{Environment.NewLine}Make sure the constructor parameter(s) of Engine type {typeof(IRequestAsyncHandler<TRequest, TResponse>)} are all discoverable." +
+                $"{Environment.NewLine}Mediator should find Request Handler of type: {typeof(IRequestAsyncHandler<TRequest, TResponse>)}" +
+                $"{Environment.NewLine}Make sure the constructor parameter(s) of Handler type {typeof(IRequestAsyncHandler<TRequest, TResponse>)} are all discoverable." +
                 $"{Environment.NewLine}Check IServiceCollection if IMediator is registered." +
-                $"{Environment.NewLine}Check if the class is implementing IRequestAsyncEngine." +
+                $"{Environment.NewLine}Check if the class is implementing IRequestAsyncHandler." +
                 $"{Environment.NewLine}Check if any of the constructor parameters for {typeof(TRequest).Name} are also in the container.");
         }
 
-        request.CallSite = asyncEngine.ToCallSite(callSiteFromHigherStack: request.CallSite,
+        request.CallSite = asyncHandler.ToCallSite(callSiteFromHigherStack: request.CallSite,
             callerFilePath: callerFilePath,
             callerLineNumber: callerLineNumber);
 
-        return await asyncEngine.ExecuteAsync((TRequest)request);
+        return await asyncHandler.ExecuteAsync((TRequest)request);
     }
 
     [DebuggerStepThrough]
-    private static string GetMultipleEngineExceptionMessage<TEngine>(IEnumerable<TEngine> engines)
+    private static string GetMultipleHandlerExceptionMessage<THandler>(IEnumerable<THandler> handlers)
     {
-        var errorMessages = engines.ToList()
+        var errorMessages = handlers.ToList()
             .ConvertAll(r => r?.GetType().FullName ?? string.Empty)
             .Where(x => !string.IsNullOrWhiteSpace(x))
             .ToList()

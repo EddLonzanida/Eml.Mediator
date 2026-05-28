@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 namespace Eml.Mediator.Contracts;
 
 /// <summary>
-///     No implementations. Serves as a common denominator for all IRequestAsyncEngine&lt;in T1, T2&gt;
+///     No implementations. Serves as a common denominator for all IRequestAsyncHandler&lt;in T1, T2&gt;
 ///     Transient.
 /// </summary>
 public interface IRequestAsyncHandler : IHandler

@@ -1,11 +1,11 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
 using System;
 
-namespace Eml.Mediator.Tests.Common.RequestEngines;
+namespace Eml.Mediator.Tests.Common.RequestHandlers;
 
-public class TestRequestWithExceptionEngine : IRequestEngine<TestRequestWithException, TestResponse>
+public class TestRequestWithExceptionHandler : IRequestHandler<TestRequestWithException, TestResponse>
 {
     public TestResponse Execute(TestRequestWithException request)
     {

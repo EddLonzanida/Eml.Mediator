@@ -1,4 +1,4 @@
-﻿using Eml.Mediator.Tests.Common.Commands;
+using Eml.Mediator.Tests.Common.Commands;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 using Shouldly;
 using Xunit;
@@ -14,6 +14,6 @@ public class WhenSendingACommand : IntegrationTestDiBase
 
         mediator.Execute(command);
 
-        command.EngineInvocationCount.ShouldBe(1);
+        command.HandlerInvocationCount.ShouldBe(1);
     }
 }

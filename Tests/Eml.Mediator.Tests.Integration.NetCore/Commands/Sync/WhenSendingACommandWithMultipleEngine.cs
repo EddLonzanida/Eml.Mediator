@@ -1,14 +1,14 @@
-﻿using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
+using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Sync;
 
-public class WhenSendingACommandWithMultipleEngine : IntegrationTestDiBase
+public class WhenSendingACommandWithMultipleHandler : IntegrationTestDiBase
 {
     //[Fact]
-    //public void Command_ShouldThrowMultipleEngineException()
+    //public void Command_ShouldThrowMultipleHandlerException()
     //{
-    //    var command = new TestCommandWithMultipleEngine();
+    //    var command = new TestCommandWithMultipleHandler();
 
-    //    Should.Throw<MultipleEngineException>(() => mediator.Execute(command));
+    //    Should.Throw<MultipleHandlerException>(() => mediator.Execute(command));
     //}
 }
