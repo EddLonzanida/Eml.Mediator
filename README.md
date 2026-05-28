@@ -10,15 +10,18 @@
 
 * .Net5 is now supported.
 
-##### Limitations
+##### Features
 * ExecuteAsync will always create a new instance of the handler.
 * The lifetime of the handler ends as soon as ExecuteAsync is completed.
-* If this behavior does not suit your needs, just use dependency injection via the constructor.
+* If this behavior does not suit your needs, just use dependency injection via the constructor. See example DI signature below:
 
+  ```js
+  IRequestAsyncHandler<TestAsyncRequest, TestResponse> testRequestAsyncHandler
+  ```
 
 
 # A. Usage - ***Command***
-    
+
 ```javascript
     [Fact]
     public async Task Command_ShouldBeCalledOnce()
@@ -71,11 +74,11 @@
     [Fact]
     public async Task Response_ShouldReturnCorrectValue()
     {
-        var request = new TestAsyncRequest(Guid.CreateVersion7());     //<-Request
+        var request = new TestAsyncRequest(Guid.CreateVersion7()); //<-Request
 
-        var response = await mediator.ExecuteAsync(request);    //<-Execute
+        var response = await mediator.ExecuteAsync(request);       //<-Execute
 
-        response.ResponseToRequestId.ShouldBe(request.Id);      //<-Return Value
+        response.ResponseToRequestId.ShouldBe(request.Id);         //<-Return Value
     }
 ```
 
@@ -149,7 +152,7 @@ See **[IntegrationTestDiFixture.cs](https://github.com/EddLonzanida/Eml.Mediator
                 .AddClasses(classes => classes.AssignableTo(typeof(IRequestAsyncHandler<,>)))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime()
-                
+
                 // Register RequestHandlers, CommandHandlers
                 .AddClasses(classes => classes.AssignableTo(typeof(IRequestHandler<,>)))
                 .AsImplementedInterfaces()
@@ -159,7 +162,7 @@ See **[IntegrationTestDiFixture.cs](https://github.com/EddLonzanida/Eml.Mediator
                 .AddClasses(classes => classes.AssignableTo(typeof(ICommandAsyncHandler<>)))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime()
-                
+
                 // Register CommandHandlers
                 .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)))
                 .AsImplementedInterfaces()
