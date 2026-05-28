@@ -1,4 +1,4 @@
-﻿using Eml.Mediator.Tests.Common.Commands;
+using Eml.Mediator.Tests.Common.Commands;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 using Shouldly;
 using System.Threading.Tasks;
@@ -15,6 +15,6 @@ public class WhenSendingAnAsyncCommand : IntegrationTestDiBase
 
         await mediator.ExecuteAsync(command); //<-Execute
 
-        command.EngineInvocationCount.ShouldBe(1);
+        command.HandlerInvocationCount.ShouldBe(1);
     }
 }

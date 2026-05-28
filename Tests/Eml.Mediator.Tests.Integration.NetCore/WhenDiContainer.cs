@@ -13,17 +13,17 @@ namespace Eml.Mediator.Tests.Integration.NetCore;
 public class WhenDiContainer : IntegrationTestDiBase
 {
     [Fact]
-    public void TestRequestEngine_ShouldBeDiscoverable()
+    public void TestRequestHandler_ShouldBeDiscoverable()
     {
-        var exported = classFactory.GetRequiredService<IRequestEngine<TestRequest, TestResponse>>();
+        var exported = classFactory.GetRequiredService<IRequestHandler<TestRequest, TestResponse>>();
 
         exported.ShouldNotBeNull();
     }
 
     [Fact]
-    public void TestRequestAsyncEngine_ShouldBeDiscoverable()
+    public void TestRequestAsyncHandler_ShouldBeDiscoverable()
     {
-        var exported = classFactory.GetRequiredService<IRequestAsyncEngine<TestAsyncRequest, TestResponse>>();
+        var exported = classFactory.GetRequiredService<IRequestAsyncHandler<TestAsyncRequest, TestResponse>>();
 
         exported.ShouldNotBeNull();
     }
@@ -31,7 +31,7 @@ public class WhenDiContainer : IntegrationTestDiBase
     [Fact]
     public void TestCommand_ShouldBeDiscoverable()
     {
-        var exported = classFactory.GetRequiredService<ICommandEngine<TestCommand>>();
+        var exported = classFactory.GetRequiredService<ICommandHandler<TestCommand>>();
 
         exported.ShouldNotBeNull();
     }
@@ -39,15 +39,15 @@ public class WhenDiContainer : IntegrationTestDiBase
     [Fact]
     public void TestAsyncCommand_ShouldBeDiscoverable()
     {
-        var exported = classFactory.GetRequiredService<ICommandAsyncEngine<TestAsyncCommand>>();
+        var exported = classFactory.GetRequiredService<ICommandAsyncHandler<TestAsyncCommand>>();
 
         exported.ShouldNotBeNull();
     }
 
     [Fact]
-    public void UserIdCacheAsyncEngine_ShouldBeDiscoverable()
+    public void UserIdCacheAsyncHandler_ShouldBeDiscoverable()
     {
-        var exported = classFactory.GetRequiredService<IRequestAsyncEngine<UserIdCacheAsyncRequest<int>, UserIdCacheResponse<int>>>();
+        var exported = classFactory.GetRequiredService<IRequestAsyncHandler<UserIdCacheAsyncRequest<int>, UserIdCacheResponse<int>>>();
 
         exported.ShouldNotBeNull();
     }

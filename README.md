@@ -11,8 +11,8 @@
 * .Net5 is now supported.
 
 ##### Limitations
-* ExecuteAsync will always create a new instance of the engine.
-* The lifetime of the engine ends as soon as ExecuteAsync is completed.
+* ExecuteAsync will always create a new instance of the handler.
+* The lifetime of the handler ends as soon as ExecuteAsync is completed.
 * If this behavior does not suit your needs, just use dependency injection via the constructor.
 
 
@@ -27,7 +27,7 @@
 
         await mediator.ExecuteAsync(command);   //<-Execute
 
-        command.EngineInvocationCount.ShouldBe(1);
+        command.HandlerInvocationCount.ShouldBe(1);
     }
  ```
 
@@ -36,31 +36,31 @@
 ```javascript
     public class TestAsyncCommand : ICommandAsync
     {
-        public int EngineInvocationCount { get; set; }
+        public int HandlerInvocationCount { get; set; }
 
         /// <summary>
-        /// This request will be processed by <see cref="TestAsyncCommandEngine"/>.
+        /// This request will be processed by <see cref="TestAsyncCommandHandler"/>.
         /// </summary>
         public TestAsyncCommand()
         {
-            EngineInvocationCount = 0;
+            HandlerInvocationCount = 0;
         }
     }
 ```
 
-### 2. Create a command engine.
-*TestAsyncCommandEngine* will be auto-discovered and executed by **await mediator.ExecuteAsync(command);**.
+### 2. Create a command handler.
+*TestAsyncCommandHandler* will be auto-discovered and executed by **await mediator.ExecuteAsync(command);**.
 
 ```javascript
     /// <summary>
-    /// DI signature: ICommandAsyncEngine&lt;TestAsyncCommand&gt;.
-    /// <inheritdoc cref="ICommandAsyncEngine{TestAsyncCommand}"/>
+    /// DI signature: ICommandAsyncHandler&lt;TestAsyncCommand&gt;.
+    /// <inheritdoc cref="ICommandAsyncHandler{TestAsyncCommand}"/>
     /// </summary>
-    public class TestAsyncCommandEngine : ICommandAsyncEngine<TestAsyncCommand>
+    public class TestAsyncCommandHandler : ICommandAsyncHandler<TestAsyncCommand>
     {
         public async Task ExecuteAsync(TestAsyncCommand commandAsync)
         {
-            await Task.Run(() => commandAsync.EngineInvocationCount++);
+            await Task.Run(() => commandAsync.HandlerInvocationCount++);
         }
     }
 ```
@@ -80,14 +80,14 @@
 ```
 
 ### 1. Create a Request class.
-*TestAsyncRequest* contains the needed data for **TestRequestAsyncEngine**.
+*TestAsyncRequest* contains the needed data for **TestRequestAsyncHandler**.
 ```javascript
     public class TestAsyncRequest : IRequestAsync<TestAsyncRequest, TestResponse>
     {
         public Guid Id { get; private set; }
 
         /// <summary>
-        /// This request will be processed by <see cref="TestRequestAsyncEngine"/>.
+        /// This request will be processed by <see cref="TestRequestAsyncHandler"/>.
         /// </summary>
         public TestAsyncRequest(Guid id)
         {
@@ -100,7 +100,7 @@
 *TestResponse* is the return value of **await mediator.ExecuteAsync(request);**.
 ```javascript
     /// <summary>
-    /// TestRequestAsyncEngine return value.
+    /// TestRequestAsyncHandler return value.
     /// </summary>
     public class TestResponse : IResponse
     {
@@ -113,15 +113,15 @@
     }
 ```
 
-### 3. Create a Request engine.
-*TestRequestAsyncEngine* will be auto-discovered and executed by **var response = await mediator.ExecuteAsync(request);**.
+### 3. Create a Request handler.
+*TestRequestAsyncHandler* will be auto-discovered and executed by **var response = await mediator.ExecuteAsync(request);**.
 
 ```javascript
     /// <summary>
-    /// DI signature: IRequestAsyncEngine&lt;TestAsyncRequest, TestResponse&gt;.
-    /// <inheritdoc cref="IRequestAsyncEngine{TestAsyncRequest, TestResponse}"/>
+    /// DI signature: IRequestAsyncHandler&lt;TestAsyncRequest, TestResponse&gt;.
+    /// <inheritdoc cref="IRequestAsyncHandler{TestAsyncRequest, TestResponse}"/>
     /// </summary>
-    public class TestRequestAsyncEngine : IRequestAsyncEngine<TestAsyncRequest, TestResponse>
+    public class TestRequestAsyncHandler : IRequestAsyncHandler<TestAsyncRequest, TestResponse>
     {
         public async Task<TestResponse> ExecuteAsync(TestAsyncRequest request)
         {
@@ -145,23 +145,23 @@ See **[IntegrationTestDiFixture.cs](https://github.com/EddLonzanida/Eml.Mediator
                 .AsSelfWithInterfaces()
                 .WithSingletonLifetime()
 
-                // Register RequestEngines, CommandEngines - Async
-                .AddClasses(classes => classes.AssignableTo(typeof(IRequestAsyncEngine<,>)))
+                // Register RequestHandlers, CommandHandlers - Async
+                .AddClasses(classes => classes.AssignableTo(typeof(IRequestAsyncHandler<,>)))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime()
                 
-                // Register RequestEngines, CommandEngines
-                .AddClasses(classes => classes.AssignableTo(typeof(IRequestEngine<,>)))
+                // Register RequestHandlers, CommandHandlers
+                .AddClasses(classes => classes.AssignableTo(typeof(IRequestHandler<,>)))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime()
 
-                // Register CommandEngines - Async
-                .AddClasses(classes => classes.AssignableTo(typeof(ICommandAsyncEngine<>)))
+                // Register CommandHandlers - Async
+                .AddClasses(classes => classes.AssignableTo(typeof(ICommandAsyncHandler<>)))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime()
                 
-                // Register CommandEngines
-                .AddClasses(classes => classes.AssignableTo(typeof(ICommandEngine<>)))
+                // Register CommandHandlers
+                .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime()
 
@@ -204,18 +204,18 @@ See **[ConsumerClassWithoutMediator.cs](https://github.com/EddLonzanida/Eml.Medi
 ```
     public class ConsumerClassWithoutMediator : IConsumerClassWithoutMediator
     {
-        private readonly IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine;
+        private readonly IRequestAsyncHandler<TestAsyncRequest, TestResponse> handler;
 
-        public ConsumerClassWithoutMediator(IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine)     //<-Normal dependency injection. Inject engine
+        public ConsumerClassWithoutMediator(IRequestAsyncHandler<TestAsyncRequest, TestResponse> handler)     //<-Normal dependency injection. Inject handler
         {
-            this.engine = engine;
+            this.handler = handler;
         }
 
         public async Task<TestResponse> DoSomething()
         {
             var request = new TestAsyncRequest(Guid.CreateVersion7());     //<-Request
 
-            var response = await engine.ExecuteAsync(request);      //<-Execute
+            var response = await handler.ExecuteAsync(request);      //<-Execute
 
             return response;                                        //<-Return Value
         }

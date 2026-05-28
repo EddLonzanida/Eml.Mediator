@@ -4,7 +4,7 @@ using System;
 namespace Eml.Mediator.Tests.Common.Responses;
 
 /// <summary>
-///     TestRequestAsyncEngine return value.
+///     TestRequestAsyncHandler return value.
 /// </summary>
 public class TestResponse(Guid responseToRequestId) : IResponse
 {

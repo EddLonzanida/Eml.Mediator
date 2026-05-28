@@ -7,13 +7,13 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Sync;
 
-public class WhenMakingARequestWithoutEngine : IntegrationTestDiBase
+public class WhenMakingARequestWithoutHandler : IntegrationTestDiBase
 {
     [Fact]
-    public void Response_ShouldThrowAMissingEngineException()
+    public void Response_ShouldThrowAMissingHandlerException()
     {
-        var request = new TestRequestWithNoEngine(Guid.CreateVersion7());
+        var request = new TestRequestWithNoHandler(Guid.CreateVersion7());
 
-        Should.Throw<MissingEngineException>(() => mediator.Execute(request));
+        Should.Throw<MissingHandlerException>(() => mediator.Execute(request));
     }
 }

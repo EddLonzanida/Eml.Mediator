@@ -6,10 +6,10 @@ using Eml.Mediator.Tests.Common.Responses;
 using System;
 using System.Threading.Tasks;
 
-namespace Eml.Mediator.Tests.Common.RequestEngines;
+namespace Eml.Mediator.Tests.Common.RequestHandlers;
 
-public class UserIntIdCacheRequestEngine(IPiiRepository<int> piiUserPiiRepository, IEmlRepository<int> emlUserPiiRepository, TimeProvider timeProvider)
-    : IRequestAsyncEngine<UserIdCacheAsyncRequest<int>, UserIdCacheResponse<int>>
+public class UserIntIdCacheRequestHandler(IPiiRepository<int> piiUserPiiRepository, IEmlRepository<int> emlUserPiiRepository, TimeProvider timeProvider)
+    : IRequestAsyncHandler<UserIdCacheAsyncRequest<int>, UserIdCacheResponse<int>>
 {
     private const int MaxCacheCount = 500;
 

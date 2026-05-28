@@ -8,21 +8,21 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async;
 
-public class WhenMakingAsyncRequestWithoutEngine : IntegrationTestDiBase
+public class WhenMakingAsyncRequestWithoutHandler : IntegrationTestDiBase
 {
     [Fact]
-    public async Task Response_ShouldThrowMissingEngineException()
+    public async Task Response_ShouldThrowMissingHandlerException()
     {
-        var request = new TestAsyncRequestWithNoEngine(Guid.CreateVersion7());
+        var request = new TestAsyncRequestWithNoHandler(Guid.CreateVersion7());
 
-        await Should.ThrowAsync<MissingEngineException>(async () => await mediator.ExecuteAsync(request));
+        await Should.ThrowAsync<MissingHandlerException>(async () => await mediator.ExecuteAsync(request));
     }
 
     [Fact]
-    public async Task Response_ShouldThrowMissingEngineExceptionWhenRequestIsOpenGenerics()
+    public async Task Response_ShouldThrowMissingHandlerExceptionWhenRequestIsOpenGenerics()
     {
         var request = new AutoSuggestAsyncRequest<string>("Test");
 
-        await Should.ThrowAsync<MissingEngineException>(async () => await mediator.ExecuteAsync(request));
+        await Should.ThrowAsync<MissingHandlerException>(async () => await mediator.ExecuteAsync(request));
     }
 }

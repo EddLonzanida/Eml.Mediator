@@ -7,13 +7,13 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Sync;
 
-public class WhenMakingARequestWithMultipleEngine : IntegrationTestDiBase
+public class WhenMakingARequestWithMultipleHandler : IntegrationTestDiBase
 {
     [Fact]
-    public void Response_ShouldThrowMultipleEngineException()
+    public void Response_ShouldThrowMultipleHandlerException()
     {
-        var request = new TestRequestWithMultipleEngine(Guid.CreateVersion7());
+        var request = new TestRequestWithMultipleHandler(Guid.CreateVersion7());
 
-        Should.Throw<MultipleEngineException>(() => mediator.Execute(request));
+        Should.Throw<MultipleHandlerException>(() => mediator.Execute(request));
     }
 }

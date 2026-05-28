@@ -1,4 +1,4 @@
-﻿using Eml.Mediator.Exceptions;
+using Eml.Mediator.Exceptions;
 using Eml.Mediator.Tests.Common.Commands;
 using Eml.Mediator.Tests.Integration.NetCore.BaseClasses;
 using Shouldly;
@@ -7,13 +7,13 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Async;
 
-public class WhenSendingAnAsyncCommandWithoutEngine : IntegrationTestDiBase
+public class WhenSendingAnAsyncCommandWithoutHandler : IntegrationTestDiBase
 {
     [Fact]
-    public async Task Command_ShouldThrowMissingEngineException()
+    public async Task Command_ShouldThrowMissingHandlerException()
     {
-        var command = new TestAsyncCommandWithNoEngine();
+        var command = new TestAsyncCommandWithNoHandler();
 
-        await Should.ThrowAsync<MissingEngineException>(async () => await mediator.ExecuteAsync(command));
+        await Should.ThrowAsync<MissingHandlerException>(async () => await mediator.ExecuteAsync(command));
     }
 }

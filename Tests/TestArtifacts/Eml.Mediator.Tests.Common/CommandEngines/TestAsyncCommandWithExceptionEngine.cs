@@ -1,11 +1,11 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Commands;
 using System;
 using System.Threading.Tasks;
 
-namespace Eml.Mediator.Tests.Common.CommandEngines;
+namespace Eml.Mediator.Tests.Common.CommandHandlers;
 
-public class TestAsyncCommandWithExceptionEngine : ICommandAsyncEngine<TestAsyncCommandWithException>
+public class TestAsyncCommandWithExceptionHandler : ICommandAsyncHandler<TestAsyncCommandWithException>
 {
     public Task ExecuteAsync(TestAsyncCommandWithException commandAsync)
     {
