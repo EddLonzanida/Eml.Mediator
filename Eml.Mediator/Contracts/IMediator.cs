@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace Eml.Mediator.Contracts;
@@ -12,7 +13,11 @@ public interface IMediator
     /// </summary>
     /// <typeparam name="TCommand"></typeparam>
     /// <param name="command"></param>
-    void Execute<TCommand>(TCommand command)
+    /// <param name="callerFilePath"></param>
+    /// <param name="callerLineNumber"></param>
+    void Execute<TCommand>(TCommand command,
+        [CallerFilePath] string callerFilePath = "",
+        [CallerLineNumber] int callerLineNumber = 0)
         where TCommand : ICommand;
 
     /// <summary>
@@ -23,7 +28,11 @@ public interface IMediator
     /// </summary>
     /// <typeparam name="TCommand"></typeparam>
     /// <param name="command"></param>
-    Task ExecuteAsync<TCommand>(TCommand command)
+    /// <param name="callerFilePath"></param>
+    /// <param name="callerLineNumber"></param>
+    Task ExecuteAsync<TCommand>(TCommand command,
+        [CallerFilePath] string callerFilePath = "",
+        [CallerLineNumber] int callerLineNumber = 0)
         where TCommand : ICommandAsync;
 
     /// <summary>
@@ -35,7 +44,11 @@ public interface IMediator
     /// <typeparam name="TRequest"></typeparam>
     /// <typeparam name="TResponse"></typeparam>
     /// <param name="request"></param>
-    TResponse Execute<TRequest, TResponse>(IRequest<TRequest, TResponse> request)
+    /// <param name="callerFilePath"></param>
+    /// <param name="callerLineNumber"></param>
+    TResponse Execute<TRequest, TResponse>(IRequest<TRequest, TResponse> request,
+        [CallerFilePath] string callerFilePath = "",
+        [CallerLineNumber] int callerLineNumber = 0)
         where TRequest : IRequest<TRequest, TResponse>
         where TResponse : IResponse;
 
@@ -48,7 +61,11 @@ public interface IMediator
     /// <typeparam name="TRequest"></typeparam>
     /// <typeparam name="TResponse"></typeparam>
     /// <param name="request"></param>
-    Task<TResponse> ExecuteAsync<TRequest, TResponse>(IRequestAsync<TRequest, TResponse> request)
+    /// <param name="callerFilePath"></param>
+    /// <param name="callerLineNumber"></param>
+    Task<TResponse> ExecuteAsync<TRequest, TResponse>(IRequestAsync<TRequest, TResponse> request,
+        [CallerFilePath] string callerFilePath = "",
+        [CallerLineNumber] int callerLineNumber = 0)
         where TRequest : IRequestAsync<TRequest, TResponse>
         where TResponse : IResponse;
 }

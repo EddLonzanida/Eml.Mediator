@@ -6,14 +6,14 @@ namespace Eml.Mediator.Contracts;
 ///     No implementations. Serves as a common denominator for all ICommandAsyncEngine&lt; T&gt;
 ///     Transient.
 /// </summary>
-public interface ICommandAsyncEngine
+public interface ICommandAsyncHandler : IHandler
 {
 }
 
 /// <summary>
 ///     Transient.
 /// </summary>
-public interface ICommandAsyncEngine<in TCommand> : ICommandAsyncEngine
+public interface ICommandAsyncHandler<in TCommand> : ICommandAsyncHandler
     where TCommand : ICommandAsync
 {
     Task ExecuteAsync(TCommand command);
