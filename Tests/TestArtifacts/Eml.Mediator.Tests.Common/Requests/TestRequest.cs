@@ -1,5 +1,5 @@
-﻿using Eml.Mediator.Contracts;
-using Eml.Mediator.Tests.Common.RequestEngines;
+using Eml.Mediator.Contracts;
+using Eml.Mediator.Tests.Common.RequestHandlers;
 using Eml.Mediator.Tests.Common.Responses;
 using System;
 
@@ -7,10 +7,12 @@ namespace Eml.Mediator.Tests.Common.Requests;
 
 public class TestRequest : IRequest<TestRequest, TestResponse>
 {
+    public string? CallSite { get; set; }
+
     public Guid Id { get; }
 
     /// <summary>
-    ///     This request will be processed by <see cref="TestRequestEngine" />.
+    ///     This request will be processed by <see cref="TestRequestHandler" />.
     /// </summary>
     public TestRequest(Guid id)
     {

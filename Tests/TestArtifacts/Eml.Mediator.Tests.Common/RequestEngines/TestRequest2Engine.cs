@@ -1,12 +1,12 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
 
-namespace Eml.Mediator.Tests.Common.RequestEngines;
+namespace Eml.Mediator.Tests.Common.RequestHandlers;
 
-public class TestRequest2Engine : IRequestEngine<TestRequestWithMultipleEngine, TestResponse>
+public class TestRequest2Handler : IRequestHandler<TestRequestWithMultipleHandler, TestResponse>
 {
-    public TestResponse Execute(TestRequestWithMultipleEngine request)
+    public TestResponse Execute(TestRequestWithMultipleHandler request)
     {
         return new TestResponse(request.Id);
     }

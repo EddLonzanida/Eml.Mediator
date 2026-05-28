@@ -8,18 +8,18 @@ namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async;
 
 public class ConsumerClassWithoutMediator : IConsumerClassWithoutMediator
 {
-    private readonly IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine;
+    private readonly IRequestAsyncHandler<TestAsyncRequest, TestResponse> handler;
 
-    public ConsumerClassWithoutMediator(IRequestAsyncEngine<TestAsyncRequest, TestResponse> engine) //<-Normal dependency injection
+    public ConsumerClassWithoutMediator(IRequestAsyncHandler<TestAsyncRequest, TestResponse> handler) //<-Normal dependency injection
     {
-        this.engine = engine;
+        this.handler = handler;
     }
 
     public async Task<TestResponse> DoSomething()
     {
         var request = new TestAsyncRequest(Guid.CreateVersion7()); //<-Request
 
-        var response = await engine.ExecuteAsync(request); //<-Execute
+        var response = await handler.ExecuteAsync(request); //<-Execute
 
         return response; //<-Return Value
     }

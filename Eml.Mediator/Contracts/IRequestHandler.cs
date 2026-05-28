@@ -1,7 +1,7 @@
 namespace Eml.Mediator.Contracts;
 
 /// <summary>
-///     No implementations. Serves as a common denominator for all IRequestEngine&lt;in TRequest, out TResponse&gt;
+///     No implementations. Serves as a common denominator for all IRequestHandler&lt;in TRequest, out TResponse&gt;
 ///     Transient.
 /// </summary>
 public interface IRequestHandler : IHandler

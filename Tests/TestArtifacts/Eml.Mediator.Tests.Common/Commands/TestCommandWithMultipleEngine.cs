@@ -2,7 +2,9 @@ using Eml.Mediator.Contracts;
 
 namespace Eml.Mediator.Tests.Common.Commands;
 
-public class TestCommandWithMultipleEngine : ICommand
+public class TestCommandWithMultipleHandler : ICommand
 {
-    public int EngineInvocationCount { get; set; } = 0;
+    public string? CallSite { get; set; }
+
+    public int HandlerInvocationCount { get; set; } = 0;
 }

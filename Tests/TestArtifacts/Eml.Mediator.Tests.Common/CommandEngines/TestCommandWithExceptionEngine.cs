@@ -1,10 +1,10 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Commands;
 using System;
 
-namespace Eml.Mediator.Tests.Common.CommandEngines;
+namespace Eml.Mediator.Tests.Common.CommandHandlers;
 
-public class TestCommandWithExceptionEngine : ICommandEngine<TestCommandWithException>
+public class TestCommandWithExceptionHandler : ICommandHandler<TestCommandWithException>
 {
     public void Execute(TestCommandWithException command)
     {

@@ -23,7 +23,7 @@ public class WhenMakingAsyncRequest : IntegrationTestDiBase
 
         //dotMemory.Check(memory =>
         //{
-        //    memory.GetObjects(where => where.Type.Is<TestRequestAsyncEngine>()).ObjectsCount.ShouldBe(0);
+        //    memory.GetObjects(where => where.Type.Is<TestRequestAsyncHandler>()).ObjectsCount.ShouldBe(0);
         //});
     }
 

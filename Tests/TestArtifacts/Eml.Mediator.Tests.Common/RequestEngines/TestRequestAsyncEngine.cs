@@ -1,15 +1,15 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Requests;
 using Eml.Mediator.Tests.Common.Responses;
 using System.Threading.Tasks;
 
-namespace Eml.Mediator.Tests.Common.RequestEngines;
+namespace Eml.Mediator.Tests.Common.RequestHandlers;
 
 /// <summary>
-///     DI signature: IRequestAsyncEngine&lt;TestAsyncRequest, TestResponse&gt;.
-///     <inheritdoc cref="IRequestAsyncEngine{TestAsyncRequest,TestResponse}" />
+///     DI signature: IRequestAsyncHandler&lt;TestAsyncRequest, TestResponse&gt;.
+///     <inheritdoc cref="IRequestAsyncHandler{TestAsyncRequest,TestResponse}" />
 /// </summary>
-public class TestRequestAsyncEngine : IRequestAsyncEngine<TestAsyncRequest, TestResponse>
+public class TestRequestAsyncHandler : IRequestAsyncHandler<TestAsyncRequest, TestResponse>
 {
     public async Task<TestResponse> ExecuteAsync(TestAsyncRequest request)
     {

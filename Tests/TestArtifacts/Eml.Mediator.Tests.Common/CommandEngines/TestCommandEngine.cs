@@ -1,16 +1,16 @@
-﻿using Eml.Mediator.Contracts;
+using Eml.Mediator.Contracts;
 using Eml.Mediator.Tests.Common.Commands;
 
-namespace Eml.Mediator.Tests.Common.CommandEngines;
+namespace Eml.Mediator.Tests.Common.CommandHandlers;
 
 /// <summary>
-///     DI signature: ICommandEngine&lt;TestCommand&gt;.
-///     <inheritdoc cref="ICommandEngine{TestCommand}" />
+///     DI signature: ICommandHandler&lt;TestCommand&gt;.
+///     <inheritdoc cref="ICommandHandler{TestCommand}" />
 /// </summary>
-public class TestCommandEngine : ICommandEngine<TestCommand>
+public class TestCommandHandler : ICommandHandler<TestCommand>
 {
     public void Execute(TestCommand command)
     {
-        command.EngineInvocationCount++;
+        command.HandlerInvocationCount++;
     }
 }

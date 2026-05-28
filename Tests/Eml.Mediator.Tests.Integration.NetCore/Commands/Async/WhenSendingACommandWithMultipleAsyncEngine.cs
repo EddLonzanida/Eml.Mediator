@@ -7,13 +7,13 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Commands.Async;
 
-public class WhenSendingACommandWithMultipleAsyncEngine : IntegrationTestDiBase
+public class WhenSendingACommandWithMultipleAsyncHandler : IntegrationTestDiBase
 {
     [Fact]
-    public async Task Command_ShouldThrowMultipleEngineException()
+    public async Task Command_ShouldThrowMultipleHandlerException()
     {
-        var command = new TestAsyncCommandWithMultipleEngine();
+        var command = new TestAsyncCommandWithMultipleHandler();
 
-        await Should.ThrowAsync<MultipleEngineException>(async () => await mediator.ExecuteAsync(command));
+        await Should.ThrowAsync<MultipleHandlerException>(async () => await mediator.ExecuteAsync(command));
     }
 }

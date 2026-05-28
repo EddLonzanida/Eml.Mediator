@@ -8,13 +8,13 @@ using Xunit;
 
 namespace Eml.Mediator.Tests.Integration.NetCore.Requests.Async;
 
-public class WhenMakingAsyncRequestWithMultipleEngine : IntegrationTestDiBase
+public class WhenMakingAsyncRequestWithMultipleHandler : IntegrationTestDiBase
 {
     [Fact]
-    public async Task Response_ShouldThrowMultipleEngineException()
+    public async Task Response_ShouldThrowMultipleHandlerException()
     {
-        var request = new TestAsyncRequestWithMultipleEngine(Guid.CreateVersion7());
+        var request = new TestAsyncRequestWithMultipleHandler(Guid.CreateVersion7());
 
-        await Should.ThrowAsync<MultipleEngineException>(async () => await mediator.ExecuteAsync(request));
+        await Should.ThrowAsync<MultipleHandlerException>(async () => await mediator.ExecuteAsync(request));
     }
 }

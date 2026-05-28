@@ -36,21 +36,21 @@ public class IntegrationTestDiFixture : IDisposable
             .AsSelfWithInterfaces()
             .WithSingletonLifetime()
 
-            // Register RequestEngines, CommandEngines
-            .AddClasses(classes => classes.AssignableTo(typeof(IRequestAsyncEngine<,>)))
+            // Register RequestHandlers, CommandHandlers
+            .AddClasses(classes => classes.AssignableTo(typeof(IRequestAsyncHandler<,>)))
             .AsImplementedInterfaces()
             .WithTransientLifetime()
-            // Register RequestEngines, CommandEngines
-            .AddClasses(classes => classes.AssignableTo(typeof(IRequestEngine<,>)))
+            // Register RequestHandlers, CommandHandlers
+            .AddClasses(classes => classes.AssignableTo(typeof(IRequestHandler<,>)))
             .AsImplementedInterfaces()
             .WithTransientLifetime()
 
-            // Register CommandEngines
-            .AddClasses(classes => classes.AssignableTo(typeof(ICommandAsyncEngine<>)))
+            // Register CommandHandlers
+            .AddClasses(classes => classes.AssignableTo(typeof(ICommandAsyncHandler<>)))
             .AsImplementedInterfaces()
             .WithTransientLifetime()
-            // Register CommandEngines
-            .AddClasses(classes => classes.AssignableTo(typeof(ICommandEngine<>)))
+            // Register CommandHandlers
+            .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)))
             .AsImplementedInterfaces()
             .WithTransientLifetime()
 

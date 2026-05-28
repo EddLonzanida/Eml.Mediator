@@ -4,7 +4,9 @@ using System;
 
 namespace Eml.Mediator.Tests.Common.Requests;
 
-public class TestAsyncRequestWithMultipleEngine(Guid id) : IRequestAsync<TestAsyncRequestWithMultipleEngine, TestResponse>
+public class TestAsyncRequestWithMultipleHandler(Guid id) : IRequestAsync<TestAsyncRequestWithMultipleHandler, TestResponse>
 {
+    public string? CallSite { get; set; }
+
     public Guid Id { get; } = id;
 }

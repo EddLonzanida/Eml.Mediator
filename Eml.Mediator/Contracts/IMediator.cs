@@ -6,9 +6,9 @@ namespace Eml.Mediator.Contracts;
 public interface IMediator
 {
     /// <summary>
-    ///     Method that implements ICommandEngine for type <typeparamref name="TCommand" /> .
-    ///     <para>This will always create a new instance of the engine.</para>
-    ///     <para>The lifetime of the engine ends as soon as this method is completed.</para>
+    ///     Method that implements ICommandHandler for type <typeparamref name="TCommand" /> .
+    ///     <para>This will always create a new instance of the handler.</para>
+    ///     <para>The lifetime of the handler ends as soon as this method is completed.</para>
     ///     <para>If this behavior does not suit your needs, just use dependency injection via the constructor.</para>
     /// </summary>
     /// <typeparam name="TCommand"></typeparam>
@@ -21,9 +21,9 @@ public interface IMediator
         where TCommand : ICommand;
 
     /// <summary>
-    ///     Method that implements ICommandAsyncEngine.
-    ///     <para>This will always create a new instance of the engine.</para>
-    ///     <para>The lifetime of the engine ends as soon as this method is completed.</para>
+    ///     Method that implements ICommandAsyncHandler.
+    ///     <para>This will always create a new instance of the handler.</para>
+    ///     <para>The lifetime of the handler ends as soon as this method is completed.</para>
     ///     <para>If this behavior does not suit your needs, just use dependency injection via the constructor.</para>
     /// </summary>
     /// <typeparam name="TCommand"></typeparam>
@@ -36,9 +36,9 @@ public interface IMediator
         where TCommand : ICommandAsync;
 
     /// <summary>
-    ///     Method that implements IRequestEngine.
-    ///     <para>This will always create a new instance of the engine.</para>
-    ///     <para>The lifetime of the engine ends as soon as this method is completed.</para>
+    ///     Method that implements IRequestHandler.
+    ///     <para>This will always create a new instance of the handler.</para>
+    ///     <para>The lifetime of the handler ends as soon as this method is completed.</para>
     ///     <para>If this behavior does not suit your needs, just use dependency injection via the constructor.</para>
     /// </summary>
     /// <typeparam name="TRequest"></typeparam>
@@ -53,9 +53,9 @@ public interface IMediator
         where TResponse : IResponse;
 
     /// <summary>
-    ///     Method that implements IRequestAsyncEngine.
-    ///     <para>This will always create a new instance of the engine.</para>
-    ///     <para>The lifetime of the engine ends as soon as this method is completed.</para>
+    ///     Method that implements IRequestAsyncHandler.
+    ///     <para>This will always create a new instance of the handler.</para>
+    ///     <para>The lifetime of the handler ends as soon as this method is completed.</para>
     ///     <para>If this behavior does not suit your needs, just use dependency injection via the constructor.</para>
     /// </summary>
     /// <typeparam name="TRequest"></typeparam>

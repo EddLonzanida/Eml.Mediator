@@ -2,5 +2,5 @@ using System;
 
 namespace Eml.Mediator.Exceptions
 {
-    public class MultipleEngineException(string message) : Exception(message);
+    public class MultipleHandlerException(string message) : Exception(message);
 }
